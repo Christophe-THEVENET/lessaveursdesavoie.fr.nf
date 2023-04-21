@@ -1,17 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Acceuil{% endblock %}
+{% block title %}{{parent()}} | Acceuil{% endblock %}
 
 {% block body %}
-
-
-
 <main>
-    <h1>Les Saveurs de Savoie</h1>
-    <p>En construction ...</p>
-    <img src="{{asset('build/img/chantier-construction.jpg')}}">
-
+    <h1>Les Saveurs De Savoie</h1>
+    <img src="{{asset('build/img/chantier-construction.jpg')}}" alt="">
+    <test-component></test-component>
 </main>
-
-
 {% endblock %}

@@ -1,0 +1,1 @@
+import TestElement from '../react/components/test.jsx';
