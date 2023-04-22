@@ -85,10 +85,10 @@ const Hamburger = () => {
                     <nav>
                             <ul>
                                 <li onClick={toggleModal}>
-                                    <a href="http://localhost:8000">Acceuil</a>
+                                    <a href="https://lessaveursdesavoie.fr.nf/">Acceuil</a>
                                 </li >
                                 <li onClick={toggleModal}>
-                                    <a href="http://localhost:8000/menus">Menus</a>
+                                    <a href="https://lessaveursdesavoie.fr.nf/menus">Menus</a>
                                 </li>
                                 <li onClick={toggleModal}>
                                     <a href="#">Carte</a>
