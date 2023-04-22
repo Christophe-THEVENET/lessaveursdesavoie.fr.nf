@@ -1,14 +1,7 @@
-@import url('./_config.scss');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import 'config.scss';
 
 body {
-    background-color: #243036;
-    color: rgb(236, 217, 217);
+    background-color: $colorDarkGrey;
 }
 
 main {
@@ -21,11 +14,10 @@ main {
 
 h1 {
     font-size: 5rem;
-    color: #ffffff;
-    font-family: 'Great Vibes', cursive;
+    color: $colorWhite;
+    font-family: $titleFont;
     font-weight: 300;
 }
-
 
 img {
     width: 70vw;
@@ -35,7 +27,56 @@ img {
 
 .test {
     font-size: 2rem;
-    color: rgb(156, 162, 192);
+    color: $colorSecondary;
     margin-top: 2rem;
-    font-family: 'Lato', sans-serif;
+    font-family: $textFont;
+}
+
+.menu {
+    background-color: $colorPrimary;
+    width: 100%;
+    height: 150px;
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: $titleFont;
+    color: $colorWhite;
+    transition: all 0.2s ease-in-out;
+}
+
+.menu-close {
+    background-color: $colorPrimary;
+    width: 100%;
+    height: 150px;
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    transform: translateY(-200%);
+    transition: all 0.2s ease-in-out;
+}
+
+.hamburger-close {
+    position: absolute;
+}
+
+.menu-content nav ul {
+    width: 70vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+
+    li a {
+        font-size: 3rem;
+        text-decoration: none;
+        color: $colorWhite;
+    }
+
 }
