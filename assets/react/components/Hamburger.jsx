@@ -4,6 +4,7 @@ import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import CloseIcon from '@mui/icons-material/Close';
 import '../../scss/styles.scss';
 
+
 const Hamburger = () => {
     //
     const [isOpen, setIsOpen] = useState(false);
