@@ -2,7 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 
 const Test = () => {
-    return <div className="test">En construction ... page1</div>;
+    return <div className="test">En construction ...</div>;
 };
 
 class TestElement extends HTMLElement {
