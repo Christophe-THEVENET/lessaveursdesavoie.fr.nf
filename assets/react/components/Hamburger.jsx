@@ -84,19 +84,19 @@ const Hamburger = () => {
                     <div className="menu-content">
                     <nav>
                             <ul>
-                                <li>
+                                <li onClick={toggleModal}>
                                     <a href="http://localhost:8000">Acceuil</a>
-                                </li>
-                                <li>
+                                </li >
+                                <li onClick={toggleModal}>
                                     <a href="http://localhost:8000/menus">Menus</a>
                                 </li>
-                                <li>
+                                <li onClick={toggleModal}>
                                     <a href="#">Carte</a>
                                 </li>
-                                <li>
+                                <li onClick={toggleModal}>
                                     <a href="#">Se connecter</a>
                                 </li>
-                                <li>
+                                <li onClick={toggleModal}>
                                     <a href="#">S'inscrire</a>
                                 </li>
                             </ul>
@@ -134,7 +134,7 @@ const Hamburger = () => {
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
                     />
-                    <div className="menu-content">
+                {/*     <div className="menu-content">
                         <nav>
                             <ul>
                                 <li>
@@ -154,7 +154,7 @@ const Hamburger = () => {
                                 </li>
                             </ul>
                         </nav>
-                    </div>
+                    </div> */}
                 </div>
             )}
         </>
