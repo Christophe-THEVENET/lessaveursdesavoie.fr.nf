@@ -84,10 +84,10 @@ const Hamburger = () => {
                     <nav>
                             <ul>
                                 <li>
-                                    <a href="#">Acceuil</a>
+                                    <a href="http://localhost:8000">Acceuil</a>
                                 </li>
                                 <li>
-                                    <a href="#">Menus</a>
+                                    <a href="http://localhost:8000/menus">Menus</a>
                                 </li>
                                 <li>
                                     <a href="#">Carte</a>
@@ -137,10 +137,10 @@ const Hamburger = () => {
                         <nav>
                             <ul>
                                 <li>
-                                    <a href="#">Acceuil</a>
+                                    <a href="http://localhost:8000">Acceuil</a>
                                 </li>
                                 <li>
-                                    <a href="#">Menus</a>
+                                    <a href="http://localhost:8000/menus">Menus</a>
                                 </li>
                                 <li>
                                     <a href="#">Carte</a>
