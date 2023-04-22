@@ -85,7 +85,7 @@ const Hamburger = () => {
                     <nav>
                             <ul>
                                 <li onClick={toggleModal}>
-                                    <a href="https://lessaveursdesavoie.fr.nf/">Acceuil</a>
+                                    <a href="https://lessaveursdesavoie.fr.nf">Acceuil</a>
                                 </li >
                                 <li onClick={toggleModal}>
                                     <a href="https://lessaveursdesavoie.fr.nf/menus">Menus</a>
@@ -134,27 +134,7 @@ const Hamburger = () => {
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
                     />
-                {/*     <div className="menu-content">
-                        <nav>
-                            <ul>
-                                <li>
-                                    <a href="http://localhost:8000">Acceuil</a>
-                                </li>
-                                <li>
-                                    <a href="http://localhost:8000/menus">Menus</a>
-                                </li>
-                                <li>
-                                    <a href="#">Carte</a>
-                                </li>
-                                <li>
-                                    <a href="#">Se connecter</a>
-                                </li>
-                                <li>
-                                    <a href="#">S'inscrire</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div> */}
+             
                 </div>
             )}
         </>
