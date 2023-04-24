@@ -1,0 +1,49 @@
+
+.menu {
+    background-color: $colorPrimary;
+    width: 100%;
+    height: 150px;
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: $titleFont;
+    color: $colorWhite;
+    transition: all 0.2s ease-in-out;
+}
+
+.menu-close {
+    background-color: $colorPrimary;
+    width: 100%;
+    height: 150px;
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    transform: translateY(-200%);
+    transition: all 0.2s ease-in-out;
+}
+
+.hamburger-close {
+    position: absolute;
+}
+
+.menu-content nav ul {
+    width: 70vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+
+    li a {
+        font-size: 3rem;
+        text-decoration: none;
+        color: $colorWhite;
+    }
+
+}

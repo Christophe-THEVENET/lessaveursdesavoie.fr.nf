@@ -4,7 +4,6 @@ import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import CloseIcon from '@mui/icons-material/Close';
 import '../../scss/styles.scss';
 
-
 const Hamburger = () => {
     //
     const [isOpen, setIsOpen] = useState(false);
@@ -82,13 +81,13 @@ const Hamburger = () => {
                         onMouseLeave={handleMouseLeave}
                     />
                     <div className="menu-content">
-                    <nav>
+                        <nav>
                             <ul>
                                 <li onClick={toggleModal}>
-                                    <a href="https://lessaveursdesavoie.fr.nf">Acceuil</a>
-                                </li >
+                                    <a href="/">Acceuil</a>
+                                </li>
                                 <li onClick={toggleModal}>
-                                    <a href="https://lessaveursdesavoie.fr.nf/menus">Menus</a>
+                                    <a href="/menus">Menus</a>
                                 </li>
                                 <li onClick={toggleModal}>
                                     <a href="#">Carte</a>
@@ -134,7 +133,6 @@ const Hamburger = () => {
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
                     />
-             
                 </div>
             )}
         </>
