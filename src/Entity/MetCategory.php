@@ -21,6 +21,8 @@ class MetCategory
     #[ORM\OneToMany(mappedBy: 'metCategory', targetEntity: Dish::class)]
     private Collection $Dishes;
 
+
+
     public function __construct()
     {
         $this->Dishes = new ArrayCollection();
