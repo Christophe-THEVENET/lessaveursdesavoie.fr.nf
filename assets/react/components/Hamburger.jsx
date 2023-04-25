@@ -93,10 +93,10 @@ const Hamburger = () => {
                                     <a href="#">Carte</a>
                                 </li>
                                 <li onClick={toggleModal}>
-                                    <a href="#">Se connecter</a>
+                                    <a href="/login">Se connecter</a>
                                 </li>
                                 <li onClick={toggleModal}>
-                                    <a href="#">S'inscrire</a>
+                                    <a href="/register">S'inscrire</a>
                                 </li>
                             </ul>
                         </nav>
