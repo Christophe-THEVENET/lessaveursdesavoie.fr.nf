@@ -1,21 +1,70 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}parent() | S'inscrire{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
 
-    {{ form_start(registrationForm) }}
+<main>
+    <a href="{{ path('app_home') }}"><i class="fa-solid fa-arrow-left"></i></a>
+    <h1>S'inscrire</h1>
 
-        {{ form_row(registrationForm.name) }}  
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.nb_convives) }}  
-        {{ form_row(registrationForm.allergy) }}  
-        {{ form_row(registrationForm.agreeTerms) }}
+    <div class="alert-password" id="alert">
+        Les mots de passe ne sont pas identiques
+    </div>
 
-        <button type="submit" class="btn">Register</button>
+
+
+    {{ form_start(registrationForm, {'attr': {'id': 'register-form'}}) }}
+
+    <div>
+        {{ form_errors(registrationForm.name, {'attr': {'id': 'alert-name'}}) }}
+        {{ form_label(registrationForm.name) }}
+        {{ form_widget(registrationForm.name) }}
+    </div>
+
+    <div>
+        {{ form_errors(registrationForm.email, {'attr': {'id': 'alert-email'}}) }}
+        {{ form_label(registrationForm.email) }}
+        {{ form_widget(registrationForm.email) }}
+    </div>
+
+    <div>
+        {{ form_errors(registrationForm.plainPassword, {'attr': {'id': 'alert-password'}}) }}
+        {{ form_label(registrationForm.plainPassword) }}
+        <div class="mdp1">
+            {{ form_widget(registrationForm.plainPassword, {'attr': {'id': 'registration_form_plainPassword'}}) }}
+            <i class="fa-solid fa-eye" id="eye1"></i>
+        </div>
+    </div>
+
+    <div>
+        <label for="verifpass">Saisir une seconde fois le mot de passe</label>
+        <div class="mdp2">
+            <input type="password" id="verifpass" required class="form-control mb-3">
+            <i class="fa-solid fa-eye" id="eye2"></i>
+        </div>
+    </div>
+
+    <div>
+        {{ form_errors(registrationForm.nb_convives, {'attr': {'id': 'alert-nb_convives'}}) }}
+        {{ form_label(registrationForm.nb_convives) }}
+        {{ form_widget(registrationForm.nb_convives) }}
+    </div>
+
+    <div>
+        {{ form_errors(registrationForm.allergy, {'attr': {'id': 'alert-allergy'}}) }}
+        {{ form_label(registrationForm.allergy) }}
+        {{ form_widget(registrationForm.allergy) }}
+    </div>
+
+    <div>
+        {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'mb-4'}}) }}
+        {{ form_label(registrationForm.agreeTerms) }}
+    </div>
+
+
+    <button type="submit" class="btn btn-success" id="register-button">S'inscrire</button>
     {{ form_end(registrationForm) }}
+
+</main>
 {% endblock %}
