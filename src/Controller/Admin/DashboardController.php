@@ -2,8 +2,15 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Allergy;
+use App\Entity\Booking;
 use App\Entity\ClosingDate;
+use App\Entity\Dish;
+use App\Entity\Formula;
+use App\Entity\Meal;
 use App\Entity\MetCategory;
+use App\Entity\Restaurant;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -45,5 +52,11 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Catégorie de plat', 'fa-solid fa-kitchen-set', MetCategory::class);
         yield MenuItem::linkToCrud('Jours de fermeture', 'fa-solid fa-shop-slash', ClosingDate::class);
+        yield MenuItem::linkToCrud('Plats', 'fa-solid fa-plate-wheat', Dish::class);
+        yield MenuItem::linkToCrud('Réservations', 'fa-solid fa-calendar-days', Booking::class);
+        yield MenuItem::linkToCrud('Formules', 'fa-solid fa-table', Formula::class);
+        yield MenuItem::linkToCrud('Menus', 'fa-solid fa-utensils', Meal::class);
+        yield MenuItem::linkToCrud('Restaurant', 'fa-solid fa-shop', Restaurant::class);
+        yield MenuItem::linkToCrud('Abonnés', 'fa-solid fa-user', User::class);
     }
 }
