@@ -32,8 +32,8 @@ class Booking
     #[ORM\ManyToOne(inversedBy: 'bookings')]
     private ?User $user = null;
 
-    #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
-    private array $allergy = [];
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $allergy = null;
 
     public function getId(): ?int
     {
@@ -112,12 +112,21 @@ class Booking
         return $this;
     }
 
-    public function getAllergy(): array
+
+    /**
+     * Get the value of allergy
+     */ 
+    public function getAllergy()
     {
         return $this->allergy;
     }
 
-    public function setAllergy(?array $allergy): self
+    /**
+     * Set the value of allergy
+     *
+     * @return  self
+     */ 
+    public function setAllergy($allergy)
     {
         $this->allergy = $allergy;
 

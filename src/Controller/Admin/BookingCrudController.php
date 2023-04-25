@@ -3,6 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Booking;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class BookingCrudController extends AbstractCrudController
@@ -12,14 +18,24 @@ class BookingCrudController extends AbstractCrudController
         return Booking::class;
     }
 
-    /*
+
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            EmailField::new('email'),
+            DateField::new('date', 'Date'),
+            TimeField::new('hour', 'Heure'),
+            IntegerField::new('nb_convives', 'Nb convives'),
+            TextField::new('allergy', 'Allergies'),
+
+
         ];
     }
-    */
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setPageTitle('index', 'Réservations')
+            ->setTimeFormat('HH:mm');
+    }
 }

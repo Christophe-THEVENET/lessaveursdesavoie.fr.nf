@@ -12,6 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -37,15 +38,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $created_at = null;
 
-    #[ORM\ManyToMany(targetEntity: Allergy::class, inversedBy: 'users')]
-    private Collection $allergy;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $allergy = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Booking::class)]
     private Collection $bookings;
 
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
+
     public function __construct()
     {
-        $this->allergy = new ArrayCollection();
         $this->bookings = new ArrayCollection();
     }
 
@@ -162,29 +165,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Allergy>
-     */
-    public function getAllergy(): Collection
+    public function getAllergy(): ?string
     {
         return $this->allergy;
     }
 
-    public function addAllergy(Allergy $allergy): self
+    public function setAllergy(string $allergy): self
     {
-        if (!$this->allergy->contains($allergy)) {
-            $this->allergy->add($allergy);
-        }
+        $this->allergy = $allergy;
 
         return $this;
     }
 
-    public function removeAllergy(Allergy $allergy): self
-    {
-        $this->allergy->removeElement($allergy);
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Booking>
@@ -212,6 +204,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $booking->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }

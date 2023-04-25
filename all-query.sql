@@ -60,3 +60,10 @@ ALTER TABLE user CHANGE roles roles LONGTEXT NOT NULL COMMENT (DC2Type:json)
 /*----------------------- 3eme migration ----------------------- */
 
 ALTER TABLE booking CHANGE allergy allergy LONGTEXT DEFAULT NULL COMMENT (DC2Type:simple_array)
+
+
+
+/*----------------------- 7eme migration ----------------------- */
+
+ALTER TABLE user ADD name VARCHAR(255) NOT NULL
+
