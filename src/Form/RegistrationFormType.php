@@ -46,6 +46,7 @@ class RegistrationFormType extends AbstractType
             ->add('agreeTerms', CheckboxType::class, [
                 'label_format' => 'J\'accepte les conditions d\'utilisation et la politique de confidentialité',
                 'mapped' => false,
+                'attr' => ['class' => 'my-3'],
                 'constraints' => [
                     new IsTrue([
                         'message' => 'Vous êtes d\'accord pour le RGPD.',
@@ -81,6 +82,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('allergy', TextType::class, [
                 'label_format' => 'Allergies',
+                "required" => false,
                 'attr' => ['class' => 'form-control mb-3'],
                 
             ]);
