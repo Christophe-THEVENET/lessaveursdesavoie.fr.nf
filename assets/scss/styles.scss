@@ -1,8 +1,11 @@
+@import "~bootstrap/scss/bootstrap";
 @import 'config.scss';
 @import 'hamburger.scss';
+@import 'form.scss';
 @import 'layout.scss';
 
 body {
     background-color: $colorDarkGrey;
+    color: $colorWhite;
 }
 
