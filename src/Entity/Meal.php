@@ -22,13 +22,20 @@ class Meal
     #[ORM\ManyToOne(inversedBy: 'meals')]
     private ?Restaurant $restaurant = null;
 
-    #[ORM\ManyToMany(targetEntity: Formula::class, mappedBy: 'Meals')]
+    #[ORM\ManyToMany(targetEntity: Formula::class, inversedBy: 'meals')]
     private Collection $formulas;
 
+   
     public function __construct()
     {
         $this->formulas = new ArrayCollection();
     }
+
+    public function __toString(): string
+    {
+        return $this->getName();
+    }
+
 
     public function getId(): ?int
     {
@@ -72,7 +79,6 @@ class Meal
     {
         if (!$this->formulas->contains($formula)) {
             $this->formulas->add($formula);
-            $formula->addMeal($this);
         }
 
         return $this;
@@ -80,10 +86,14 @@ class Meal
 
     public function removeFormula(Formula $formula): self
     {
-        if ($this->formulas->removeElement($formula)) {
-            $formula->removeMeal($this);
-        }
+        $this->formulas->removeElement($formula);
 
         return $this;
     }
+
+
+
+
+
+
 }

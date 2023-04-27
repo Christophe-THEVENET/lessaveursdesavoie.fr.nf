@@ -48,6 +48,14 @@ class Restaurant
         $this->closing_dates = new ArrayCollection();
     }
 
+
+public function __toString(): string
+    {
+        return $this->getName();
+    }
+
+
+
     public function getId(): ?int
     {
         return $this->id;
