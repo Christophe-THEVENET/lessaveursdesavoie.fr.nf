@@ -47,6 +47,8 @@ class UserCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setPageTitle('index', 'Abonnés');
+            ->setPageTitle('index', 'Abonnés')
+            ->setEntityLabelInSingular('un abonné')
+            ->setEntityLabelInPlural('des abonnés');
     }
 }

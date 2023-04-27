@@ -32,7 +32,9 @@ class ClosingDateCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setPageTitle('index', 'Jours de fermeture');
+            ->setPageTitle('index', 'Jours de fermeture')
+            ->setEntityLabelInSingular('une date de fermeture')
+            ->setEntityLabelInPlural('des dates de fermeture');
     }
     
 }
