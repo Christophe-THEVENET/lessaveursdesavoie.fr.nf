@@ -4,8 +4,10 @@ namespace App\Controller\Admin;
 
 use App\Entity\Formula;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class FormulaCrudController extends AbstractCrudController
@@ -15,12 +17,16 @@ class FormulaCrudController extends AbstractCrudController
         return Formula::class;
     }
 
-    
+
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('name', 'Nom'),
-            NumberField::new('price', 'Prix €'),
+            yield IdField::new('id')->hideOnForm(),
+            yield TextField::new('name', 'Nom'),
+            yield TextField::new('description', 'Description'),
+            yield MoneyField::new('price', 'Prix')->setCurrency('EUR')->setCustomOption('storedAsCents', false),
+            yield AssociationField::new('meals', 'Menus')->hideOnForm(),
+
         ];
     }
 
@@ -29,5 +35,4 @@ class FormulaCrudController extends AbstractCrudController
         return $crud
             ->setPageTitle('index', 'Formules');
     }
-    
 }
