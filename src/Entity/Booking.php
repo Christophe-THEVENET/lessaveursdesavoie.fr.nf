@@ -35,6 +35,12 @@ class Booking
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $allergy = null;
 
+    public function __toString()
+    {
+        return $this->getDate()->format('d-m');
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -115,7 +121,7 @@ class Booking
 
     /**
      * Get the value of allergy
-     */ 
+     */
     public function getAllergy()
     {
         return $this->allergy;
@@ -125,7 +131,7 @@ class Booking
      * Set the value of allergy
      *
      * @return  self
-     */ 
+     */
     public function setAllergy($allergy)
     {
         $this->allergy = $allergy;
