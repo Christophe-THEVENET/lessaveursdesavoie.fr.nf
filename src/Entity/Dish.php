@@ -36,6 +36,11 @@ class Dish
     #[ORM\ManyToOne(inversedBy: 'Dishes')]
     private ?MetCategory $metCategory = null;
 
+
+
+
+
+
     public function getId(): ?int
     {
         return $this->id;

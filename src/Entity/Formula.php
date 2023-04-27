@@ -25,12 +25,18 @@ class Formula
     #[ORM\Column]
     private ?float $price = null;
 
-    #[ORM\ManyToMany(targetEntity: Meal::class, inversedBy: 'formulas')]
-    private Collection $Meals;
+    #[ORM\ManyToMany(targetEntity: Meal::class, mappedBy: 'formulas')]
+    private Collection $meals;
 
     public function __construct()
     {
-        $this->Meals = new ArrayCollection();
+        $this->meals = new ArrayCollection();
+    }
+
+
+    public function __toString(): string
+    {
+        return $this->getName() . ' - ' . $this->getPrice() . '€';
     }
 
     public function getId(): ?int
@@ -79,13 +85,14 @@ class Formula
      */
     public function getMeals(): Collection
     {
-        return $this->Meals;
+        return $this->meals;
     }
 
     public function addMeal(Meal $meal): self
     {
-        if (!$this->Meals->contains($meal)) {
-            $this->Meals->add($meal);
+        if (!$this->meals->contains($meal)) {
+            $this->meals->add($meal);
+            $meal->addFormula($this);
         }
 
         return $this;
@@ -93,7 +100,9 @@ class Formula
 
     public function removeMeal(Meal $meal): self
     {
-        $this->Meals->removeElement($meal);
+        if ($this->meals->removeElement($meal)) {
+            $meal->removeFormula($this);
+        }
 
         return $this;
     }
