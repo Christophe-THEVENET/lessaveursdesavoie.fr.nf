@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import CloseIcon from '@mui/icons-material/Close';
 import '../../scss/styles.scss';
-
+import axios from 'axios';
 const Hamburger = () => {
     // ouverture et fermeture de la modale
     const [isOpen, setIsOpen] = useState(false);
@@ -46,13 +46,25 @@ const Hamburger = () => {
         return adminUser ? setAdmin(adminUser) : setAdmin([]);
     };
 
+
+// requête axios pour récupérer les horaires d'ouverture
+   /*  const getData = async () => {
+        try {
+            const response = await axios.get('https://127.0.0.1:8000/api/opening-hours');
+            console.log(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }; */
+
+
+
     useEffect(() => {
         checkAuth();
         getUser();
         checkAdmin();
     }, []);
 
-   
 
     return (
         <>
