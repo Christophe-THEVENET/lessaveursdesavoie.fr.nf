@@ -35,6 +35,8 @@ class MealCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setPageTitle('index', 'Menus');
+            ->setPageTitle('index', 'Menus')
+            ->setEntityLabelInSingular('un menu')
+            ->setEntityLabelInPlural('des menus');
     }
 }

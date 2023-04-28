@@ -37,6 +37,8 @@ class DishCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setPageTitle('index', 'Plats');
+            ->setPageTitle('index', 'Plats')
+            ->setEntityLabelInSingular('un plat')
+            ->setEntityLabelInPlural('des plats');
     }
 }

@@ -62,8 +62,42 @@ ALTER TABLE user CHANGE roles roles LONGTEXT NOT NULL COMMENT (DC2Type:json)
 ALTER TABLE booking CHANGE allergy allergy LONGTEXT DEFAULT NULL COMMENT (DC2Type:simple_array)
 
 
+/*----------------------- 4eme migration ----------------------- */
+
+ALTER TABLE closing_date CHANGE date date DATE NOT NULL
+
+/*----------------------- 5eme migration ----------------------- */
+
+ALTER TABLE closing_date CHANGE date date VARCHAR(255) NOT NULL COMMENT (DC2Type:dateinterval)
+
+/*----------------------- 6eme migration ----------------------- */
+
+ALTER TABLE closing_date CHANGE date date VARCHAR(255) NOT NULL COMMENT (DC2Type:dateinterval)
+
 
 /*----------------------- 7eme migration ----------------------- */
 
 ALTER TABLE user ADD name VARCHAR(255) NOT NULL
 
+/*----------------------- 8eme migration ----------------------- */
+
+ALTER TABLE user_allergy DROP FOREIGN KEY FK_93BC5CBFA76ED395
+ALTER TABLE user_allergy DROP FOREIGN KEY FK_93BC5CBFDBFD579D
+DROP TABLE allergy
+DROP TABLE user_allergy
+ALTER TABLE user ADD allergy VARCHAR(255) DEFAULT NULL
+
+/*----------------------- 9eme migration ----------------------- */
+
+ALTER TABLE booking CHANGE allergy allergy VARCHAR(255) DEFAULT NULL
+
+/*----------------------- 10eme migration ----------------------- */
+
+ALTER TABLE formula_meal DROP FOREIGN KEY FK_4EF9322F639666D6
+ALTER TABLE formula_meal DROP FOREIGN KEY FK_4EF9322FA50A6386
+DROP TABLE formula_meal
+ALTER TABLE formula ADD meal_id INT DEFAULT NULL
+ALTER TABLE formula ADD CONSTRAINT FK_67315881639666D6 FOREIGN KEY (meal_id) REFERENCES meal (id)
+CREATE INDEX IDX_67315881639666D6 ON formula (meal_id)
+
+/*----------------------- 11eme migration ----------------------- */

@@ -28,7 +28,9 @@ class MetCategoryCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setPageTitle('index', 'Nom de la catégorie');
+            ->setPageTitle('index', 'Nom de la catégorie')
+            ->setEntityLabelInSingular('une catégorie')
+            ->setEntityLabelInPlural('des catégories');
     }
     
 }

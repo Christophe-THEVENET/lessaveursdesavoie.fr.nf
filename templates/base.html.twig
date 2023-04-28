@@ -21,14 +21,18 @@
 
 
     <div class="js-user-rating" data-is-authenticated="{{ app.user ? 'true' : 'false' }}"
-        data-user="{{ app.user|serialize(format = 'json') }}">
+        data-user="{{ app.user|serialize('json', { groups: 'getUser'})}}">
     </div>
+
+{# 
+    {{groups: 'getUser'}} #}
+
 
     <div class="js-user-admin" data-user-admin="{{ app.user ? app.user.roles|serialize(format = 'json') : 'null'}}">
     </div>
 
 
-  
+
 
 
     {% if app.user %}
