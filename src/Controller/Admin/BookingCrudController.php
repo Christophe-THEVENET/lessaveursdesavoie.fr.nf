@@ -42,6 +42,8 @@ class BookingCrudController extends AbstractCrudController
     {
         return $crud
             ->setPageTitle('index', 'Réservations')
-            ->setTimeFormat('HH:mm');
+            ->setTimeFormat('HH:mm')
+            ->setEntityLabelInSingular('une réservation')
+            ->setEntityLabelInPlural('des réservations');
     }
 }

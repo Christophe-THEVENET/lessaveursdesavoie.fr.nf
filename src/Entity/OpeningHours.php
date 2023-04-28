@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\OpeningHoursRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: OpeningHoursRepository::class)]
 class OpeningHours
@@ -15,18 +16,23 @@ class OpeningHours
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['openingHours'])]
     private ?string $day = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
+    #[Groups(['openingHours'])]
     private ?\DateTimeInterface $lunch_start_hour = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
+    #[Groups(['openingHours'])]
     private ?\DateTimeInterface $lunch_end_hour = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
+    #[Groups(['openingHours'])]
     private ?\DateTimeInterface $dinner_start_hour = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
+    #[Groups(['openingHours'])]
     private ?\DateTimeInterface $dinner_end_hour = null;
 
     #[ORM\ManyToOne(inversedBy: 'schedule')]

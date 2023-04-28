@@ -36,6 +36,8 @@ class OpeningHoursCrudController extends AbstractCrudController
     {
         return $crud
             ->setPageTitle('index', 'Horaires d\'ouverture')
-            ->setTimeFormat('HH:mm');
+            ->setTimeFormat('HH:mm')
+            ->setEntityLabelInSingular('un horaire d\'ouverture')
+            ->setEntityLabelInPlural('des horaires d\'ouverture');
     }
 }

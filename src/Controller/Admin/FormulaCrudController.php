@@ -33,6 +33,8 @@ class FormulaCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setPageTitle('index', 'Formules');
+            ->setPageTitle('index', 'Formules')
+            ->setEntityLabelInSingular('une formule')
+            ->setEntityLabelInPlural('des formules');
     }
 }

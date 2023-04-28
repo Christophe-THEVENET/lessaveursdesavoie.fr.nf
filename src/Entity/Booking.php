@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\BookingRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: BookingRepository::class)]
 class Booking
@@ -12,18 +13,23 @@ class Booking
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['getBookings'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['getBookings'])]
     private ?string $email = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups(['getBookings'])]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
+    #[Groups(['getBookings'])]
     private ?\DateTimeInterface $hour = null;
 
     #[ORM\Column]
+    #[Groups(['getBookings'])]
     private ?int $nb_convives = null;
 
     #[ORM\ManyToOne(inversedBy: 'bookings')]
