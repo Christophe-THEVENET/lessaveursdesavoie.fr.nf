@@ -52,6 +52,7 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+        yield MenuItem::linkToUrl('Retour a l\'acceuil', 'fa-solid fa-hotel', '/');
         yield MenuItem::linkToDashboard('Panneau d\'administration', 'fa fa-home');
         yield MenuItem::linkToCrud('Réservations', 'fa-solid fa-calendar-days', Booking::class);
         yield MenuItem::linkToCrud('Menus', 'fa-solid fa-utensils', Meal::class);
@@ -62,6 +63,5 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Horaires d\'ouverture', 'fa-solid fa-clock', OpeningHours::class);
         yield MenuItem::linkToCrud('Abonnés', 'fa-solid fa-user', User::class);
         yield MenuItem::linkToCrud('Restaurant', 'fa-solid fa-shop', Restaurant::class);
-
     }
 }

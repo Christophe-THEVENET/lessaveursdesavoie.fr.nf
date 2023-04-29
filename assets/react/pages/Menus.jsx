@@ -1,7 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import chantierImg from '../../img/chantier-construction.jpg';
-
+import chantierImg from '../../images/chantier-construction.jpg';
 
 const Menus = () => {
     return (
