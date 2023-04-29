@@ -101,3 +101,14 @@ ALTER TABLE formula ADD CONSTRAINT FK_67315881639666D6 FOREIGN KEY (meal_id) REF
 CREATE INDEX IDX_67315881639666D6 ON formula (meal_id)
 
 /*----------------------- 11eme migration ----------------------- */
+
+CREATE TABLE meal_formula (meal_id INT NOT NULL, formula_id INT NOT NULL, INDEX IDX_1E82EA98639666D6 (meal_id), INDEX IDX_1E82EA98A50A6386 (formula_id), PRIMARY KEY(meal_id, formula_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB
+ALTER TABLE meal_formula ADD CONSTRAINT FK_1E82EA98639666D6 FOREIGN KEY (meal_id) REFERENCES meal (id) ON DELETE CASCADE
+ALTER TABLE meal_formula ADD CONSTRAINT FK_1E82EA98A50A6386 FOREIGN KEY (formula_id) REFERENCES formula (id) ON DELETE CASCADE
+ALTER TABLE formula DROP FOREIGN KEY FK_67315881639666D6
+DROP INDEX IDX_67315881639666D6 ON formula
+ALTER TABLE formula DROP meal_id
+
+/*----------------------- 12eme migration ----------------------- */
+
+ALTER TABLE dish ADD image_size INT DEFAULT NULL, ADD updated_at DATETIME DEFAULT NULL COMMENT (DC2Type:datetime_immutable), CHANGE image image_name VARCHAR(255) DEFAULT NULL
