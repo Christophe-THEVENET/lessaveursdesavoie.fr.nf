@@ -1,6 +1,5 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import chantierImg from '../../images/chantier-construction.jpg';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -15,7 +14,7 @@ const Home = () => {
         }
     };
 
-    const [img, setImg] = useState('');
+    const [img, setImg] = useState(null);
 
     useEffect(() => {
         getData();
@@ -26,9 +25,8 @@ const Home = () => {
     return (
         <main>
             <h1>Les Saveurs De Savoie</h1>
-            <img src={chantierImg} alt="image chantier en construction" />
             <div className="construction">En construction ...</div>
-            <img src={`../uploads/dishes/${img}`} />
+            {img ? <img src={`../uploads/dishes/${img}`} /> : null}
         </main>
     );
 };
