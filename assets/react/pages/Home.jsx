@@ -4,10 +4,9 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Home = () => {
-    // requête axios pour récupérer les horaires d'ouverture
     const getData = async () => {
         try {
-            const response = await axios.get('https://127.0.0.1:8000/api/dishes');
+            const response = await axios.get('https://lessaveursdesavoie.fr.nf/api/dishes');
             setImg(response.data[0].imageName);
         } catch (error) {
             console.error(error);
