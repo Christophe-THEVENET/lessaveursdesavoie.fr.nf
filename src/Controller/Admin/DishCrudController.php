@@ -11,6 +11,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class DishCrudController extends AbstractCrudController
 {
@@ -26,7 +29,10 @@ class DishCrudController extends AbstractCrudController
             yield IdField::new('id')->hideOnForm(),
             yield TextField::new('name', 'Nom'),
             yield TextEditorField::new('description'),
-            yield TextField::new('image', 'Photo'),
+            yield ImageField::new('imageName', 'Photo')
+                ->onlyOnIndex()
+                ->setBasePath('/uploads/dishes'),
+            yield TextareaField::new('imageFile', 'Photo')->setFormType(VichImageType::class)->onlyOnForms(),
             yield BooleanField::new('is_favorite', 'Favoris'),
             yield AssociationField::new('metCategory', 'Catégorie'),
             yield MoneyField::new('price', 'Prix')->setCurrency('EUR')->setCustomOption('storedAsCents', false),
