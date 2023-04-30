@@ -13,32 +13,34 @@ class Booking
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['getBookings'])]
+    #[Groups(['bookings'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['getBookings'])]
+    #[Groups(['bookings'])]
     private ?string $email = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    #[Groups(['getBookings'])]
+    #[Groups(['bookings'])]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
-    #[Groups(['getBookings'])]
+    #[Groups(['bookings'])]
     private ?\DateTimeInterface $hour = null;
 
     #[ORM\Column]
-    #[Groups(['getBookings'])]
+    #[Groups(['bookings'])]
     private ?int $nb_convives = null;
 
     #[ORM\ManyToOne(inversedBy: 'bookings')]
     private ?Restaurant $restaurant = null;
 
     #[ORM\ManyToOne(inversedBy: 'bookings')]
+    #[Groups(['bookings'])]
     private ?User $user = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['bookings'])]
     private ?string $allergy = null;
 
     public function __toString()

@@ -16,8 +16,31 @@ const Home = () => {
         }
     };
 
+    // formater la date
+   /*  const formatDate = (date) => {
+        return new Date(date).toLocaleDateString('fr-FR', 'YYYY-MM-DD');
+    }; */
+
+    // requête axios pour récupérer une réservation
+ /*    const [booking, setBooking] = useState(null);
+    const [bookingDateFormated, setBookingDateFormated] = useState(null);
+
+    const getBooking = async () => {
+        try {
+            const response = await axios.get('https://127.0.0.1:8000/api/bookings');
+            setBooking(response.data[0]);
+            setBookingDateFormated(formatDate(response.data[0].date));
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    console.log(booking);
+    console.log(bookingDateFormated); */
+
     useEffect(() => {
         getDishImage();
+       /*  getBooking(); */
     }, []);
 
     return (

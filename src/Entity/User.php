@@ -20,11 +20,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['getUser'])]
+    #[Groups(['getUser', 'bookings'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
-    #[Groups(['getUser'])]
+    #[Groups(['getUser', 'bookings'])]
     private ?string $email = null;
 
     #[ORM\Column]
@@ -38,19 +38,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(['bookings'])]
     private ?int $nb_convives = null;
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $created_at = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['bookings'])]
     private ?string $allergy = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Booking::class)]
     private Collection $bookings;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['getUser'])]
+    #[Groups(['getUser', 'bookings'])]
     private ?string $name = null;
 
     public function __construct()

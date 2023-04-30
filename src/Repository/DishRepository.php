@@ -39,28 +39,42 @@ class DishRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Dish[] Returns an array of Dish objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('d')
-//            ->andWhere('d.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('d.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    //    /**
+    //     * @return Dish[] Returns an array of favorite Dish objects
+    //     */
+    public function findByFavorite(): array
+    {
+        return $this->createQueryBuilder('d')
+            ->where('d.is_favorite = true')
+            ->getQuery()
+            ->getResult();
+    }
 
-//    public function findOneBySomeField($value): ?Dish
-//    {
-//        return $this->createQueryBuilder('d')
-//            ->andWhere('d.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+
+    //    /**
+    //     * @return Dish[] Returns an array of Dish objects by category
+    //     */
+    public function findByCategory($value): array
+    {
+        return $this->createQueryBuilder('d')
+            ->addSelect('c')
+            ->leftJoin('d.metCategory', 'c')
+            ->andWhere('c.name = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult();
+    }
+
+
+
+
+    //    public function findOneBySomeField($value): ?Dish
+    //    {
+    //        return $this->createQueryBuilder('d')
+    //            ->andWhere('d.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }
