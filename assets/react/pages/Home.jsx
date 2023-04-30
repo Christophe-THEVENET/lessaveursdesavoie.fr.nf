@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Home = () => {
-    // requête axios pour récupérer les horaires d'ouverture
-    const getData = async () => {
+    // requête axios pour récupérer la photo du plat du jour
+    const [img, setImg] = useState(null);
+
+    const getDishImage = async () => {
         try {
             const response = await axios.get('https://127.0.0.1:8000/api/dishes');
             setImg(response.data[0].imageName);
@@ -14,16 +16,30 @@ const Home = () => {
         }
     };
 
-    const [img, setImg] = useState(null);
+    // élément twig qui passe les infos du user par data-attribute
+    const userRating = document.querySelector('.js-user-rating');
+    // récupère l'utilisateur
+    const [currentUser, setCurrentUser] = useState({});
+    const getCurrentUser = () => {
+        setCurrentUser(JSON.parse(userRating.dataset.user));
+    };
 
     useEffect(() => {
-        getData();
+        getDishImage();
+        getCurrentUser();
     }, []);
-
-    console.log(img);
 
     return (
         <main>
+            {currentUser ? (
+                <div>
+                    <p>Bienvenu {currentUser.name}</p>
+                    <a href="logout">Se déconnecter</a>
+                </div>
+            ) : <div>
+                <a href="login">Se connecter</a>
+                </div>}
+
             <h1>Les Saveurs De Savoie</h1>
             <div className="construction">En construction ...</div>
             {img ? <img src={`../uploads/dishes/${img}`} /> : null}

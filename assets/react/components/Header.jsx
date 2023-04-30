@@ -4,7 +4,7 @@ import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import CloseIcon from '@mui/icons-material/Close';
 import '../../scss/styles.scss';
 import axios from 'axios';
-const Hamburger = () => {
+const Header = () => {
     // ouverture et fermeture de la modale
     const [isOpen, setIsOpen] = useState(false);
     const toggleModal = () => {
@@ -22,21 +22,13 @@ const Hamburger = () => {
 
     // élément twig qui passe les infos du user par data-attribute
     const userRating = document.querySelector('.js-user-rating');
-
     // élément twig qui passe les infos des roles du user par data-attribute
     const userAdmin = document.querySelector('.js-user-admin');
 
-    // vérifie si l'utilisateur est connecté
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const checkAuth = () => {
-        let user = JSON.parse(userRating.dataset.user);
-        return user ? setIsAuthenticated(true) : setIsAuthenticated(false);
-    };
-
-    // récupère l'utilisateur
-    const [user, setUser] = useState({});
-    const getUser = () => {
-        setUser(JSON.parse(userRating.dataset.user));
+    // récupère l'utilisateur connecté
+    const [currentUser, setCurrentUser] = useState({});
+    const getCurrentUser = () => {
+        setCurrentUser(JSON.parse(userRating.dataset.user));
     };
 
     // vérifie si l'utilisateur est admin
@@ -46,25 +38,10 @@ const Hamburger = () => {
         return adminUser ? setAdmin(adminUser) : setAdmin([]);
     };
 
-
-// requête axios pour récupérer les horaires d'ouverture
-   /*  const getData = async () => {
-        try {
-            const response = await axios.get('https://127.0.0.1:8000/api/opening-hours');
-            console.log(response.data);
-        } catch (error) {
-            console.error(error);
-        }
-    }; */
-
-
-
     useEffect(() => {
-        checkAuth();
-        getUser();
+        getCurrentUser();
         checkAdmin();
     }, []);
-
 
     return (
         <>
@@ -138,7 +115,7 @@ const Hamburger = () => {
                                     <a href="#">Carte</a>
                                 </li>
 
-                                {!isAuthenticated ? (
+                                {!currentUser ? (
                                     <>
                                         <li onClick={toggleModal}>
                                             <a href="/login">Se connecter</a>
@@ -149,7 +126,7 @@ const Hamburger = () => {
                                     </>
                                 ) : (
                                     <li onClick={toggleModal}>
-                                        <a href="/logout">Se déconnecter {user.name} </a>
+                                        <a href="/logout">Se déconnecter</a>
                                     </li>
                                 )}
 
@@ -195,14 +172,16 @@ const Hamburger = () => {
                     />
                 </div>
             )}
+             {/*  ---------------------- bouton réserver ----------------*/}
+             <button>Réserver</button>
         </>
     );
 };
 
-class HamburgerElement extends HTMLElement {
+class HeaderElement extends HTMLElement {
     connectedCallback() {
         const root = createRoot(this);
-        root.render(<Hamburger />);
+        root.render(<Header />);
     }
 }
-customElements.define('hamburger-component', HamburgerElement);
+customElements.define('header-component', HeaderElement);

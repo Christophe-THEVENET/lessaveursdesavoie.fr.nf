@@ -16,36 +16,20 @@
 
 <body>
 
-    <hamburger-component></hamburger-component>
+    <header-component></header-component>
 
-
-
-    <div class="js-user-rating" data-is-authenticated="{{ app.user ? 'true' : 'false' }}"
+    {# serialize l'utilisateur connecté et l'envoie au front par les data-attribute #}
+    <div class="js-user-rating" 
         data-user="{{ app.user|serialize('json', { groups: 'getUser'})}}">
     </div>
 
-{# 
-    {{groups: 'getUser'}} #}
-
-
-    <div class="js-user-admin" data-user-admin="{{ app.user ? app.user.roles|serialize(format = 'json') : 'null'}}">
+    {# serialize le role de l'utilisateur connecté et l'envoie au front par les data-attribute #}
+    <div class="js-user-admin"
+        data-user-admin="{{ app.user ? app.user.roles|serialize('json', { groups: 'getUser'}) : 'null'}}">
     </div>
 
 
-
-
-
-    {% if app.user %}
-    <div>
-        Bienvenue
-        {{ app.user.name}}
-    </div>
-    <a href="/logout">Se déconnecter</a>
-    {% else %}
-    <a href="/login">Se connecter</a>
-    {% endif %}
     {% block body %}
-
 
     {% endblock %}
 
