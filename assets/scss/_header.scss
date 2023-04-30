@@ -1,3 +1,17 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.welcome {
+    display: flex;
+    width: 20%;
+    justify-content: space-between;
+
+}
+
+
 
 .menu {
     background-color: $colorPrimary;
@@ -45,5 +59,4 @@
         text-decoration: none;
         color: $colorWhite;
     }
-
 }

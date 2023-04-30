@@ -44,7 +44,7 @@ const Header = () => {
     }, []);
 
     return (
-        <>
+        <header>
             {/*  bouton hamburger ouvrir menu ----------------------- */}
             <MenuOpenIcon
                 onClick={toggleModal}
@@ -172,9 +172,19 @@ const Header = () => {
                     />
                 </div>
             )}
+             {/*  ---------------------- bienvenue user ----------------*/}
+              {currentUser ? (
+                <div className='welcome'>
+                    <p>Bienvenu {currentUser.name}</p>
+                    <a href="logout">Se déconnecter</a>
+                </div>
+            ) : <div>
+                <a href="login">Se connecter</a>
+                </div>}
+
              {/*  ---------------------- bouton réserver ----------------*/}
              <button>Réserver</button>
-        </>
+        </header>
     );
 };
 

@@ -16,30 +16,12 @@ const Home = () => {
         }
     };
 
-    // élément twig qui passe les infos du user par data-attribute
-    const userRating = document.querySelector('.js-user-rating');
-    // récupère l'utilisateur
-    const [currentUser, setCurrentUser] = useState({});
-    const getCurrentUser = () => {
-        setCurrentUser(JSON.parse(userRating.dataset.user));
-    };
-
     useEffect(() => {
         getDishImage();
-        getCurrentUser();
     }, []);
 
     return (
         <main>
-            {currentUser ? (
-                <div>
-                    <p>Bienvenu {currentUser.name}</p>
-                    <a href="logout">Se déconnecter</a>
-                </div>
-            ) : <div>
-                <a href="login">Se connecter</a>
-                </div>}
-
             <h1>Les Saveurs De Savoie</h1>
             <div className="construction">En construction ...</div>
             {img ? <img src={`../uploads/dishes/${img}`} /> : null}
