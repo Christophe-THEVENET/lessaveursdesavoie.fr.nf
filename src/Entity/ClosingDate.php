@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\ClosingDateRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ClosingDateRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ClosingDateRepository::class)]
 class ClosingDate
@@ -15,6 +16,7 @@ class ClosingDate
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups(['closingDates'])]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\ManyToOne(inversedBy: 'closing_dates')]
