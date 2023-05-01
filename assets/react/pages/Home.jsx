@@ -9,7 +9,7 @@ const Home = () => {
 
     const getDishImage = async () => {
         try {
-            const response = await axios.get('https://127.0.0.1:8000/api/dishes');
+            const response = await axios.get('https://127.0.0.1:8000/api/favorite/dishes');
             setImg(response.data[0].imageName);
         } catch (error) {
             console.error(error);
