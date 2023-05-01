@@ -16,4 +16,13 @@ $textFont: 'Lato', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* border: 1px solid red;  */
+}
+
+.btn {
+    padding: 0.5rem 0.25rem;
+    width: 10rem;
+    margin-right: 2rem;
+    font-family: $textFont;
+    font-size: 1.4rem;
 }
