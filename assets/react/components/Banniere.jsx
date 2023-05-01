@@ -11,8 +11,8 @@ const Banniere = ({ url }) => {
                 muted={true}
                 className="banniere__video"
             />
-            <h1>Les Saveurs De Savoie</h1>
-            <h4>Cuisine traditionnelle des montagnes</h4>
+            <h1 className="banniere__title">Les Saveurs De Savoie</h1>
+            <h4 className="banniere__jingle">Cuisine traditionnelle des montagnes</h4>
         </section>
     );
 };

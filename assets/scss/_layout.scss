@@ -2,21 +2,16 @@ html {
     font-size: 62.5%;
 }
 
-
 body {
     background-color: $colorDarkGrey;
     color: $colorWhite;
-    width: 100%;
 }
 
 main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @extend %flex-centered;
     flex-direction: column;
     min-height: 100vh;
 }
-
 
 h1 {
     font-size: 5rem;
@@ -31,7 +26,7 @@ img {
     margin-top: 3rem;
 }
 
-.construction{
+.construction {
     font-size: 2rem;
     color: $colorSecondary;
     margin-top: 2rem;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import CloseIcon from '@mui/icons-material/Close';
@@ -21,6 +21,24 @@ const Header = () => {
     function handleMouseLeave() {
         setIsHovered(false);
     }
+
+    // fermer le menu au click extérieur
+    let menuRef = useRef();
+    useEffect(() => {
+        let handler = (event) => {
+            if (!menuRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handler);
+
+        return () => {
+            document.removeEventListener('mousedown', handler);
+        }
+
+
+
+    });
 
     // élément twig qui passe les infos du user par data-attribute
     const userRating = document.querySelector('.js-user-rating');
@@ -46,7 +64,7 @@ const Header = () => {
     }, []);
 
     return (
-        <header>
+        <header ref={menuRef}>
             {/*  bouton hamburger ouvrir menu ----------------------- */}
             <div>
                 <MenuOpenIcon
@@ -83,7 +101,7 @@ const Header = () => {
                             style={
                                 isHovered
                                     ? {
-                                          color: '#dc8cba',
+                                          color: 'white',
                                           position: 'absolute',
                                           top: '6px',
                                           left: '3px',
@@ -96,7 +114,8 @@ const Header = () => {
                                           position: 'absolute',
                                           top: '6px',
                                           left: '3px',
-                                          color: 'white',
+                                          color: '#b1849d',
+
                                           fontSize: '4.7rem',
                                           cursor: 'pointer',
                                           margin: '20px',
@@ -109,16 +128,18 @@ const Header = () => {
                     </div>
                     <div className="menu__content">
                         <nav>
-                            <ul><div></div>
+                            <ul>
+                                <div></div>
                                 <li onClick={toggleModal}>
                                     <a href="/">Acceuil</a>
                                 </li>
-                                <svg className='separation'
+                                <svg
+                                    className="separation"
                                     version="1.0"
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="40pt"
                                     viewBox="0 0 1280.000000 640.000000"
-                                  transform="rotate(90)"
+                                    transform="rotate(90)"
                                 >
                                     <g
                                         transform="translate(0.000000,640.000000) scale(0.100000,-0.100000) "
@@ -192,7 +213,8 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                 <li onClick={toggleModal}>
                                     <a href="/menus">Menus</a>
                                 </li>
-                                <svg className='separation'
+                                <svg
+                                    className="separation"
                                     version="1.0"
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="40pt"
@@ -271,7 +293,8 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                 <li onClick={toggleModal}>
                                     <a href="#">Carte</a>
                                 </li>
-                                <svg className='separation'
+                                <svg
+                                    className="separation"
                                     version="1.0"
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="40pt"
@@ -352,7 +375,8 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                         <li onClick={toggleModal}>
                                             <a href="/login">Se connecter</a>
                                         </li>
-                                        <svg className='separation'
+                                        <svg
+                                            className="separation"
                                             version="1.0"
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="40pt"
@@ -440,7 +464,8 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
 
                                 {admin.includes('ROLE_ADMIN') ? (
                                     <>
-                                        <svg className='separation'
+                                        <svg
+                                            className="separation"
                                             version="1.0"
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="40pt"
@@ -539,7 +564,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                       position: 'absolute',
                                       top: '6px',
                                       left: '3px',
-                                      color: '#dc8cba',
+                                      color: 'white',
                                       fontSize: '2rem',
                                       cursor: 'pointer',
                                       margin: '20px',
@@ -550,7 +575,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                       position: 'absolute',
                                       top: '6px',
                                       left: '3px',
-                                      color: 'white',
+                                      color: '#dc8cba',
                                       fontSize: '2rem',
                                       cursor: 'pointer',
                                       margin: '20px',

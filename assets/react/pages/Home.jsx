@@ -3,10 +3,11 @@ import { createRoot } from 'react-dom/client';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Banniere from '../components/banniere';
+import Restaurant from '../components/Restaurant';
 
 const Home = () => {
     // requête axios pour récupérer la photo du plat du jour
-    const [img, setImg] = useState(null);
+    /* const [img, setImg] = useState(null);
 
     const getDishImage = async () => {
         try {
@@ -15,7 +16,7 @@ const Home = () => {
         } catch (error) {
             console.error(error);
         }
-    };
+    }; */
 
     // formater la date
     /*  const formatDate = (date) => {
@@ -40,14 +41,14 @@ const Home = () => {
     console.log(bookingDateFormated); */
 
     useEffect(() => {
-        getDishImage();
+      /*   getDishImage(); */
         /*  getBooking(); */
     }, []);
 
     return (
         <main>
             <Banniere url="../assets/video/banniere.mp4" /> 
-            
+             <Restaurant/> 
         </main>
     );
 };

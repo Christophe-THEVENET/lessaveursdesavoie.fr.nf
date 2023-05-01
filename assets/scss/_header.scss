@@ -58,9 +58,7 @@ header {
     position: absolute;
     z-index: 20;
     top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @extend %flex-centered;
     font-family: $titleFont;
     transition: all 0.2s ease-in-out;
 
@@ -94,10 +92,7 @@ header {
     position: absolute;
     z-index: 20;
     top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: aliceblue;
+    @extend %flex-centered;
     transform: translateY(-200%);
     transition: all 0.2s ease-in-out;
 }

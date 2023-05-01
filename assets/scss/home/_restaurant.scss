@@ -1,0 +1,36 @@
+.restaurant {
+    background-color: $colorLightGrey;
+    height: 70rem;
+    display: flex;
+
+    &__name {
+        flex: 1;
+        color: $colorDarkGrey;
+        height: 100%;
+        @extend %flex-centered;
+        flex-direction: column;
+
+        &__title {
+
+            @include title($colorPrimary);
+        }
+        &__description{
+            padding: 1rem 10rem;
+            color: $colorDarkGrey;
+            text-align: justify;
+            font-size: 1.4rem;
+        }
+    }
+    &__image {
+        flex: 1;
+        @extend %flex-centered;
+        padding: 5rem;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+
+
+    }
+}
