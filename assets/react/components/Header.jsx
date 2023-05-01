@@ -109,16 +109,16 @@ const Header = () => {
                     </div>
                     <div className="menu__content">
                         <nav>
-                            <ul>
+                            <ul><div></div>
                                 <li onClick={toggleModal}>
                                     <a href="/">Acceuil</a>
                                 </li>
-                                <svg
+                                <svg className='separation'
                                     version="1.0"
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="40pt"
                                     viewBox="0 0 1280.000000 640.000000"
-                                    transform="rotate(90)"
+                                  transform="rotate(90)"
                                 >
                                     <g
                                         transform="translate(0.000000,640.000000) scale(0.100000,-0.100000) "
@@ -192,7 +192,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                 <li onClick={toggleModal}>
                                     <a href="/menus">Menus</a>
                                 </li>
-                                <svg
+                                <svg className='separation'
                                     version="1.0"
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="40pt"
@@ -271,7 +271,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                 <li onClick={toggleModal}>
                                     <a href="#">Carte</a>
                                 </li>
-                                <svg
+                                <svg className='separation'
                                     version="1.0"
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="40pt"
@@ -352,7 +352,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                         <li onClick={toggleModal}>
                                             <a href="/login">Se connecter</a>
                                         </li>
-                                        <svg
+                                        <svg className='separation'
                                             version="1.0"
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="40pt"
@@ -440,7 +440,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
 
                                 {admin.includes('ROLE_ADMIN') ? (
                                     <>
-                                        <svg
+                                        <svg className='separation'
                                             version="1.0"
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="40pt"
