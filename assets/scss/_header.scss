@@ -9,6 +9,8 @@ header {
 .welcome {
     display: flex;
     padding-top: 1.1rem;
+    font-family: $textFont;
+
 
     &__title {
         font-size: 1.3rem;
@@ -37,8 +39,10 @@ header {
 .btn-booking {
     margin-top: 0.7rem;
     color: $colorWhite;
-    border: 1px solid white;
+    border: 2px solid white;
     transition: all 0.2s ease-in-out;
+    font-weight: bold;
+    letter-spacing: 1px;
 
     &:hover {
         background-color: $colorFlashy;
@@ -49,7 +53,7 @@ header {
 // ------------- block menu
 .menu {
     min-height: 10rem;
-    background-color: $colorPrimary;
+    background-color: $colorDarkGrey;
     width: 100%;
     position: absolute;
     z-index: 20;
@@ -58,7 +62,6 @@ header {
     justify-content: center;
     align-items: center;
     font-family: $titleFont;
-    color: $colorWhite;
     transition: all 0.2s ease-in-out;
 
     &__content nav ul {
@@ -73,11 +76,11 @@ header {
         li a {
             font-size: 3.5rem;
             text-decoration: none;
-            color: $colorWhite;
+            color: $colorFlashy;
             transition: all 0.2s ease-in-out;
 
             &:hover {
-                color: $colorFlashy;
+                color: $colorWhite;
                 transition: all 0.2s ease-in-out;
             }
         }

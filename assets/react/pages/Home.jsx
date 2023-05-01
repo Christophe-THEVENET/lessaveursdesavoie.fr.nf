@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Banniere from '../components/banniere';
 
 const Home = () => {
     // requête axios pour récupérer la photo du plat du jour
@@ -17,12 +18,12 @@ const Home = () => {
     };
 
     // formater la date
-   /*  const formatDate = (date) => {
+    /*  const formatDate = (date) => {
         return new Date(date).toLocaleDateString('fr-FR', 'YYYY-MM-DD');
     }; */
 
     // requête axios pour récupérer une réservation
- /*    const [booking, setBooking] = useState(null);
+    /*    const [booking, setBooking] = useState(null);
     const [bookingDateFormated, setBookingDateFormated] = useState(null);
 
     const getBooking = async () => {
@@ -40,14 +41,13 @@ const Home = () => {
 
     useEffect(() => {
         getDishImage();
-       /*  getBooking(); */
+        /*  getBooking(); */
     }, []);
 
     return (
         <main>
-            <h1>Les Saveurs De Savoie</h1>
-            <div className="construction">En construction ...</div>
-            {img ? <img src={`../uploads/dishes/${img}`} /> : null}
+            <Banniere url="../assets/video/banniere.mp4" /> 
+            
         </main>
     );
 };
