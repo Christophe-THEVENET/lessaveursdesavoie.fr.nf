@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\MetCategoryRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\MetCategoryRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: MetCategoryRepository::class)]
 class MetCategory
@@ -16,6 +17,7 @@ class MetCategory
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['dishes'])]
     private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'metCategory', targetEntity: Dish::class)]
