@@ -1,12 +1,12 @@
 import React from 'react';
-import imgRestaurant from '../../images/restaurant.jpg';
+import CarouselComponent from './CarouselComponent';
 
-const Restaurant = () => {
+const Favorite = () => {
     return (
-        <section className="restaurant">
-            <div className="restaurant__name">
-                <div className="restaurant__name__icon">
-                    <h2 className="restaurant__name__title">Restaurant</h2>
+        <section className="favorite">
+            <div className="favorite__name">
+                <div className="favorite__name__icon">
+                    <h2 className="favorite__name__title">Plats tendance</h2>
                     <svg
                         version="1.0"
                         xmlns="http://www.w3.org/2000/svg"
@@ -14,10 +14,9 @@ const Restaurant = () => {
                         viewBox="0 0 1280.000000 893.000000"
                         preserveAspectRatio="xMidYMid meet"
                     >
-                      
                         <g
                             transform="translate(0.000000,893.000000) scale(0.100000,-0.100000)"
-                            fill="#0e0008"
+                            fill="#592442"
                             stroke="none"
                         >
                             <path
@@ -90,19 +89,17 @@ c237 32 398 49 577 60 123 8 200 19 315 45 83 20 169 37 191 38 29 2 41 8 43
                         </g>
                     </svg>
                 </div>
-                <p className="restaurant__name__description">
-                    Le restaurant est situé en Savoie, une région des Alpes françaises connue pour
-                    sa beauté naturelle époustouflante et ses riches traditions culinaires. Le
-                    restaurant est spécialisé dans la cuisine traditionnelle savoyarde, qui propose
-                    des plats copieux préparés avec des ingrédients locaux tels que du fromage, des
-                    pommes de terre et de la charcuterie.
-                </p>
             </div>
-            <div className="restaurant__image">
-                <img src={imgRestaurant} alt="photo de table du restaurant" />
+            <div className="favorite__caroussel">
+                <CarouselComponent />
+            </div>
+            <div>
+                <a href="#">
+                    <button className="btn-booking-primary">Réserver</button>
+                </a>
             </div>
         </section>
     );
 };
 
-export default Restaurant;
+export default Favorite;

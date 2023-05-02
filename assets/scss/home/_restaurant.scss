@@ -12,15 +12,11 @@
         flex-direction: column;
 
         &__icon {
-
             display: flex;
-         /*    justify-content: center;
-            background-color: aqua;
-            width: 100%; */
         }
 
         &__title {
-            @include title($colorDarkGrey);
+            @include title($colorDarkGrey, $colorPrimary);
             margin-right: 2rem;
         }
         &__description {
@@ -36,11 +32,10 @@
         @extend %flex-centered;
         padding: 5rem;
 
-
-
         img {
             width: 100%;
             object-fit: cover;
+            box-shadow: 0px 0px 12px -1px rgba(0, 0, 0, 0.68);
         }
     }
 }
@@ -51,12 +46,10 @@
         padding-top: 8rem;
         flex-direction: column;
 
-        &__image 
-        
-        {
+        &__image {
             padding: 0;
         }
-        
+
         img {
             width: 60%;
         }

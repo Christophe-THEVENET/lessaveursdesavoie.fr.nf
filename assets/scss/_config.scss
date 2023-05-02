@@ -19,13 +19,7 @@ $textFont: 'Lato', sans-serif;
     /*  border: 1px solid red;    */
 }
 
-.btn {
-    padding: 0.5rem 0.25rem;
-    width: 10rem;
-    margin-right: 2rem;
-    font-family: $textFont;
-    font-size: 1.4rem;
-}
+
 
 %flex-centered {
     display: flex;
@@ -33,15 +27,11 @@ $textFont: 'Lato', sans-serif;
     justify-content: center;
 }
 
-@mixin title($color) {
+@mixin title($color, $colorUnderligne) {
     font-family: $titleFont;
     font-size: 5rem;
     color: $color;
-    transition: all 0.3s ease-in-out;
-    border-bottom: 1px solid $color;
-
-    &:hover {
-        letter-spacing: 1px;
-        transition: all 0.3s ease-in-out;
-    }
+    border-bottom: 1px solid $colorUnderligne;
 }
+
+

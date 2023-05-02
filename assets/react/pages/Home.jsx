@@ -2,8 +2,9 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Banniere from '../components/banniere';
-import Restaurant from '../components/Restaurant';
+import Banniere from '../components/home/Banniere';
+import Restaurant from '../components/home/Restaurant';
+import Favorite from '../components/home/Favorite';
 
 const Home = () => {
     // requête axios pour récupérer la photo du plat du jour
@@ -49,6 +50,7 @@ const Home = () => {
         <main>
             <Banniere url="../assets/video/banniere.mp4" /> 
              <Restaurant/> 
+             <Favorite/>
         </main>
     );
 };

@@ -34,10 +34,7 @@ const Header = () => {
 
         return () => {
             document.removeEventListener('mousedown', handler);
-        }
-
-
-
+        };
     });
 
     // élément twig qui passe les infos du user par data-attribute
@@ -613,7 +610,9 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
 
             {/*  ---------------------- bouton réserver ----------------*/}
             <div>
-                <button className="btn btn-booking">Réserver</button>
+                <a href="#">
+                    <button className="btn-booking">Réserver</button>
+                </a>
             </div>
         </header>
     );

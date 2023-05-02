@@ -1,0 +1,60 @@
+.favorite {
+    background-color: $colorFird;
+    @extend %flex-centered;
+    flex-direction: column;
+    width: 100%;
+    padding: 6rem 4rem;
+
+    &__name {
+        color: $colorDarkGrey;
+        align-self: start;
+        margin-left: 10%;
+        margin-bottom: 2rem;
+
+        &__icon {
+            display: flex;
+        }
+
+        &__title {
+            @include title($colorDarkGrey, $colorPrimary);
+            margin-right: 2rem;
+        }
+    }
+    &__caroussel {
+        background-color: aqua;
+        width: 100%;
+    }
+}
+
+// supprime la bordure d'origine du carousel
+.css-1ps6pg7-MuiPaper-root {
+    box-shadow: none !important;
+}
+
+// bouton reservation
+.btn-booking-primary {
+    margin-top: 5rem;
+    padding: 1rem 4rem ;
+    color: $colorWhite;
+    transition: all 0.2s ease-in-out;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background-color: $colorPrimary;
+    font-family: $textFont;
+    font-size: 1.4rem;
+    border: none;
+
+    &:hover {
+        background-color: $colorFlashy;
+        transition: all 0.2s ease-in-out;
+        color: $colorWhite;
+    }
+}
+
+// ================= MEDIA QUERY (TABLETTE)    <= 889px =========================
+@media screen and (max-width: 889px) {
+    .favorite {
+        padding-top: 8rem;
+        flex-direction: column;
+    }
+}
