@@ -1,5 +1,6 @@
 .favorite {
     background-color: $colorFird;
+    height: 100vh;
     @extend %flex-centered;
     flex-direction: column;
     width: 100%;
@@ -7,7 +8,6 @@
 
     &__name {
         color: $colorDarkGrey;
-        align-self: start;
         margin-left: 10%;
         margin-bottom: 2rem;
 
@@ -20,7 +20,7 @@
             margin-right: 2rem;
         }
     }
-    &__caroussel {
+    &__carousel {
         background-color: aqua;
         width: 100%;
     }
@@ -34,7 +34,7 @@
 // bouton reservation
 .btn-booking-primary {
     margin-top: 5rem;
-    padding: 1rem 4rem ;
+    padding: 1rem 4rem;
     color: $colorWhite;
     transition: all 0.2s ease-in-out;
     font-weight: bold;
@@ -48,6 +48,19 @@
         background-color: $colorFlashy;
         transition: all 0.2s ease-in-out;
         color: $colorWhite;
+    }
+}
+
+// ================= MEDIA QUERY (MOBILE)    <= 500px =========================
+@media screen and (max-width: 500px) {
+
+    .favorite {
+        height: 70vh;
+    }
+
+
+    .dish-image {
+        height: 20rem!important;
     }
 }
 

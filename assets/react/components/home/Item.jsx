@@ -32,6 +32,7 @@ const Item = ({ dish }) => {
                     filter: isHovering ? 'brightness(30%)' : 'brightness(100%)',
                     transition: 'all 0.5s ease',
                 }}
+                className="dish-image"
                 alt={`image du plat ${dish.name}`}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
@@ -41,7 +42,7 @@ const Item = ({ dish }) => {
                     style={{
                         position: 'absolute',
                         fontFamily: 'Great Vibes',
-                        color: 'white',
+                        color: '#dc8cba',
                         fontSize: '6rem',
                         transition: 'all 0.5s ease',
                     }}

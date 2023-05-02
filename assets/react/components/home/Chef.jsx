@@ -1,12 +1,15 @@
 import React from 'react';
-import CarouselComponent from './CarouselComponent';
+import imgChef from '../../../images/chef.jpg';
 
-const Favorite = () => {
+const Chef = () => {
     return (
-        <section className="favorite">
-            <div className="favorite__name">
-                <div className="favorite__name__icon">
-                    <h2 className="favorite__name__title">Tendance</h2>
+        <section className="chef">
+            <div className="chef__image">
+                <img src={imgChef} alt="photo de table du restaurant" />
+            </div>
+            <div className="chef__name">
+                <div className="chef__name__icon">
+                    <h2 className="chef__name__title">Chef de cuisine</h2>
                     <svg
                         version="1.0"
                         xmlns="http://www.w3.org/2000/svg"
@@ -89,17 +92,16 @@ c237 32 398 49 577 60 123 8 200 19 315 45 83 20 169 37 191 38 29 2 41 8 43
                         </g>
                     </svg>
                 </div>
-            </div>
-            <div className="favorite__carousel">
-                <CarouselComponent />
-            </div>
-            <div>
-                <a href="#">
-                    <button className="btn-booking-primary">Réserver</button>
-                </a>
+                <p className="chef__name__description">
+                    Né et élevé en Savoie, Michel Campin a passé de nombreuses années à apprendre
+                    les techniques culinaires de la région auprès des meilleurs chefs locaux. Il est
+                    devenu un expert de la cuisine savoyarde, connue pour ses plats copieux et
+                    réconfortants, qui mettent en valeur les produits frais et saisonniers de la
+                    région.
+                </p>
             </div>
         </section>
     );
 };
 
-export default Favorite;
+export default Chef;
