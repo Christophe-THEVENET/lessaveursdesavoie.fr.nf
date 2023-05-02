@@ -1,21 +1,8 @@
-.chef {
+.producter {
     background-color: $colorLightGrey;
     min-height: 50vh;
     display: flex;
     width: 100%;
-
-    &__image {
-        width: 50%;
-        @extend %flex-centered;
-        padding: 5rem;
-        background-color: $colorSecondary;
-
-        img {
-            width: 60%;
-            object-fit: cover;
-            box-shadow: 0px 0px 12px -1px rgba(0, 0, 0, 0.68);
-        }
-    }
 
     &__name {
         width: 50%;
@@ -40,13 +27,24 @@
             max-width: 60rem;
         }
     }
-  
+    &__image {
+        width: 50%;
+        @extend %flex-centered;
+        padding: 5rem;
+        background-color: $colorSecondary;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            box-shadow: 0px 0px 12px -1px rgba(0, 0, 0, 0.68);
+        }
+    }
 }
 
 // ================= MEDIA QUERY (TABLETTE)    <= 889px =========================
 @media screen and (max-width: 889px) {
-    .chef {
-        flex-direction: column-reverse;
+    .producter {
+        flex-direction: column;
         justify-content: flex-end;
         width: 100%;
 
@@ -68,7 +66,7 @@
         }
 
         img {
-           height: 50%;
+            width: 80%;
         }
     }
 }

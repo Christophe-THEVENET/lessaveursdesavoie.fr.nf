@@ -6,6 +6,8 @@ import Banniere from '../components/home/Banniere';
 import Restaurant from '../components/home/Restaurant';
 import Favorite from '../components/home/Favorite';
 import Chef from '../components/home/Chef';
+import Producter from '../components/home/Producter';
+import Maps from '../components/home/Maps';
 
 const Home = () => {
     // requête axios pour récupérer la photo du plat du jour
@@ -43,16 +45,18 @@ const Home = () => {
     console.log(bookingDateFormated); */
 
     useEffect(() => {
-      /*   getDishImage(); */
+        /*   getDishImage(); */
         /*  getBooking(); */
     }, []);
 
     return (
         <main>
-            <Banniere url="../assets/video/banniere.mp4" /> 
-             <Restaurant/> 
-             <Favorite/>
-             <Chef/>
+            <Banniere url="../assets/video/banniere.mp4" />
+            <Restaurant />
+            <Favorite />
+            <Chef />
+            <Producter />
+            <Maps />
         </main>
     );
 };

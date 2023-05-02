@@ -13,6 +13,7 @@
 
         &__icon {
             display: flex;
+            margin-left: -4rem;
         }
 
         &__title {
@@ -50,6 +51,11 @@
         color: $colorWhite;
     }
 }
+
+
+.MuiPaper-root {
+    box-shadow: none !important;
+} 
 
 // ================= MEDIA QUERY (MOBILE)    <= 500px =========================
 @media screen and (max-width: 500px) {

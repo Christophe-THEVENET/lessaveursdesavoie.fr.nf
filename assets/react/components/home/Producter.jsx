@@ -1,12 +1,12 @@
 import React from 'react';
-import CarouselComponent from './CarouselComponent';
+import imgProducter from '../../../images/producter.jpg';
 
-const Favorite = () => {
+const Producter = () => {
     return (
-        <section className="favorite">
-            <div className="favorite__name">
-                <div className="favorite__name__icon">
-                    <h2 className="favorite__name__title">Tendances</h2>
+        <section className="producter">
+            <div className="producter__name">
+                <div className="producter__name__icon">
+                    <h2 className="producter__name__title">Producteurs</h2>
                     <svg
                         version="1.0"
                         xmlns="http://www.w3.org/2000/svg"
@@ -89,17 +89,19 @@ c237 32 398 49 577 60 123 8 200 19 315 45 83 20 169 37 191 38 29 2 41 8 43
                         </g>
                     </svg>
                 </div>
+                <p className="producter__name__description">
+                    La Savoie est une région alpine qui regorge de produits frais et de qualité,
+                    tels que les fromages, les viandes, les fruits et légumes et les vins. Les
+                    producteurs locaux de la région travaillent dur pour cultiver, élever et
+                    transformer ces produits en utilisant des méthodes traditionnelles et
+                    respectueuses de l'environnement.
+                </p>
             </div>
-            <div className="favorite__carousel">
-                <CarouselComponent />
-            </div>
-            <div>
-                <a href="#">
-                    <button className="btn-booking-primary">Réserver</button>
-                </a>
+            <div className="producter__image">
+                <img src={imgProducter} alt="photo de table du producter" />
             </div>
         </section>
     );
 };
 
-export default Favorite;
+export default Producter;
