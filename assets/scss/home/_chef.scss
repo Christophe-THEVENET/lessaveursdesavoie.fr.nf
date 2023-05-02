@@ -1,0 +1,75 @@
+.chef {
+    background-color: $colorLightGrey;
+    min-height: 50vh;
+    display: flex;
+    width: 100%;
+
+    &__image {
+        width: 50%;
+        @extend %flex-centered;
+        padding: 5rem;
+        background-color: $colorSecondary;
+
+        img {
+            width: 60%;
+            object-fit: cover;
+            box-shadow: 0px 0px 12px -1px rgba(0, 0, 0, 0.68);
+        }
+    }
+
+    &__name {
+        width: 50%;
+        color: $colorDarkGrey;
+        @extend %flex-centered;
+        flex-direction: column;
+        background-color: $colorLightGrey;
+
+        &__icon {
+            display: flex;
+        }
+
+        &__title {
+            @include title($colorDarkGrey, $colorPrimary);
+            margin-right: 2rem;
+        }
+        &__description {
+            padding: 1rem 10rem;
+            color: $colorDarkGrey;
+            text-align: justify;
+            font-size: 1.4rem;
+            max-width: 60rem;
+        }
+    }
+  
+}
+
+// ================= MEDIA QUERY (TABLETTE)    <= 889px =========================
+@media screen and (max-width: 889px) {
+    .chef {
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        width: 100%;
+
+        &__name {
+            width: 100%;
+            height: 100%;
+            padding: 14rem 2rem;
+            text-align: center;
+
+            &__description {
+                padding: 1rem 2rem;
+            }
+        }
+
+        &__image {
+            padding: 8rem 2rem;
+            width: 100%;
+            height: 100%;
+        }
+
+        img {
+           height: 50%;
+        }
+    }
+}
+

@@ -1,8 +1,16 @@
 @import '~bootstrap/scss/bootstrap';
 @import 'config.scss';
 @import 'header.scss';
+@import 'footer';
 @import 'form.scss';
 @import 'layout.scss';
+@import 'home/banniere';
+@import 'home/restaurant';
+@import 'home/favorite';
+@import 'home/chef';
+@import 'home/producteur';
+
+@import 'login.scss';
 
 * {
     margin: 0;
