@@ -16,7 +16,7 @@ $textFont: 'Lato', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-     /*  border: 1px solid red;    */
+    /*  border: 1px solid red;    */
 }
 
 .btn {
@@ -37,8 +37,11 @@ $textFont: 'Lato', sans-serif;
     font-family: $titleFont;
     font-size: 5rem;
     color: $color;
+    transition: all 0.3s ease-in-out;
+    border-bottom: 1px solid $color;
 
     &:hover {
-        letter-spacing: 2px;
+        letter-spacing: 1px;
+        transition: all 0.3s ease-in-out;
     }
 }

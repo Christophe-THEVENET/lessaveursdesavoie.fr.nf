@@ -2,6 +2,7 @@
     background-color: $colorLightGrey;
     height: 70rem;
     display: flex;
+    width: 100%;
 
     &__name {
         flex: 1;
@@ -10,15 +11,24 @@
         @extend %flex-centered;
         flex-direction: column;
 
-        &__title {
+        &__icon {
 
-            @include title($colorPrimary);
+            display: flex;
+         /*    justify-content: center;
+            background-color: aqua;
+            width: 100%; */
         }
-        &__description{
+
+        &__title {
+            @include title($colorDarkGrey);
+            margin-right: 2rem;
+        }
+        &__description {
             padding: 1rem 10rem;
             color: $colorDarkGrey;
             text-align: justify;
             font-size: 1.4rem;
+            max-width: 60rem;
         }
     }
     &__image {
@@ -26,11 +36,29 @@
         @extend %flex-centered;
         padding: 5rem;
 
+
+
         img {
             width: 100%;
             object-fit: cover;
         }
+    }
+}
 
+// ================= MEDIA QUERY (TABLETTE)    <= 889px =========================
+@media screen and (max-width: 889px) {
+    .restaurant {
+        padding-top: 8rem;
+        flex-direction: column;
 
+        &__image 
+        
+        {
+            padding: 0;
+        }
+        
+        img {
+            width: 60%;
+        }
     }
 }
