@@ -1,6 +1,5 @@
 .producter {
-    background-color: $colorLightGrey;
-    min-height: 50vh;
+    min-height: 70vh;
     display: flex;
     width: 100%;
 
@@ -9,14 +8,14 @@
         color: $colorDarkGrey;
         @extend %flex-centered;
         flex-direction: column;
-        background-color: $colorLightGrey;
+        background-color: $colorDarkGrey;
 
         &__icon {
             display: flex;
         }
 
         &__title {
-            @include title($colorPrimary, $colorPrimary);
+            @include title($colorFlashy, $colorPrimary);
             margin-right: 2rem;
         }
         &__description {

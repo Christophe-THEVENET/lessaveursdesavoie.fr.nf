@@ -18,7 +18,7 @@ const Item = ({ dish }) => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: '#d8b8cac2',
+                backgroundColor: '#d8b8ca',
                 position: 'relative',
             }}
         >

@@ -1,5 +1,5 @@
 .favorite {
-    background-color: #d8b8ca;
+    background-color: $colorFird;
     min-height: 100vh;
     display: flex;
     justify-content: space-around;
@@ -31,6 +31,7 @@
     box-shadow: none !important;
 }
 
+
 // bouton reservation
 .btn-booking-primary {
     margin-top: 5rem;
@@ -49,10 +50,6 @@
         transition: all 0.2s ease-in-out;
         color: $colorWhite;
     }
-}
-
-.MuiPaper-root {
-    box-shadow: none !important;
 }
 
 // ================= MEDIA QUERY (MOBILE)    <= 500px =========================

@@ -11,6 +11,7 @@ import Maps from '../components/home/Maps';
 import Footer from '../components/Footer';
 
 const Home = () => {
+
     // requête axios pour récupérer la photo du plat du jour
     /* const [img, setImg] = useState(null);
 
@@ -45,11 +46,6 @@ const Home = () => {
     console.log(booking);
     console.log(bookingDateFormated); */
 
-    useEffect(() => {
-        /*   getDishImage(); */
-        /*  getBooking(); */
-    }, []);
-
     return (
         <main>
             <Banniere url="../assets/video/banniere.mp4" />
@@ -58,7 +54,7 @@ const Home = () => {
             <Chef />
             <Producter />
             <Maps />
-            <Footer/>
+            <Footer />
         </main>
     );
 };

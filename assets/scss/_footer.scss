@@ -45,10 +45,6 @@ footer {
                 flex: 1;
             }
         }
-
-        p {
-            @include footerText;
-        }
     }
 
     &__contact {
@@ -66,7 +62,7 @@ footer {
         &__block {
             &__item {
                 display: flex;
-                margin-bottom: 2rem;
+                margin-bottom: 1.2rem;
                 align-self: start;
 
                 &--icon {
@@ -97,7 +93,7 @@ footer {
         }
 
         &__item {
-            padding-bottom: 1.6rem;
+            padding-bottom: 1rem;
 
             &--icon {
                 color: $colorSecondary;
@@ -116,7 +112,7 @@ footer {
 .mentions a {
     @include footerText;
     @extend %flex-centered;
-    margin-top: 2rem;
+    margin-top: 5rem;
 }
 
 // ================= MEDIA QUERY (TABLETTE)  <= 889px =========================
