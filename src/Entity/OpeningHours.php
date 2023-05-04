@@ -13,6 +13,7 @@ class OpeningHours
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['openingHours'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
@@ -31,7 +32,7 @@ class OpeningHours
     #[Groups(['openingHours'])]
     private ?\DateTimeInterface $dinner_start_hour = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    #[ORM\Column(type: Types::TIME_IMMUTABLE)]
     #[Groups(['openingHours'])]
     private ?\DateTimeInterface $dinner_end_hour = null;
 

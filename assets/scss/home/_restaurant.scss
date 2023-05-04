@@ -1,0 +1,72 @@
+.restaurant {
+    background-color: $colorLightGrey;
+    min-height: 100vh;
+    display: flex;
+    width: 100%;
+
+    &__name {
+        width: 50%;
+        color: $colorDarkGrey;
+        @extend %flex-centered;
+        flex-direction: column;
+        background-color: $colorLightGrey;
+
+        &__icon {
+            display: flex;
+        }
+
+        &__title {
+            @include title($colorPrimary, $colorPrimary);
+            margin-right: 2rem;
+        }
+        &__description {
+            padding: 1rem 10rem;
+            color: $colorSecondary;
+            text-align: justify;
+            font-size: 1.4rem;
+            max-width: 60rem;
+        }
+    }
+    &__image {
+        width: 50%;
+        @extend %flex-centered;
+        padding: 5rem;
+        background-color: $colorSecondary;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            box-shadow: 0px 0px 12px -1px rgba(0, 0, 0, 0.68);
+        }
+    }
+}
+
+// ================= MEDIA QUERY (TABLETTE)    <= 889px =========================
+@media screen and (max-width: 889px) {
+    .restaurant {
+        flex-direction: column;
+        justify-content: flex-end;
+        width: 100%;
+
+        &__name {
+            width: 100%;
+            height: 100%;
+            padding: 14rem 2rem;
+            text-align: center;
+
+            &__description {
+                padding: 1rem 2rem;
+            }
+        }
+
+        &__image {
+            padding: 8rem 2rem;
+            width: 100%;
+            height: 100%;
+        }
+
+        img {
+            width: 80%;
+        }
+    }
+}

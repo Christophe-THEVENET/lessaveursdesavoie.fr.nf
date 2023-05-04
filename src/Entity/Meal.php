@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\MealRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\MealRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: MealRepository::class)]
 class Meal
@@ -13,9 +14,11 @@ class Meal
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['meals'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['meals'])]
     private ?string $name = null;
 
 
@@ -23,6 +26,7 @@ class Meal
     private ?Restaurant $restaurant = null;
 
     #[ORM\ManyToMany(targetEntity: Formula::class, inversedBy: 'meals')]
+    #[Groups(['meals'])]
     private Collection $formulas;
 
    

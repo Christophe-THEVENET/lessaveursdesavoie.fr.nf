@@ -1,11 +1,19 @@
-@import "~bootstrap/scss/bootstrap";
+@import '~bootstrap/scss/bootstrap';
 @import 'config.scss';
-@import 'hamburger.scss';
+@import 'header.scss';
+@import 'footer';
 @import 'form.scss';
 @import 'layout.scss';
+@import 'home/banniere';
+@import 'home/restaurant';
+@import 'home/favorite';
+@import 'home/chef';
+@import 'home/producteur';
 
-body {
-    background-color: $colorDarkGrey;
-    color: $colorWhite;
+@import 'login.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-

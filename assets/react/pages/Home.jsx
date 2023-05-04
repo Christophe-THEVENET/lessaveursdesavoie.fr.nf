@@ -2,31 +2,63 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Banniere from '../components/home/Banniere';
+import Restaurant from '../components/home/Restaurant';
+import Favorite from '../components/home/Favorite';
+import Chef from '../components/home/Chef';
+import Producter from '../components/home/Producter';
+import Maps from '../components/home/Maps';
+import Footer from '../components/Footer';
 
 const Home = () => {
-    // requête axios pour récupérer les horaires d'ouverture
-    const getData = async () => {
+    // requête axios pour récupérer la photo du plat du jour
+    /* const [img, setImg] = useState(null);
+
+    const getDishImage = async () => {
         try {
-            const response = await axios.get('https://127.0.0.1:8000/api/dishes');
+            const response = await axios.get('https://127.0.0.1:8000/api/favorite/dishes');
             setImg(response.data[0].imageName);
+        } catch (error) {
+            console.error(error);
+        }
+    }; */
+
+    // formater la date
+    /*  const formatDate = (date) => {
+        return new Date(date).toLocaleDateString('fr-FR', 'YYYY-MM-DD');
+    }; */
+
+    // requête axios pour récupérer une réservation
+    /*    const [booking, setBooking] = useState(null);
+    const [bookingDateFormated, setBookingDateFormated] = useState(null);
+
+    const getBooking = async () => {
+        try {
+            const response = await axios.get('https://127.0.0.1:8000/api/bookings');
+            setBooking(response.data[0]);
+            setBookingDateFormated(formatDate(response.data[0].date));
         } catch (error) {
             console.error(error);
         }
     };
 
-    const [img, setImg] = useState(null);
+    console.log(booking);
+    console.log(bookingDateFormated); */
 
     useEffect(() => {
-        getData();
+        /*   getDishImage(); */
+        /*  getBooking(); */
     }, []);
-
-    console.log(img);
 
     return (
         <main>
-            <h1>Les Saveurs De Savoie</h1>
-            <div className="construction">En construction ...</div>
-            {img ? <img src={`../uploads/dishes/${img}`} /> : null}
+            <Banniere url="../assets/video/banniere.mp4" />
+            <Restaurant />
+            <Favorite />
+            <Chef />
+            <Producter />
+            <Maps />
+            <Footer/>
         </main>
     );
 };

@@ -23,10 +23,10 @@ class OpeningHoursCrudController extends AbstractCrudController
         return [
             yield IdField::new('id')->hideOnForm(),
             yield TextField::new('day', 'Jour'),
-            yield TimeField::new('lunch_start_hour', 'Ouverture du midi'),
-            yield TimeField::new('lunch_end_hour', 'Fermeture du midi'),
-            yield TimeField::new('dinner_start_hour', 'Ouverture du soir'),
-            yield TimeField::new('dinner_end_hour', 'Ouverture du soir'),
+            yield TimeField::new('lunch_start_hour', 'Ouverture du midi')->setFormat('HH:mm')->setHelp('entrer 00:00 si fermé'),
+            yield TimeField::new('lunch_end_hour', 'Fermeture du midi')->setFormat('HH:mm')->setHelp('entrer 00:00 si fermé'),
+            yield TimeField::new('dinner_start_hour', 'Ouverture du soir')->setFormat('HH:mm')->setHelp('entrer 00:00 si fermé'),
+            yield TimeField::new('dinner_end_hour', 'Ouverture du soir')->setFormat('HH:mm')->setHelp('entrer 00:00 si fermé'),
             yield AssociationField::new('restaurant', 'Restaurant')
                 ->setFormTypeOption('choice_label', 'name')
         ];
