@@ -14,7 +14,6 @@ footer {
         flex: 1;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
         align-items: center;
 
         h2 {
@@ -22,17 +21,33 @@ footer {
             margin-bottom: 8rem;
         }
 
+        &__block {
+            display: flex;
+
+            width: 28rem;
+
+            &--day {
+                width: 8rem;
+                font-weight: bold;
+                margin-right: 2rem;
+                flex: 1;
+            }
+
+            &--lunch {
+                width: 8rem;
+                margin-right: 2rem;
+                flex: 1;
+            }
+
+            &--dinner {
+                width: 8rem;
+                margin-right: 2rem;
+                flex: 1;
+            }
+        }
+
         p {
             @include footerText;
-        }
-
-        &--day {
-            font-weight: bold;
-            margin-right: 1.5rem;
-        }
-
-        &--separation {
-            margin-right: 1.5rem;
         }
     }
 
@@ -49,7 +64,6 @@ footer {
         }
 
         &__block {
-
             &__item {
                 display: flex;
                 margin-bottom: 2rem;

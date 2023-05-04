@@ -20,19 +20,19 @@ class OpeningHours
     #[Groups(['openingHours'])]
     private ?string $day = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
     #[Groups(['openingHours'])]
     private ?\DateTimeInterface $lunch_start_hour = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
     #[Groups(['openingHours'])]
     private ?\DateTimeInterface $lunch_end_hour = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
     #[Groups(['openingHours'])]
     private ?\DateTimeInterface $dinner_start_hour = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+    #[ORM\Column(type: Types::TIME_IMMUTABLE)]
     #[Groups(['openingHours'])]
     private ?\DateTimeInterface $dinner_end_hour = null;
 

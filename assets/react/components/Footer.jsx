@@ -6,34 +6,24 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import axios from 'axios';
+import Day from './home/Day';
 
 const Footer = () => {
     // requête axios pour récupérer les horaires d'ouverture
-    const [OpeningHours, setOpeningHours] = useState([]);
+    const [openingHoursList, setOpeningHoursList] = useState([]);
 
-    // formater la date
-    const formatDate = (date) => {
-        return new Date(date).getHours() + 'h' + new Date(date).getMinutes();
-    };
-
-    // requête axios pour récupérer les horaires d'ouverture
-    const [openingHour, setOpeningHour] = useState(null);
-    const [openingHourFormated, set0peningHourFormated] = useState(null);
-
-    const getOpeningHour = async () => {
+    const getOpeningHours = async () => {
         try {
             const response = await axios.get('https://127.0.0.1:8000/api/opening-hours');
-            setOpeningHour(response.data[1].lunch_start_hour);
+            setOpeningHoursList(response.data);
         } catch (error) {
             console.error(error);
         }
     };
 
     useEffect(() => {
-        getOpeningHour();
+        getOpeningHours();
     }, []);
-   
-    console.log(formatDate(openingHour));
 
 
     return (
@@ -41,26 +31,11 @@ const Footer = () => {
             <div className="footer">
                 <div className="footer__horaire">
                     <h2>Horaires</h2>
-                    {OpeningHours.map((openingHour) => {
-                        return (
-                            <p key={openingHour.id}>
-                                <span className="footer__horaire--day">{openingHour.day}: </span>
-                                <span>{formatDate(openingHour.lunch_start_hour)}</span>-
-                                <span>{openingHour.lunch_end_hour}</span>
-                                <span className="footer__horaire--separation"></span>
-                                <span>{openingHour.dinner_start_hour}</span>-
-                                <span>{openingHour.dinner_end_hour}</span>
-                            </p>
-                        );
+                    {openingHoursList.map((openingHour) => {
+                        return <Day openingHour={openingHour} />;
                     })}
-                    <p>
-                        <span className="footer__horaire--day">Lundi: </span>
-                        <span>11h30</span>-<span>14h00</span>
-                        <span className="footer__horaire--separation"></span>
-                        <span>18h30</span>-<span>21h00</span>
-                    </p>
+                 
                 </div>
-                
                 <div className="footer__contact">
                     <h2>Contact</h2>
                     <div className="footer__contact__block">
