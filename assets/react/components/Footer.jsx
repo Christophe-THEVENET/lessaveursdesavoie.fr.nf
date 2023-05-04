@@ -14,7 +14,7 @@ const Footer = () => {
 
     const getOpeningHours = async () => {
         try {
-            const response = await axios.get('https://127.0.0.1:8000/api/opening-hours');
+            const response = await axios.get('https://lessaveursdesavoie.fr.nf/api/opening-hours');
             setOpeningHoursList(response.data);
         } catch (error) {
             console.error(error);
