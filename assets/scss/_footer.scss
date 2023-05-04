@@ -1,0 +1,138 @@
+footer {
+    min-height: 50vh;
+    background-color: $colorDarkGrey;
+    color: $colorFird;
+    width: 100%;
+    padding: 8rem 4rem;
+}
+
+.footer {
+    display: flex;
+    width: 100%;
+
+    &__horaire {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h2 {
+            @include title($colorSecondary, $colorFird);
+            margin-bottom: 8rem;
+        }
+
+        &__block {
+            display: flex;
+
+            width: 28rem;
+
+            &--day {
+                width: 8rem;
+                font-weight: bold;
+                margin-right: 2rem;
+                flex: 1;
+            }
+
+            &--lunch {
+                width: 8rem;
+                margin-right: 2rem;
+                flex: 1;
+            }
+
+            &--dinner {
+                width: 8rem;
+                margin-right: 2rem;
+                flex: 1;
+            }
+        }
+
+        p {
+            @include footerText;
+        }
+    }
+
+    &__contact {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        h2 {
+            @include title($colorSecondary, $colorFird);
+            margin-bottom: 8rem;
+        }
+
+        &__block {
+            &__item {
+                display: flex;
+                margin-bottom: 2rem;
+                align-self: start;
+
+                &--icon {
+                    margin-right: 2rem;
+                    color: $colorFird;
+                    margin-top: -1rem;
+                }
+            }
+        }
+
+        a,
+        p {
+            @include footerText;
+            text-decoration: none;
+        }
+    }
+
+    &__reseaux {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        h2 {
+            @include title($colorSecondary, $colorFird);
+            margin-bottom: 8rem;
+        }
+
+        &__item {
+            padding-bottom: 1.6rem;
+
+            &--icon {
+                color: $colorSecondary;
+                margin-right: 2rem;
+
+                &:hover {
+                    transition: 0.3s ease-in-out;
+                    color: $colorFlashy;
+                    transform: rotate(10deg);
+                }
+            }
+        }
+    }
+}
+
+.mentions a {
+    @include footerText;
+    @extend %flex-centered;
+    margin-top: 2rem;
+}
+
+// ================= MEDIA QUERY (TABLETTE)  <= 889px =========================
+@media screen and (max-width: 889px) {
+    .footer {
+        flex-direction: column;
+
+        &__horaire {
+            margin-bottom: 6rem;
+        }
+        &__contact {
+            margin-bottom: 6rem;
+        }
+
+        &__reseaux {
+            margin-bottom: 6rem;
+        }
+    }
+}

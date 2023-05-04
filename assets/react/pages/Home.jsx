@@ -2,30 +2,26 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Banniere from '../components/home/Banniere';
+import Restaurant from '../components/home/Restaurant';
+import Favorite from '../components/home/Favorite';
+import Chef from '../components/home/Chef';
+import Producter from '../components/home/Producter';
+import Maps from '../components/home/Maps';
+import Footer from '../components/Footer';
 
 const Home = () => {
-    const getData = async () => {
-        try {
-            const response = await axios.get('https://lessaveursdesavoie.fr.nf/api/dishes');
-            setImg(response.data[0].imageName);
-        } catch (error) {
-            console.error(error);
-        }
-    };
 
-    const [img, setImg] = useState(null);
-
-    useEffect(() => {
-        getData();
-    }, []);
-
-    console.log(img);
 
     return (
         <main>
-            <h1>Les Saveurs De Savoie</h1>
-            <div className="construction">En construction ...</div>
-            {img ? <img src={`../uploads/dishes/${img}`} /> : null}
+            <Banniere url="../assets/video/banniere.mp4" />
+            <Restaurant />
+            <Favorite />
+            <Chef />
+            <Producter />
+            <Maps />
+            <Footer/>
         </main>
     );
 };

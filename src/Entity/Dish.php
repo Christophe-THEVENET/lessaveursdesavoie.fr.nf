@@ -32,16 +32,17 @@ class Dish
     private ?float $price = null;
 
     #[ORM\Column]
+    #[Groups(['dishes'])]
     private ?bool $is_favorite = null;
 
     #[ORM\ManyToOne(inversedBy: 'dishes')]
     private ?Restaurant $restaurant = null;
 
     #[ORM\ManyToOne(inversedBy: 'Dishes')]
+    #[Groups(['dishes'])]
     private ?MetCategory $metCategory = null;
 
     #[Vich\UploadableField(mapping: 'dishes_images', fileNameProperty: 'imageName', size: 'imageSize')]
-    #[Groups(['dishes'])]
     private ?File $imageFile = null;
 
     #[ORM\Column(nullable: true)]
