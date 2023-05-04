@@ -16,12 +16,12 @@
         }
 
         &__title {
-            @include title($colorDarkGrey, $colorPrimary);
+            @include title($colorPrimary, $colorPrimary);
             margin-right: 2rem;
         }
         &__description {
             padding: 1rem 10rem;
-            color: $colorDarkGrey;
+            color: $colorSecondary;
             text-align: justify;
             font-size: 1.4rem;
             max-width: 60rem;

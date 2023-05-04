@@ -16,10 +16,8 @@ $textFont: 'Lato', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /*  border: 1px solid red;    */
+    /*  border: 1px solid red;  */   
 }
-
-
 
 %flex-centered {
     display: flex;
@@ -34,4 +32,8 @@ $textFont: 'Lato', sans-serif;
     border-bottom: 1px solid $colorUnderligne;
 }
 
-
+@mixin footerText {
+    font-family: $textFont;
+    font-size: 1.2rem;
+    color: $colorFird;
+}

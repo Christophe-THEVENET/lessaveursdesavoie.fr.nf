@@ -42,7 +42,7 @@ const Item = ({ dish }) => {
                     style={{
                         position: 'absolute',
                         fontFamily: 'Great Vibes',
-                        color: '#dc8cba',
+                        color: '#ffffff',
                         fontSize: '6rem',
                         transition: 'all 0.5s ease',
                     }}

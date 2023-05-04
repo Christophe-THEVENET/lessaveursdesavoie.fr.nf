@@ -31,7 +31,6 @@ function CarouselComponent() {
        /*   NextIcon={<ArrowForwardIosIcon/>}
          PrevIcon={<ArrowBackIosIcon/>} */
 
-
          sx={{backgroundColor:'#d8b8ca'}}
          >
             {favoriteDishes.map((dish) => (

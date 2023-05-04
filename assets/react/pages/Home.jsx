@@ -8,6 +8,7 @@ import Favorite from '../components/home/Favorite';
 import Chef from '../components/home/Chef';
 import Producter from '../components/home/Producter';
 import Maps from '../components/home/Maps';
+import Footer from '../components/Footer';
 
 const Home = () => {
     // requête axios pour récupérer la photo du plat du jour
@@ -57,6 +58,7 @@ const Home = () => {
             <Chef />
             <Producter />
             <Maps />
+            <Footer/>
         </main>
     );
 };

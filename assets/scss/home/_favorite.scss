@@ -1,6 +1,6 @@
 .favorite {
     background-color: $colorFird;
-    height: 100vh;
+    min-height: 100vh;
     @extend %flex-centered;
     flex-direction: column;
     width: 100%;
@@ -8,21 +8,20 @@
 
     &__name {
         color: $colorDarkGrey;
-        margin-left: 10%;
         margin-bottom: 2rem;
+        width: 100%;
+        @extend %flex-centered;
 
         &__icon {
             display: flex;
-            margin-left: -4rem;
         }
 
         &__title {
-            @include title($colorDarkGrey, $colorPrimary);
+            @include title($colorPrimary, $colorPrimary);
             margin-right: 2rem;
         }
     }
     &__carousel {
-        background-color: aqua;
         width: 100%;
     }
 }
@@ -52,21 +51,16 @@
     }
 }
 
-
 .MuiPaper-root {
     box-shadow: none !important;
-} 
+}
 
 // ================= MEDIA QUERY (MOBILE)    <= 500px =========================
 @media screen and (max-width: 500px) {
-
-    .favorite {
-        height: 70vh;
-    }
-
+   
 
     .dish-image {
-        height: 20rem!important;
+        height: 20rem !important;
     }
 }
 
