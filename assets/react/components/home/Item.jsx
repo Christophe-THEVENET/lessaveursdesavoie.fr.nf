@@ -18,7 +18,7 @@ const Item = ({ dish }) => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: '#d8b8ca',
+                backgroundColor: '#d8b8cac2',
                 position: 'relative',
             }}
         >
@@ -29,7 +29,7 @@ const Item = ({ dish }) => {
                     height: '50rem',
                     boxShadow: '0px 0px 12px -1px rgba(0,0,0,0.68)',
                     position: 'relative',
-                    filter: isHovering ? 'brightness(30%)' : 'brightness(100%)',
+                    filter: isHovering ? 'brightness(70%)' : 'brightness(100%)',
                     transition: 'all 0.5s ease',
                 }}
                 className="dish-image"

@@ -1,14 +1,14 @@
 .favorite {
-    background-color: $colorFird;
+    background-color: #d8b8ca;
     min-height: 100vh;
-    @extend %flex-centered;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     flex-direction: column;
     width: 100%;
-    padding: 6rem 4rem;
+    padding: 5rem;
 
     &__name {
-        color: $colorDarkGrey;
-        margin-bottom: 2rem;
         width: 100%;
         @extend %flex-centered;
 
@@ -36,10 +36,10 @@
     margin-top: 5rem;
     padding: 1rem 4rem;
     color: $colorWhite;
+    background-color: $colorPrimary;
     transition: all 0.2s ease-in-out;
     font-weight: bold;
     letter-spacing: 1px;
-    background-color: $colorPrimary;
     font-family: $textFont;
     font-size: 1.4rem;
     border: none;
@@ -57,8 +57,6 @@
 
 // ================= MEDIA QUERY (MOBILE)    <= 500px =========================
 @media screen and (max-width: 500px) {
-   
-
     .dish-image {
         height: 20rem !important;
     }
