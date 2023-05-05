@@ -1,0 +1,100 @@
+.menuList {
+    min-height: 100vh;
+    width: 100%;
+    padding-top: 8rem;
+    font-family: $textFont;
+    background-color: $colorDarkGrey;
+
+}
+
+.menuItem {
+    @extend %flex-centered;
+
+    // ---------- menu classique avec photo ------------
+    &__classique {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+
+        &__text {
+            @extend %flex-centered;
+            flex-direction: column;
+            flex: 1;
+
+            &--title {
+                font-family: $titleFont;
+                font-size: 5rem;
+            }
+
+            &--separation--title {
+                margin-top: -4rem;
+            }
+
+            &--dish {
+                font-size: 1.3rem;
+
+                span {
+                    font-family: $titleFont;
+                    font-size: 1.9rem;
+                }
+            }
+        }
+    }
+
+    // ---------------- menu avec formule ---------------
+    &__formula {
+        @extend %flex-centered;
+        flex-direction: column;
+        margin: 4rem 0;
+        max-width: 50rem;
+
+        &__title {
+            @include title($colorFlashy, $colorPrimary);
+            text-transform: capitalize;
+            margin: 2rem 0;
+        }
+
+        &__formul {
+            @extend %flex-centered;
+            flex-direction: column;
+
+            &--name {
+                font-size: 1.8rem;
+                text-transform: capitalize;
+            }
+
+            &--description {
+                font-size: 1.2rem;
+                color: $colorLightGrey;
+            }
+
+            &--price {
+                font-size: 1.4rem;
+                color: $colorLightGrey;
+                margin-bottom: 2rem;
+
+                span {
+                    color: $colorFlashy;
+                    font-family: $titleFont;
+                    font-size: 1.8rem;
+                }
+            }
+        }
+    }
+}
+
+// ================= MEDIA QUERY (TABLETTE)   <= 768px =========================
+@media screen and (max-width: 768px) {
+    .menuItem__classique {
+        flex-direction: column;
+
+        &__text {
+            padding: 6rem 0;
+        }
+     
+    }
+
+    .menusItem__classique__image {
+        display: none;
+    }
+}

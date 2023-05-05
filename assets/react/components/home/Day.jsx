@@ -10,7 +10,7 @@ const Day = ({ openingHour }) => {
     };
 
     return (
-        <p key={openingHour.id} className="footer__horaire__block">
+        <div key={openingHour.id} className="footer__horaire__block">
             
             {/* ------------- jour ------------- */}
             <div className="footer__horaire__block--day">
@@ -46,7 +46,7 @@ const Day = ({ openingHour }) => {
                     <span>{formatDate(openingHour.dinner_end_hour)}0</span>
                 )}
             </div>
-        </p>
+        </div>
     );
 };
 

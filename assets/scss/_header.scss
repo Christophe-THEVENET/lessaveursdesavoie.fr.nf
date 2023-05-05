@@ -1,8 +1,20 @@
 header {
-    padding-top: 2rem;
+    padding: 1.5rem 0;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+
+.icon-title {
+    display: flex;
+    align-items: center;
+}
+
+.header-title {
+font-size: 3rem;
+margin-top: 1rem;
+margin-left: 2rem;
+margin-right: -2rem;
 }
 
 // block bienvenue

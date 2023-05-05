@@ -15,6 +15,7 @@ class Formula
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['meals'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]

@@ -22,23 +22,12 @@ function CarouselComponent() {
         getFavoriteDishes();
     }, []);
 
-
-
-
     return (
-         <Carousel
-         navButtonsAlwaysVisible={true}
-       /*   NextIcon={<ArrowForwardIosIcon/>}
-         PrevIcon={<ArrowBackIosIcon/>} */
-
-         sx={{backgroundColor:'#d8b8ca'}}
-         >
+        <Carousel navButtonsAlwaysVisible={true}>
             {favoriteDishes.map((dish) => (
                 <Item key={dish.id} dish={dish} />
-
-
             ))}
-        </Carousel> 
+        </Carousel>
     );
 }
 

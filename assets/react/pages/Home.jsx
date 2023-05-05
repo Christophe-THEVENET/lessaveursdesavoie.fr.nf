@@ -1,7 +1,5 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import Banniere from '../components/home/Banniere';
 import Restaurant from '../components/home/Restaurant';
 import Favorite from '../components/home/Favorite';
@@ -14,14 +12,14 @@ const Home = () => {
 
 
     return (
-        <main>
+        <main >
             <Banniere url="../assets/video/banniere.mp4" />
             <Restaurant />
             <Favorite />
             <Chef />
             <Producter />
             <Maps />
-            <Footer/>
+            <Footer />
         </main>
     );
 };

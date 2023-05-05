@@ -32,7 +32,7 @@ const Footer = () => {
                 <div className="footer__horaire">
                     <h2>Horaires</h2>
                     {openingHoursList.map((openingHour) => {
-                        return <Day openingHour={openingHour} />;
+                        return <Day openingHour={openingHour} key={openingHour.id} />;
                     })}
                  
                 </div>
