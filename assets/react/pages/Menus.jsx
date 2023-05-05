@@ -1,14 +1,18 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import chantierImg from '../../images/chantier-construction.jpg';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import Footer from '../components/Footer';
+import BanniereMenus from '../components/menus/BanniereMenus';
+import MenusMenus from '../components/menus/ItemMenus';
+import MenusList from '../components/menus/MenusList';
 
 const Menus = () => {
     return (
         <main>
-            <h1>Les Saveurs De Savoie</h1>
-            <h2 className="construction">Les menus</h2>
-            <img src={chantierImg} alt="image chantier en construction" />
-            <div className="construction">En construction ...</div>
+            <BanniereMenus />
+            <MenusList />
+            <Footer />
         </main>
     );
 };

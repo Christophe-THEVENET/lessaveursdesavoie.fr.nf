@@ -19,7 +19,7 @@ const Chef = () => {
                     >
                         <g
                             transform="translate(0.000000,893.000000) scale(0.100000,-0.100000)"
-                            fill="#592442"
+                            fill="#523c48"
                             stroke="none"
                         >
                             <path

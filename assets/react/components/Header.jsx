@@ -55,15 +55,26 @@ const Header = () => {
         return adminUser ? setAdmin(adminUser) : setAdmin([]);
     };
 
+    const [currentUrl, setCurrentUrl] = useState(null);
+
     useEffect(() => {
         getCurrentUser();
         checkAdmin();
+        setCurrentUrl(window.location.href);
     }, []);
 
+
     return (
-        <header ref={menuRef}>
+        <header
+            ref={menuRef}
+            /*   background du header en fonction de la page */
+            style={{
+                backgroundColor:
+                    currentUrl == 'https://127.0.0.1:8000/' ? 'transparent' : '#0e0008',
+            }}
+        >
             {/*  bouton hamburger ouvrir menu ----------------------- */}
-            <div>
+            <div className="icon-title">
                 <MenuOpenIcon
                     className="hamburger-open"
                     onClick={toggleModal}
@@ -87,6 +98,10 @@ const Header = () => {
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                 />
+                {/*  titre dans header en fonction de la page  */}
+                {currentUrl != 'https://127.0.0.1:8000/' ? (
+                    <h1 className="header-title">Les Saveurs De Savoie</h1>
+                ) : null}
             </div>
             {/*  ---------------------- modale----------------*/}
             {isOpen ? (
