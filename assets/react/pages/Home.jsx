@@ -45,20 +45,15 @@ const Home = () => {
     console.log(booking);
     console.log(bookingDateFormated); */
 
-    useEffect(() => {
-        /*   getDishImage(); */
-        /*  getBooking(); */
-    }, []);
-
     return (
-        <main>
+        <main >
             <Banniere url="../assets/video/banniere.mp4" />
             <Restaurant />
             <Favorite />
             <Chef />
             <Producter />
             <Maps />
-            <Footer/>
+            <Footer />
         </main>
     );
 };

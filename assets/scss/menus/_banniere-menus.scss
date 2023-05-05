@@ -1,0 +1,35 @@
+.banniereMenu {
+    background-image: url('../../images/banniere-menus-blur.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 70vh;
+    @extend %flex-centered;
+    flex-direction: column;
+
+    &__name__icon {
+        display: flex;
+        margin-bottom: 8rem;
+
+        &--title {
+            @include title($colorFlashy, $colorSecondary);
+            font-size: 10rem;
+
+            margin-right: 2rem;
+        }
+    }
+
+
+
+
+    &__jingle {
+        font-family: $textFont;
+        font-size: 1.4rem;
+        color: $colorLightGrey;
+        text-align: justify;
+        width: 50%;
+    }
+
+
+
+}

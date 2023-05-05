@@ -1,5 +1,5 @@
 .favorite {
-    background-color: #d8b8ca;
+    background-color: $colorPrimary;
     min-height: 100vh;
     display: flex;
     justify-content: space-around;
@@ -17,7 +17,7 @@
         }
 
         &__title {
-            @include title($colorPrimary, $colorPrimary);
+            @include title($colorWhite, $colorSecondary);
             margin-right: 2rem;
         }
     }
@@ -36,23 +36,20 @@
     margin-top: 5rem;
     padding: 1rem 4rem;
     color: $colorWhite;
-    background-color: $colorPrimary;
+    background-color: $colorDarkGrey;
     transition: all 0.2s ease-in-out;
     font-weight: bold;
     letter-spacing: 1px;
     font-family: $textFont;
     font-size: 1.4rem;
     border: none;
+    box-shadow: 0px 0px 6px -1px rgba(0, 0, 0, 0.68);
 
     &:hover {
-        background-color: $colorFlashy;
+        background-color: $colorFird;
         transition: all 0.2s ease-in-out;
         color: $colorWhite;
     }
-}
-
-.MuiPaper-root {
-    box-shadow: none !important;
 }
 
 // ================= MEDIA QUERY (MOBILE)    <= 500px =========================
