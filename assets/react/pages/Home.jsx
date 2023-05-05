@@ -11,7 +11,6 @@ import Maps from '../components/home/Maps';
 import Footer from '../components/Footer';
 
 const Home = () => {
-
     // requête axios pour récupérer la photo du plat du jour
     /* const [img, setImg] = useState(null);
 
@@ -47,7 +46,7 @@ const Home = () => {
     console.log(bookingDateFormated); */
 
     return (
-        <main>
+        <main >
             <Banniere url="../assets/video/banniere.mp4" />
             <Restaurant />
             <Favorite />

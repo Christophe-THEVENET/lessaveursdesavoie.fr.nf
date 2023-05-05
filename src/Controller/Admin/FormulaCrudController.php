@@ -7,8 +7,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+
 
 class FormulaCrudController extends AbstractCrudController
 {
@@ -25,7 +25,7 @@ class FormulaCrudController extends AbstractCrudController
             yield TextField::new('name', 'Nom'),
             yield TextField::new('description', 'Description'),
             yield MoneyField::new('price', 'Prix')->setCurrency('EUR')->setCustomOption('storedAsCents', false),
-            yield AssociationField::new('meals', 'Menus')->hideOnForm(),
+           
 
         ];
     }

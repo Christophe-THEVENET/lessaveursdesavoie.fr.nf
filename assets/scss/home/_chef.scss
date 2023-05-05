@@ -1,5 +1,5 @@
 .chef {
-    min-height: 70vh;
+    min-height: 100vh;
     display: flex;
     width: 100%;
 
@@ -7,7 +7,7 @@
         width: 50%;
         @extend %flex-centered;
         padding: 5rem;
-        background-color: $colorSecondary;
+        background-color: $colorLightGrey;
 
         img {
             width: 60%;
@@ -33,7 +33,7 @@
         }
         &__description {
             padding: 1rem 10rem;
-            color: $colorSecondary;
+            color: $colorLightGrey;
             text-align: justify;
             font-size: 1.4rem;
             max-width: 60rem;

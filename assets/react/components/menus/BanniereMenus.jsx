@@ -14,7 +14,7 @@ const banniere = () => {
                 >
                     <g
                         transform="translate(0.000000,893.000000) scale(0.100000,-0.100000)"
-                        fill="#d8b8ca"
+                        fill="#b1849d"
                         stroke="none"
                     >
                         <path

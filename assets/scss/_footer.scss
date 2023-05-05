@@ -1,7 +1,7 @@
 footer {
     min-height: 50vh;
     background-color: $colorDarkGrey;
-    color: $colorFird;
+    color: $colorSecondary;
     width: 100%;
     padding: 8rem 4rem;
 }
@@ -64,10 +64,11 @@ footer {
                 display: flex;
                 margin-bottom: 1.2rem;
                 align-self: start;
+                
 
                 &--icon {
                     margin-right: 2rem;
-                    color: $colorFird;
+                    color: $colorSecondary;
                     margin-top: -1rem;
                 }
             }
@@ -77,6 +78,7 @@ footer {
         p {
             @include footerText;
             text-decoration: none;
+            color: $colorSecondary;
         }
     }
 

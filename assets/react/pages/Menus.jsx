@@ -8,12 +8,10 @@ import MenusMenus from '../components/menus/ItemMenus';
 import MenusList from '../components/menus/MenusList';
 
 const Menus = () => {
-
-
     return (
         <main>
-            <BanniereMenus/>
-            <MenusList/>
+            <BanniereMenus />
+            <MenusList />
             <Footer />
         </main>
     );

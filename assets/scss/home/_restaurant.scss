@@ -20,7 +20,7 @@
         }
         &__description {
             padding: 1rem 10rem;
-            color: $colorSecondary;
+            color: $colorLightGrey;
             text-align: justify;
             font-size: 1.4rem;
             max-width: 60rem;
@@ -30,7 +30,7 @@
         width: 50%;
         @extend %flex-centered;
         padding: 5rem;
-        background-color: $colorSecondary;
+        background-color: $colorLightGrey;
 
         img {
             width: 100%;

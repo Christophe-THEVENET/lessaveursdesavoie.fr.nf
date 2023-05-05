@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ItemMenus from './ItemMenus';
 
@@ -19,13 +19,13 @@ const MenusList = () => {
         getMealsList();
     }, []);
 
-
-    console.log(mealsList);
-
-
-
-
-    return <section className="menuList">{/*   <ItemMenus /> */}</section>;
+    return (
+        <section className="menuList">
+            {mealsList.map((menu, index) => (
+                <ItemMenus key={menu.id} menu={menu} index={index} />
+            ))}
+        </section>
+    );
 };
 
 export default MenusList;
