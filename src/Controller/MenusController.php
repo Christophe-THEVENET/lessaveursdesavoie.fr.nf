@@ -12,7 +12,6 @@ class MenusController extends AbstractController
     public function index(): Response
     {
         return $this->render('menus/index.html.twig', [
-            'controller_name' => 'MenusController',
         ]);
     }
 }

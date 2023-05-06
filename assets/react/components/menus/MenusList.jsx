@@ -3,7 +3,7 @@ import axios from 'axios';
 import ItemMenus from './ItemMenus';
 
 const MenusList = () => {
-    // requête axios pour récupérer les plats favoris
+    // requête axios pour récupérer les menus
     const [mealsList, setMealsList] = useState([]);
 
     const getMealsList = async () => {
