@@ -1,53 +1,63 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}parent() | S'inscrire{% endblock %}
+{% block title %}{{parent()}} | Inscription{% endblock %}
 
 {% block body %}
 
-<main>
-    <h1>S'inscrire</h1>
+<main class="login">
+
+    <a href="/" class="icon-block"><svg fill="#ff679a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+        </svg></a>
+
+    <div class="login__block">
 
 
-    {{ form_start(registrationForm) }}
+        <h1 class="login__block--title">S'inscrire</h1>
 
-    <div class="input-block">
-        {{ form_errors(registrationForm.name) }}
-        {{ form_label(registrationForm.name) }}
-        {{ form_widget(registrationForm.name) }}
+
+        {{ form_start(registrationForm) }}
+
+        <div class="input-block">
+            {{ form_errors(registrationForm.name) }}
+            {{ form_label(registrationForm.name) }}
+            {{ form_widget(registrationForm.name) }}
+        </div>
+
+        <div class="input-block">
+            {{ form_errors(registrationForm.email) }}
+            {{ form_label(registrationForm.email) }}
+            {{ form_widget(registrationForm.email) }}
+        </div>
+
+        <div class="input-block">
+            {{ form_errors(registrationForm.plainPassword) }}
+            {{ form_label(registrationForm.plainPassword) }}
+            {{ form_widget(registrationForm.plainPassword) }}
+        </div>
+
+        <div class="input-block">
+            {{ form_errors(registrationForm.nb_convives) }}
+            {{ form_label(registrationForm.nb_convives) }}
+            {{ form_widget(registrationForm.nb_convives) }}
+        </div>
+
+        <div class="input-block">
+            {{ form_errors(registrationForm.allergy) }}
+            {{ form_label(registrationForm.allergy) }}
+            {{ form_widget(registrationForm.allergy) }}
+        </div>
+
+        <div class="input-block">
+            {{ form_widget(registrationForm.agreeTerms) }}
+            {{ form_label(registrationForm.agreeTerms,'j\'accepte les conditions d\'utilisation', {'label_attr': {'class': 'termes'} })}}
+        </div>
+
+
+        <button type="submit" class="btn btn-lg btn-primary button-connect">S'inscrire</button>
+        {{ form_end(registrationForm) }}
+
     </div>
-
-    <div class="input-block">
-        {{ form_errors(registrationForm.email) }}
-        {{ form_label(registrationForm.email) }}
-        {{ form_widget(registrationForm.email) }}
-    </div>
-
-    <div class="input-block">
-        {{ form_errors(registrationForm.plainPassword) }}
-        {{ form_label(registrationForm.plainPassword) }}
-        {{ form_widget(registrationForm.plainPassword) }}
-    </div>
-
-    <div class="input-block">
-        {{ form_errors(registrationForm.nb_convives) }}
-        {{ form_label(registrationForm.nb_convives) }}
-        {{ form_widget(registrationForm.nb_convives) }}
-    </div>
-
-    <div class="input-block">
-        {{ form_errors(registrationForm.allergy) }}
-        {{ form_label(registrationForm.allergy) }}
-        {{ form_widget(registrationForm.allergy) }}
-    </div>
-
-    <div>
-        {{ form_widget(registrationForm.agreeTerms) }}
-        {{ form_label(registrationForm.agreeTerms) }}
-    </div>
-
-
-    <button type="submit" class="btn btn-success">S'inscrire</button>
-    {{ form_end(registrationForm) }}
-
 </main>
 {% endblock %}

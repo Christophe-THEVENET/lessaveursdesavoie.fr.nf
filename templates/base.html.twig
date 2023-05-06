@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Les Saveurs De Savoie{% endblock %}</title>
-    <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    <link rel="shortcut icon" href="{{ asset('../assets/icon/favicon.png') }}">
     {{ encore_entry_link_tags('styles') }}
 
     {% block stylesheets %}
@@ -16,11 +15,10 @@
 
 <body>
 
-   
+
 
     {# serialize l'utilisateur connecté et l'envoie au front par les data-attribute #}
-    <div class="js-user-rating" 
-        data-user="{{ app.user|serialize('json', { groups: 'getUser'})}}">
+    <div class="js-user-rating" data-user="{{ app.user|serialize('json', { groups: 'getUser'})}}">
     </div>
 
     {# serialize le role de l'utilisateur connecté et l'envoie au front par les data-attribute #}
