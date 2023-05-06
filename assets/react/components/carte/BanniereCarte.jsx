@@ -2,7 +2,7 @@ import React from 'react';
 
 const BanniereCarte = () => {
     return (
-        <section className="banniereMenu">
+        <section className="banniereMenu banniereCarte">
             <div className="banniereMenu__name__icon">
                 <h2 className="banniereMenu__name__icon--title">Carte</h2>
                 <svg

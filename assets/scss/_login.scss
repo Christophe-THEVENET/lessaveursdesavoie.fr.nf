@@ -1,0 +1,65 @@
+.login {
+    &__block {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        &--title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem;
+            color: $colorFlashy;
+            border-bottom: 1px solid #b1849d;
+            margin-bottom: 3rem;
+        }
+
+        .input-block {
+            label {
+                font-size: 1.3rem;
+                font-family: $textFont;
+            }
+
+            input {
+                background-color: $colorLightGrey;
+                border: none;
+                border-radius: 0;
+
+                &:focus {
+                    outline: none;
+                    background-color: $colorWhite;
+                }
+            }
+        }
+        .button-connect {
+            margin-top: 1rem;
+            align-self: start;
+            background-color: rgba(255, 0, 0, 0);
+            border: 1px solid white;
+            transition: all 0.3s ease-in-out;
+            border-radius: 0;
+
+            &:hover {
+                background-color: $colorFlashy;
+                border: 1px solid $colorFlashy;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+        .termes {
+            font-size: 1rem;
+        }
+    }
+
+    .icon-block {
+        font-size: 5rem;
+        width: 3rem;
+        position: absolute;
+        top: 0;
+        left: 2rem;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .input-block {
+        width: 22rem;
+    }
+}
