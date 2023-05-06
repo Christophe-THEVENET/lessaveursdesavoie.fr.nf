@@ -9,7 +9,7 @@ const CarteList = () => {
     const [entryList, setEntryList] = useState([]);
     const getEntryList = async () => {
         try {
-            const response = await axios.get('https://127.0.0.1:8000/api/dishes/entree');
+            const response = await axios.get('https://lessaveursdesavoie.fr.nf/api/dishes/entree');
             setEntryList(response.data);
         } catch (error) {
             console.error(error);
@@ -20,7 +20,7 @@ const CarteList = () => {
     const [dishList, setDishList] = useState([]);
     const getDishList = async () => {
         try {
-            const response = await axios.get('https://127.0.0.1:8000/api/dishes/plat');
+            const response = await axios.get('https://lessaveursdesavoie.fr.nf/api/dishes/plat');
             setDishList(response.data);
         } catch (error) {
             console.error(error);
@@ -31,7 +31,7 @@ const CarteList = () => {
     const [dessertList, setDessertList] = useState([]);
     const getDessertList = async () => {
         try {
-            const response = await axios.get('https://127.0.0.1:8000/api/dishes/dessert');
+            const response = await axios.get('https://lessaveursdesavoie.fr.nf/api/dishes/dessert');
             setDessertList(response.data);
         } catch (error) {
             console.error(error);
