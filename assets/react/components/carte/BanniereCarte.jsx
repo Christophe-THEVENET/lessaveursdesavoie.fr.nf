@@ -1,26 +1,24 @@
 import React from 'react';
-import CarouselComponent from './CarouselComponent';
 
-const Favorite = () => {
+const BanniereCarte = () => {
     return (
-        <section className="favorite">
-            <div className="favorite__name">
-                <div className="favorite__name__icon">
-                    <h2 className="favorite__name__title">Tendances</h2>
-                    <svg
-                        version="1.0"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="30pt"
-                        viewBox="0 0 1280.000000 893.000000"
-                        preserveAspectRatio="xMidYMid meet"
+        <section className="banniereMenu">
+            <div className="banniereMenu__name__icon">
+                <h2 className="banniereMenu__name__icon--title">Carte</h2>
+                <svg
+                    version="1.0"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="60pt"
+                    viewBox="0 0 1280.000000 893.000000"
+                    preserveAspectRatio="xMidYMid meet"
+                >
+                    <g
+                        transform="translate(0.000000,893.000000) scale(0.100000,-0.100000)"
+                        fill="#b1849d"
+                        stroke="none"
                     >
-                        <g
-                            transform="translate(0.000000,893.000000) scale(0.100000,-0.100000)"
-                            fill="#523c48"
-                            stroke="none"
-                        >
-                            <path
-                                d="M8210 8886 c-121 -56 -217 -112 -247 -145 -41 -47 -187 -241 -413
+                        <path
+                            d="M8210 8886 c-121 -56 -217 -112 -247 -145 -41 -47 -187 -241 -413
 -551 -251 -345 -345 -467 -476 -619 -92 -107 -418 -420 -573 -550 -47 -39
 -100 -92 -119 -118 -110 -154 -267 -457 -537 -1034 -159 -340 -165 -356 -165
 -417 l0 -63 -82 3 c-68 2 -83 6 -81 18 2 9 -17 36 -42 60 -27 27 -45 53 -45
@@ -85,21 +83,19 @@ c237 32 398 49 577 60 123 8 200 19 315 45 83 20 169 37 191 38 29 2 41 8 43
 124 -303 221 -700 419 -1399 867 -1676 1073 -179 133 -359 323 -576 611 -138
 183 -308 397 -475 598 -114 137 -152 175 -248 247 -61 47 -192 149 -290 228
 -99 79 -211 163 -249 189 -133 85 -310 154 -395 152 -16 0 -72 -20 -124 -43z"
-                            />
-                        </g>
-                    </svg>
-                </div>
+                        />
+                    </g>
+                </svg>
             </div>
-            <div className="favorite__carousel">
-                <CarouselComponent />
-            </div>
-            <div>
-                <a href="#">
-                    <button className="btn-booking-primary">Réserver</button>
-                </a>
-            </div>
+            <h4 className="banniereMenu__jingle">
+                La carte Des Saveurs De Savoie offre une grande variété de plats, avec une forte
+                influence des produits locaux et de saison, ainsi que des recettes traditionnelles
+                de la région. On y trouve des spécialités fromagères, des plats à base de viande
+                ainsi que des plats de saison. Les desserts sont principalement des tartes aux
+                fruits et flans.
+            </h4>
         </section>
     );
 };
 
-export default Favorite;
+export default BanniereCarte;

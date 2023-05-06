@@ -63,7 +63,6 @@ const Header = () => {
         setCurrentUrl(window.location.href);
     }, []);
 
-
     return (
         <header
             ref={menuRef}
@@ -303,7 +302,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                     </g>
                                 </svg>
                                 <li onClick={toggleModal}>
-                                    <a href="#">Carte</a>
+                                    <a href="/carte">Carte</a>
                                 </li>
                                 <svg
                                     className="separation"
@@ -385,7 +384,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                 {!currentUser ? (
                                     <>
                                         <li onClick={toggleModal}>
-                                            <a href="/login">Se connecter</a>
+                                            <a href="/login">Connexion</a>
                                         </li>
                                         <svg
                                             className="separation"
@@ -465,12 +464,12 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                             </g>
                                         </svg>
                                         <li onClick={toggleModal}>
-                                            <a href="/register">S'inscrire</a>
+                                            <a href="/register">Inscription</a>
                                         </li>
                                     </>
                                 ) : (
                                     <li onClick={toggleModal}>
-                                        <a href="/logout">Se déconnecter</a>
+                                        <a href="/logout">Déconnexion</a>
                                     </li>
                                 )}
 
@@ -617,11 +616,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                         </>
                     ) : null}
                 </div>
-            ) : (
-                <div>
-                    <a href="login">Se connecter</a>
-                </div>
-            )}
+            ) : null}
 
             {/*  ---------------------- bouton réserver ----------------*/}
             <div>

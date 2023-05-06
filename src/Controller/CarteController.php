@@ -6,12 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MenusController extends AbstractController
+class CarteController extends AbstractController
 {
-    #[Route('/menus', name: 'app_menus')]
+    #[Route('/carte', name: 'app_carte')]
     public function index(): Response
     {
-        return $this->render('menus/index.html.twig', [
+        return $this->render('carte/index.html.twig', [
         ]);
     }
 }
