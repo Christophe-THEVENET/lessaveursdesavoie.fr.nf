@@ -18,7 +18,7 @@ const Item = ({ dish }) => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: '#523c48',
+                backgroundColor: '#babcc9',
                 position: 'relative',
             }}
         >
@@ -42,7 +42,7 @@ const Item = ({ dish }) => {
                     style={{
                         position: 'absolute',
                         fontFamily: 'Great Vibes',
-                        color: '#dc8cba',
+                        color: '#ff679a',
                         fontSize: '6rem',
                         transition: 'all 0.5s ease',
                     }}

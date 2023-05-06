@@ -1,5 +1,5 @@
 .favorite {
-    background-color: $colorPrimary;
+    background-color: $colorLightGrey;
     min-height: 100vh;
     display: flex;
     justify-content: space-around;
@@ -17,7 +17,7 @@
         }
 
         &__title {
-            @include title($colorWhite, $colorSecondary);
+            @include title($colorDarkGrey, $colorPrimary);
             margin-right: 2rem;
         }
     }
