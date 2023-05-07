@@ -44,14 +44,18 @@ const CarteList = () => {
         getDessertList();
     }, []);
 
-
     return (
         <section className="carte">
             {/* ------------------------------ entrées ------------------------- */}
             <article className="entries carte__block">
                 <div className="entries__text carte__block__text">
-                    <h2>Entrées</h2>
+                    <h2 data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+                        Entrées
+                    </h2>
                     <svg
+                        data-aos="fade-up"
+                        data-aos-anchor=".carte__block__text"
+                        data-aos-anchor-placement="center-bottom"
                         className="menuItem__classique__text--separation--title"
                         version="1.0"
                         xmlns="http://www.w3.org/2000/svg"
@@ -130,7 +134,11 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
 
                     <ul>
                         {entryList.map((entry) => (
-                            <li key={entry.id}>
+                            <li
+                                key={entry.id}
+                                data-aos="fade-up"
+                                data-aos-anchor-placement="center-bottom"
+                            >
                                 {entry.name} : <span>{entry.price}€</span>
                             </li>
                         ))}
@@ -163,8 +171,13 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                     }}
                 ></div>
                 <div className="dishes__text carte__block__text">
-                    <h2>Plats</h2>
+                    <h2 data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+                        Plats
+                    </h2>
                     <svg
+                        data-aos="fade-up"
+                        data-aos-anchor=".carte__block__text"
+                        data-aos-anchor-placement="center-bottom"
                         className="menuItem__classique__text--separation--title"
                         version="1.0"
                         xmlns="http://www.w3.org/2000/svg"
@@ -243,7 +256,11 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
 
                     <ul>
                         {dishList.map((dish) => (
-                            <li key={dish.id}>
+                            <li
+                                key={dish.id}
+                                data-aos="fade-up"
+                                data-aos-anchor-placement="center-bottom"
+                            >
                                 {dish.name} : <span>{dish.price}€</span>
                             </li>
                         ))}
@@ -251,11 +268,16 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                 </div>
             </article>
 
-              {/* ------------------------------ desserts ------------------------- */}
-              <article className="desserts carte__block">
+            {/* ------------------------------ desserts ------------------------- */}
+            <article className="desserts carte__block">
                 <div className="desserts__text carte__block__text">
-                    <h2>Desserts</h2>
+                    <h2 data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+                        Desserts
+                    </h2>
                     <svg
+                        data-aos="fade-up"
+                        data-aos-anchor=".carte__block__text"
+                        data-aos-anchor-placement="center-bottom"
                         className="menuItem__classique__text--separation--title"
                         version="1.0"
                         xmlns="http://www.w3.org/2000/svg"
@@ -334,7 +356,11 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
 
                     <ul>
                         {dessertList.map((dessert) => (
-                            <li key={dessert.id}>
+                            <li
+                                key={dessert.id}
+                                data-aos="fade-up"
+                                data-aos-anchor-placement="center-bottom"
+                            >
                                 {dessert.name} : <span>{dessert.price}€</span>
                             </li>
                         ))}

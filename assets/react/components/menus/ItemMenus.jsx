@@ -22,12 +22,17 @@ const ItemMenus = ({ menu, index }) => {
                         }
                     >
                         <h2
+                            data-aos="fade-up"
+                            data-aos-anchor-placement="center-bottom"
                             className="menuItem__classique__text--title"
                             style={index % 2 === 0 ? { color: '#ffffff' } : { color: '#0e0008' }}
                         >
                             {menu.name}
                         </h2>
                         <svg
+                            data-aos="fade-up"
+                            data-aos-anchor=".menuItem__classique__text--dish"
+                            data-aos-anchor-placement="center-bottom"
                             className="menuItem__classique__text--separation--title"
                             version="1.0"
                             xmlns="http://www.w3.org/2000/svg"
@@ -104,12 +109,17 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                             </g>
                         </svg>
                         <div
+                            data-aos="fade-up"
+                            data-aos-anchor-placement="center-bottom"
                             className="menuItem__classique__text--dish"
                             style={index % 2 === 0 ? { color: '#f0f2ff' } : { color: '#0e0008' }}
                         >
                             {menu.entry}
                         </div>
                         <svg
+                            data-aos="fade-up"
+                            data-aos-anchor=".menuItem__classique__text--dish"
+                            data-aos-anchor-placement="center-bottom"
                             className="menuItem__classique__text--separation"
                             version="1.0"
                             xmlns="http://www.w3.org/2000/svg"
@@ -186,6 +196,8 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                             </g>
                         </svg>
                         <div
+                            data-aos="fade-up"
+                            data-aos-anchor-placement="center-bottom"
                             className="menuItem__classique__text--dish"
                             style={index % 2 === 0 ? { color: '#f0f2ff' } : { color: '#0e0008' }}
                         >
@@ -193,6 +205,9 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                         </div>
 
                         <svg
+                            data-aos="fade-up"
+                            data-aos-anchor=".menuItem__classique__text--dish"
+                            data-aos-anchor-placement="center-bottom"
                             className="menuItem__classique__text--separation"
                             version="1.0"
                             xmlns="http://www.w3.org/2000/svg"
@@ -269,12 +284,17 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                             </g>
                         </svg>
                         <div
+                            data-aos="fade-up"
+                            data-aos-anchor-placement="center-bottom"
                             className="menuItem__classique__text--dish"
                             style={index % 2 === 0 ? { color: '#f0f2ff' } : { color: '#0e0008' }}
                         >
                             {menu.dessert}
                         </div>
                         <svg
+                            data-aos="fade-up"
+                            data-aos-anchor=".menuItem__classique__text--dish"
+                            data-aos-anchor-placement="center-bottom"
                             className="menuItem__classique__text--separation"
                             version="1.0"
                             xmlns="http://www.w3.org/2000/svg"
@@ -351,12 +371,19 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                             </g>
                         </svg>
                         <div
+                            data-aos="fade-up"
+                            data-aos-anchor-placement="center-bottom"
                             className="menuItem__classique__text--dish"
                             style={index % 2 === 0 ? { color: '#f0f2ff' } : { color: '#0e0008' }}
                         >
-                            Prix: <span
-                             style={index % 2 === 0 ? { color: '#b1849d' } : { color: '#794762' }}
-                            >{menu.price}€</span>
+                            Prix:{' '}
+                            <span
+                                style={
+                                    index % 2 === 0 ? { color: '#b1849d' } : { color: '#794762' }
+                                }
+                            >
+                                {menu.price}€
+                            </span>
                         </div>
                     </div>
 
@@ -374,7 +401,11 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                 </div>
             ) : (
                 // ---------------menu avec les formules ----------------
-                <div className="menuItem__formula">
+                <div
+                    className="menuItem__formula"
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="bottom-bottom"
+                >
                     <h2 className="menuItem__formula__title">{menu.name}</h2>
                     {menu.formulas.map((formula) => (
                         <div key={formula.id} className="menuItem__formula__formul">

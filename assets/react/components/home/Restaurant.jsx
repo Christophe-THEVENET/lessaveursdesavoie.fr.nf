@@ -6,15 +6,24 @@ const Restaurant = () => {
         <section className="restaurant">
             <div className="restaurant__name">
                 <div className="restaurant__name__icon">
-                    <h2 className="restaurant__name__title">Restaurant</h2>
+                    <h2
+                        className="restaurant__name__title"
+                        data-aos="fade-up"
+                        data-aos-anchor=".restaurant__name__description"
+                        data-aos-anchor-placement="center-bottom"
+                    >
+                        Restaurant
+                    </h2>
                     <svg
+                        data-aos="fade-up"
+                        data-aos-anchor=".restaurant__name__description"
+                        data-aos-anchor-placement="center-bottom"
                         version="1.0"
                         xmlns="http://www.w3.org/2000/svg"
                         width="30pt"
                         viewBox="0 0 1280.000000 893.000000"
                         preserveAspectRatio="xMidYMid meet"
                     >
-                      
                         <g
                             transform="translate(0.000000,893.000000) scale(0.100000,-0.100000)"
                             fill="#523c48"
@@ -90,7 +99,7 @@ c237 32 398 49 577 60 123 8 200 19 315 45 83 20 169 37 191 38 29 2 41 8 43
                         </g>
                     </svg>
                 </div>
-                <p className="restaurant__name__description">
+                <p className="restaurant__name__description" data-aos="fade-up">
                     Le restaurant est situé en Savoie, une région des Alpes françaises connue pour
                     sa beauté naturelle époustouflante et ses riches traditions culinaires. Le
                     restaurant est spécialisé dans la cuisine traditionnelle savoyarde, qui propose
@@ -99,7 +108,12 @@ c237 32 398 49 577 60 123 8 200 19 315 45 83 20 169 37 191 38 29 2 41 8 43
                 </p>
             </div>
             <div className="restaurant__image">
-                <img src={imgRestaurant} alt="photo de table du restaurant" />
+                <img
+                    src={imgRestaurant}
+                    alt="photo de table du restaurant"
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="center-bottom"
+                />
             </div>
         </section>
     );
