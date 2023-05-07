@@ -6,8 +6,18 @@ const Producter = () => {
         <section className="producter">
             <div className="producter__name">
                 <div className="producter__name__icon">
-                    <h2 className="producter__name__title">Producteurs</h2>
+                    <h2
+                        className="producter__name__title"
+                        data-aos="fade-up"
+                        data-aos-anchor=".producter__name__description"
+                        data-aos-anchor-placement="center-bottom"
+                    >
+                        Producteurs
+                    </h2>
                     <svg
+                        data-aos="fade-up"
+                        data-aos-anchor=".producter__name__description"
+                        data-aos-anchor-placement="center-bottom"
                         version="1.0"
                         xmlns="http://www.w3.org/2000/svg"
                         width="30pt"
@@ -89,7 +99,7 @@ c237 32 398 49 577 60 123 8 200 19 315 45 83 20 169 37 191 38 29 2 41 8 43
                         </g>
                     </svg>
                 </div>
-                <p className="producter__name__description">
+                <p className="producter__name__description" data-aos="fade-up">
                     La Savoie est une région alpine qui regorge de produits frais et de qualité,
                     tels que les fromages, les viandes, les fruits et légumes et les vins. Les
                     producteurs locaux de la région travaillent dur pour cultiver, élever et
@@ -98,7 +108,12 @@ c237 32 398 49 577 60 123 8 200 19 315 45 83 20 169 37 191 38 29 2 41 8 43
                 </p>
             </div>
             <div className="producter__image">
-                <img src={imgProducter} alt="photo de table du producter" />
+                <img
+                    src={imgProducter}
+                    alt="photo de table du producter"
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="center-bottom"
+                />
             </div>
         </section>
     );

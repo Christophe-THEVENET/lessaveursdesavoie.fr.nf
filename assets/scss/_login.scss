@@ -37,6 +37,7 @@
             border: 1px solid white;
             transition: all 0.3s ease-in-out;
             border-radius: 0;
+            width: 10rem;
 
             &:hover {
                 background-color: $colorFlashy;
@@ -58,6 +59,16 @@
     }
 }
 
+.register {
+    margin-top: 4rem;
+    color: $colorSecondary;
+}
+.register:hover {
+    color: $colorFlashy;
+    transition: all 0.3s ease-in-out;
+}
+
+// ---------------------- RESPONSIVE ---------------------- //
 @media screen and (max-width: 360px) {
     .input-block {
         width: 22rem;

@@ -142,7 +142,14 @@ const Header = () => {
                             <ul>
                                 <div></div>
                                 <li onClick={toggleModal}>
-                                    <a href="/">Acceuil</a>
+                                    <a
+                                        href="/"
+                                        class="animsition-link"
+                                        data-animsition-out-class="fade-out-right"
+                                        data-animsition-out-duration="2000"
+                                    >
+                                        Acceuil
+                                    </a>
                                 </li>
                                 <svg
                                     className="separation"
@@ -222,7 +229,14 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                     </g>
                                 </svg>
                                 <li onClick={toggleModal}>
-                                    <a href="/menus">Menus</a>
+                                    <a
+                                        href="/menus"
+                                        class="animsition-link"
+                                        data-animsition-out-class="fade-out-right"
+                                        data-animsition-out-duration="2000"
+                                    >
+                                        Menus
+                                    </a>
                                 </li>
                                 <svg
                                     className="separation"
@@ -302,7 +316,14 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                     </g>
                                 </svg>
                                 <li onClick={toggleModal}>
-                                    <a href="/carte">Carte</a>
+                                    <a
+                                        href="/carte"
+                                        class="animsition-link"
+                                        data-animsition-out-class="fade-out-right"
+                                        data-animsition-out-duration="2000"
+                                    >
+                                        Carte
+                                    </a>
                                 </li>
                                 <svg
                                     className="separation"
