@@ -5,12 +5,27 @@ const Chef = () => {
     return (
         <section className="chef">
             <div className="chef__image">
-                <img src={imgChef} alt="photo de table du restaurant" />
+                <img
+                    src={imgChef}
+                    alt="photo de table du restaurant"
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="center-bottom"
+                />
             </div>
             <div className="chef__name">
                 <div className="chef__name__icon">
-                    <h2 className="chef__name__title">Chef de cuisine</h2>
+                    <h2
+                        className="chef__name__title"
+                        data-aos="fade-up"
+                        data-aos-anchor=".chef__name__description"
+                        data-aos-anchor-placement="center-bottom"
+                    >
+                        Chef de cuisine
+                    </h2>
                     <svg
+                        data-aos="fade-up"
+                        data-aos-anchor=".chef__name__description"
+                        data-aos-anchor-placement="center-bottom"
                         version="1.0"
                         xmlns="http://www.w3.org/2000/svg"
                         width="30pt"
@@ -92,7 +107,7 @@ c237 32 398 49 577 60 123 8 200 19 315 45 83 20 169 37 191 38 29 2 41 8 43
                         </g>
                     </svg>
                 </div>
-                <p className="chef__name__description">
+                <p className="chef__name__description" data-aos="fade-up">
                     Né et élevé en Savoie, Michel Campin a passé de nombreuses années à apprendre
                     les techniques culinaires de la région auprès des meilleurs chefs locaux. Il est
                     devenu un expert de la cuisine savoyarde, connue pour ses plats copieux et

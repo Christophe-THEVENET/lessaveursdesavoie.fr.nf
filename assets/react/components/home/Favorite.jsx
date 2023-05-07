@@ -6,8 +6,18 @@ const Favorite = () => {
         <section className="favorite">
             <div className="favorite__name">
                 <div className="favorite__name__icon">
-                    <h2 className="favorite__name__title">Tendances</h2>
+                    <h2
+                        className="favorite__name__title"
+                        data-aos="fade-up"
+                        data-aos-anchor=".favorite__carousel"
+                        data-aos-anchor-placement="top-bottom"
+                    >
+                        Tendances
+                    </h2>
                     <svg
+                        data-aos="fade-up"
+                        data-aos-anchor=".favorite__carousel"
+                        data-aos-anchor-placement="center-bottom"
                         version="1.0"
                         xmlns="http://www.w3.org/2000/svg"
                         width="30pt"
@@ -90,7 +100,11 @@ c237 32 398 49 577 60 123 8 200 19 315 45 83 20 169 37 191 38 29 2 41 8 43
                     </svg>
                 </div>
             </div>
-            <div className="favorite__carousel">
+            <div
+                className="favorite__carousel"
+                data-aos="fade-up"
+                data-aos-anchor-placement="center-bottom"
+            >
                 <CarouselComponent />
             </div>
             <div>

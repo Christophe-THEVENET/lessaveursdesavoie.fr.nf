@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Les Saveurs De Savoie{% endblock %}</title>
     <link rel="shortcut icon" href="{{ asset('../assets/icon/favicon.png') }}">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     {{ encore_entry_link_tags('styles') }}
 
     {% block stylesheets %}
@@ -35,7 +36,10 @@
     {% endblock %}
     {{ encore_entry_script_tags('app') }}
 
-
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>
