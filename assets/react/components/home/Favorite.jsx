@@ -17,7 +17,7 @@ const Favorite = () => {
                     <svg
                         data-aos="fade-up"
                         data-aos-anchor=".favorite__carousel"
-                        data-aos-anchor-placement="center-bottom"
+                        data-aos-anchor-placement="top-bottom"
                         version="1.0"
                         xmlns="http://www.w3.org/2000/svg"
                         width="30pt"
