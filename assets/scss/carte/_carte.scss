@@ -70,3 +70,21 @@
 .banniereCarte {
     background-image: url('../../images/banniere-carte-blur.jpg');
 }
+
+
+@media screen and (max-width: 768px) {
+    .carte__block {
+        h2 {
+            font-size: 4rem;
+        }
+
+        svg {
+            width: 80pt;
+        }
+
+
+        &__image {
+            display: none;
+        }
+    }
+}
