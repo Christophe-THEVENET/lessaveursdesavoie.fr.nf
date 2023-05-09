@@ -68,5 +68,9 @@
     .favorite {
         padding-top: 8rem;
         flex-direction: column;
+
+        &__name__title {
+            font-size: 4rem;
+        }
     }
 }
