@@ -19,9 +19,6 @@
         }
     }
 
-
-
-
     &__jingle {
         font-family: $textFont;
         font-size: 1.4rem;
@@ -29,7 +26,21 @@
         text-align: justify;
         width: 50%;
     }
+}
 
+@media screen and (max-width: 768px) {
+    .banniereMenu__name__icon {
+        &--title {
+            font-size: 6rem;
+        }
 
+        svg {
+            width: 40pt;
+        }
+    }
 
+    .banniereMenu__jingle {
+        width: 100%;
+        padding: 10%;
+    }
 }

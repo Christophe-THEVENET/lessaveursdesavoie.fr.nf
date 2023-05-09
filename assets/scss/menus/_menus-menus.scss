@@ -89,10 +89,23 @@
 
         &__text {
             padding: 6rem 0;
+
+
+            &--title {
+                font-size: 4rem;
+            }
         }
     }
 
     .menusItem__classique__image {
         display: none;
+    }
+
+
+    .menuItem__formula {
+
+        &__title {
+            font-size: 4rem;
+        }
     }
 }
