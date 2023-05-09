@@ -29,9 +29,6 @@ const ItemMenus = ({ menu, index }) => {
                             {menu.name}
                         </h2>
                         <svg
-                            data-aos="fade-up"
-                            data-aos-anchor=".menuItem__classique__text--dish"
-                            data-aos-anchor-placement="bottom-bottom"
                             className="menuItem__classique__text--separation--title"
                             version="1.0"
                             xmlns="http://www.w3.org/2000/svg"
@@ -116,9 +113,6 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                             {menu.entry}
                         </div>
                         <svg
-                            data-aos="fade-up"
-                            data-aos-anchor=".menuItem__classique__text"
-                            data-aos-anchor-placement="center-bottom"
                             className="menuItem__classique__text--separation"
                             version="1.0"
                             xmlns="http://www.w3.org/2000/svg"
@@ -203,9 +197,6 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                             {menu.dish}
                         </div>
                         <svg
-                            data-aos="fade-up"
-                            data-aos-anchor=".menuItem__classique__text"
-                            data-aos-anchor-placement="center-bottom"
                             className="menuItem__classique__text--separation"
                             version="1.0"
                             xmlns="http://www.w3.org/2000/svg"
@@ -290,9 +281,6 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                             {menu.dessert}
                         </div>
                         <svg
-                            data-aos="fade-up"
-                            data-aos-anchor=".menuItem__classique__text"
-                            data-aos-anchor-placement="center-bottom"
                             className="menuItem__classique__text--separation"
                             version="1.0"
                             xmlns="http://www.w3.org/2000/svg"
