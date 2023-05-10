@@ -58,6 +58,15 @@
 
 // ================= MEDIA QUERY (MOBILE)    <= 500px =========================
 @media screen and (max-width: 500px) {
+
+    .favorite {
+        height: 50vh;
+    }
+
+
+
+
+
     .dish-image {
         height: 20rem !important;
     }
@@ -66,11 +75,15 @@
 // ================= MEDIA QUERY (TABLETTE)    <= 889px =========================
 @media screen and (max-width: 889px) {
     .favorite {
-        padding-top: 8rem;
         flex-direction: column;
+        min-height: 70vh;
 
         &__name__title {
             font-size: 4rem;
         }
+    }
+
+    .dish-name-text-hover {
+        font-size: 1.4rem;
     }
 }
