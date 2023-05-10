@@ -47,7 +47,9 @@ const Item = ({ dish }) => {
                         color: '#ff679a',
                         fontSize: '6vmin',
                         transition: 'all 0.5s ease',
-                        wordWrap: 'break-word',
+                        wordBreak: 'break-word',
+                        textAlign: 'center',
+                        width: '60%',
                     }}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
