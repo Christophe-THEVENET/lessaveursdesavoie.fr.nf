@@ -619,31 +619,33 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                     />
                 </div>
             )}
-            {/*  ---------------------- bienvenue user ----------------*/}
-            {currentUser ? (
-                <div className="welcome">
-                    <p className="welcome__title">
-                        Bienvenu <span>{currentUser.name}</span>{' '}
-                    </p>
-                    <a href="logout">
-                        <LogoutIcon className="welcome__icon--logout" />
+            <div className='welcome__button'>
+                {/*  ---------------------- bienvenue user ----------------*/}
+                {currentUser ? (
+                    <div className="welcome">
+                        <p className="welcome__title">
+                            Bienvenu <span>{currentUser.name}</span>{' '}
+                        </p>
+                        <a href="logout">
+                            <LogoutIcon className="welcome__icon--logout" />
+                        </a>
+
+                        {admin.includes('ROLE_ADMIN') ? (
+                            <>
+                                <a href="/admin">
+                                    <EngineeringIcon className="welcome__icon--logout" />
+                                </a>
+                            </>
+                        ) : null}
+                    </div>
+                ) : null}
+
+                {/*  ---------------------- bouton réserver ----------------*/}
+                <div>
+                    <a href="#">
+                        <button className="btn-booking">Réserver</button>
                     </a>
-
-                    {admin.includes('ROLE_ADMIN') ? (
-                        <>
-                            <a href="/admin">
-                                <EngineeringIcon className="welcome__icon--logout" />
-                            </a>
-                        </>
-                    ) : null}
                 </div>
-            ) : null}
-
-            {/*  ---------------------- bouton réserver ----------------*/}
-            <div>
-                <a href="#">
-                    <button className="btn-booking">Réserver</button>
-                </a>
             </div>
         </header>
     );
