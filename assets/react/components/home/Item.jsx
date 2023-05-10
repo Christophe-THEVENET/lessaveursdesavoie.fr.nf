@@ -37,14 +37,17 @@ const Item = ({ dish }) => {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             />
+
             {isHovering ? (
                 <h2
+                    className="dish-name-text-hover"
                     style={{
                         position: 'absolute',
                         fontFamily: 'Great Vibes',
                         color: '#ff679a',
-                        fontSize: '6rem',
+                        fontSize: '6vmin',
                         transition: 'all 0.5s ease',
+                        wordWrap: 'break-word',
                     }}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}

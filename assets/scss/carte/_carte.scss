@@ -1,5 +1,6 @@
 .carte {
     width: 100%;
+    
 
     article {
         min-height: 100vh;
@@ -12,6 +13,7 @@
             @extend %flex-centered;
             flex-direction: column;
             flex: 1;
+            padding: 3rem 0rem;
 
             h2 {
                 font-family: $titleFont;
@@ -72,7 +74,7 @@
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 889px) {
     .carte__block {
         h2 {
             font-size: 4rem;

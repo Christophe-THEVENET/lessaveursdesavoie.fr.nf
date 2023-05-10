@@ -46,6 +46,7 @@
         flex-direction: column;
         justify-content: flex-end;
         width: 100%;
+        min-height: 60vh;
 
         &__name {
             width: 100%;
@@ -69,7 +70,8 @@
         }
 
         img {
-            width: 80%;
+            height: 30rem;
+            width: 70%;
         }
     }
 }
