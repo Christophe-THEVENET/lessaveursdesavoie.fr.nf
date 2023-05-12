@@ -115,6 +115,11 @@ footer {
     @include footerText;
     @extend %flex-centered;
     margin-top: 5rem;
+
+    &:hover {
+        color: $colorFlashy;
+        transition: 0.3s ease-in-out;
+    }
 }
 
 // ================= MEDIA QUERY (TABLETTE)  <= 889px =========================
