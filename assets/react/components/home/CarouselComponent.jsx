@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Carousel from 'react-material-ui-carousel';
 import Item from './Item';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 function CarouselComponent() {
     // requête axios pour récupérer les plats favoris
     const [favoriteDishes, setFavoriteDishes] = useState([]);

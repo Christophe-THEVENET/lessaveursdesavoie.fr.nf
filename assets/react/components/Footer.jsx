@@ -25,7 +25,6 @@ const Footer = () => {
         getOpeningHours();
     }, []);
 
-
     return (
         <footer>
             <div className="footer">
@@ -34,7 +33,6 @@ const Footer = () => {
                     {openingHoursList.map((openingHour) => {
                         return <Day openingHour={openingHour} key={openingHour.id} />;
                     })}
-                 
                 </div>
                 <div className="footer__contact">
                     <h2>Contact</h2>
@@ -95,7 +93,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="mentions">
-                <a href="#">mentions légales</a>
+                <a href="https://127.0.0.1:8000/mentions">mentions légales</a>
             </div>
         </footer>
     );
