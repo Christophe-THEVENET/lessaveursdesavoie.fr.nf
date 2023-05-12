@@ -1,0 +1,31 @@
+.mentions__block {
+    min-height: 100vh;
+    padding: 5rem;
+    text-align: justify;
+    justify-content: space-around;
+    align-items: flex-start !important;
+
+    max-width: 100rem;
+
+    h1 {
+        align-self: center;
+    }
+
+    h5 {
+        align-self: center;
+
+        margin-bottom: 5rem;
+        font-family: $textFont;
+    }
+
+    p {
+        font-family: $textFont;
+        font-size: 1.2rem;
+    }
+
+    h3 {
+        font-family: $textFont;
+        font-size: 1.6rem;
+        color: $colorFlashy;
+    }
+}
