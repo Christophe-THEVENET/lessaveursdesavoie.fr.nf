@@ -6,6 +6,7 @@ use DateTime;
 use App\Repository\DishRepository;
 use App\Repository\MealRepository;
 use App\Repository\BookingRepository;
+use App\Repository\RestaurantRepository;
 use App\Repository\ClosingDateRepository;
 use App\Repository\OpeningHoursRepository;
 use Symfony\Component\HttpFoundation\Response;
@@ -90,14 +91,14 @@ class ApiController extends AbstractController
 
 
 
-    // ------------------- API GET BOOKINGS BY DATE ------------------- //
-    #[Route('/api/bookings/{date}', name: 'api_bookings_by_date')]
+    // ------------------- API GET BOOKINGS BY DATE AND LUNCH ------------------- //
+    #[Route('/api/bookings/lunch/{date}', name: 'api_bookings_lunch_by_date')]
     // !!!!!!!!!!!!!!!!! peut être plus stricte avec le format de la date !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     /* #[ParamConverter(options: ['format' => 'dd-mm-yyyy'])] */
-    public function getApiBookingsByDate(BookingRepository $bookingRepository, SerializerInterface $serializer, DateTime $date): JsonResponse
+    public function getApiBookingsLunchByDate(BookingRepository $bookingRepository, SerializerInterface $serializer, DateTime $date): JsonResponse
     {
-        $bookingsByDateList = $bookingRepository->findByDate($date);
+        $bookingsByDateList = $bookingRepository->findByLunchDate($date);
 
         if (!$bookingsByDateList) {
             return new JsonResponse(null, Response::HTTP_NOT_FOUND);
@@ -105,5 +106,36 @@ class ApiController extends AbstractController
         $bookingsByDateListSerialized = $serializer->serialize($bookingsByDateList, 'json', ['groups' => 'bookings']);
 
         return new JsonResponse($bookingsByDateListSerialized, Response::HTTP_OK, [], true);
+    }
+
+    // ------------------- API GET BOOKINGS BY DATE AND DINNER------------------- //
+    #[Route('/api/bookings/dinner/{date}', name: 'api_bookings_dinner_by_date')]
+    // !!!!!!!!!!!!!!!!! peut être plus stricte avec le format de la date !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    /* #[ParamConverter(options: ['format' => 'dd-mm-yyyy'])] */
+    public function getApiBookingsDinnerByDate(BookingRepository $bookingRepository, SerializerInterface $serializer, DateTime $date): JsonResponse
+    {
+        $bookingsByDateList = $bookingRepository->findByDinnerDate($date);
+
+        if (!$bookingsByDateList) {
+            return new JsonResponse(null, Response::HTTP_NOT_FOUND);
+        }
+        $bookingsByDateListSerialized = $serializer->serialize($bookingsByDateList, 'json', ['groups' => 'bookings']);
+
+        return new JsonResponse($bookingsByDateListSerialized, Response::HTTP_OK, [], true);
+    }
+
+    // ------------------- API GET CAPACITY ------------------- //
+    #[Route('/api/capacity', name: 'api_capacity')]
+    public function getCapacity(RestaurantRepository $restaurantRepository, SerializerInterface $serializer): JsonResponse
+    {
+        $capacity = $restaurantRepository->findCapacity();
+
+        if (!$capacity) {
+            return new JsonResponse(null, Response::HTTP_NOT_FOUND);
+        }
+         $capacitySerialized = $serializer->serialize($capacity, 'json', ['groups' => 'capacity']); 
+
+        return new JsonResponse($capacitySerialized, Response::HTTP_OK, [], true);
     }
 }

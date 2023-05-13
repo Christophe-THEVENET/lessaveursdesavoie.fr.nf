@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\RestaurantRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\RestaurantRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: RestaurantRepository::class)]
 class Restaurant
@@ -22,6 +23,7 @@ class Restaurant
     private ?string $address = null;
 
     #[ORM\Column]
+    #[Groups(['capacity'])]
     private ?int $service_capacity = null;
 
     #[ORM\OneToMany(mappedBy: 'restaurant', targetEntity: Booking::class)]
