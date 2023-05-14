@@ -6,37 +6,110 @@
 .booking__title__block {
     @extend %flex-centered;
     flex-direction: column;
-    margin-bottom: 8rem;
+    position: absolute;
+    top: 3rem;
 
     &--title {
         @include title($colorWhite, $colorPrimary);
-        margin-bottom: -3rem;
+        margin-bottom: -2rem;
     }
 }
 
+.booking__hours {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 50%;
+    width: 80%;
 
+    h3 {
+        font-family: $textFont;
+        color: $colorSecondary;
+        font-weight: bold;
+    }
 
-.hours__block {
+    &__block {
+        @extend %flex-centered;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 4rem;
 
-    &__hour {
-        padding: 2rem;
-        background-color: $colorPrimary;
-        color: $colorWhite;
-        z-index: 100;
+        h5 {
+            font-family: $textFont;
+            font-size: 1.4rem;
+        }
+
+        &__demi {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            padding: 2rem;
+
+            &__hour {
+                button {
+                    padding: 0.4rem 0.8rem;
+                    border: none;
+                    background-color: $colorFird;
+                    color: $colorWhite;
+                    transition: all 0.2s ease-in-out;
+                    border-radius: 5px;
+
+                    &:hover {
+                        background-color: $colorFlashy;
+                        transition: all 0.2s ease-in-out;
+                    }
+                }
+            }
+        }
     }
 }
 
+.places {
+    color: $colorSecondary;
+    font-family: $textFont;
+    font-size: 1.2rem;
+}
 
+// ----------- input nombre de personnes ------------
 
+.booking__hours__block__demi .MuiFormControl-root label {
+    color: $colorSecondary;
+}
 
+.booking__hours__block__demi .MuiSvgIcon-root path {
+    color: $colorSecondary;
+}
 
+.css-1ka5eyc-MuiPaper-root-MuiMenu-paper-MuiPopover-paper {
+    top: 25% !important;
+    height: 50rem;
+}
 
+.css-6hp17o-MuiList-root-MuiMenu-list {
+    color: $colorWhite;
+    background-color: $colorPrimary;
+}
 
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:focus {
+    color: $colorWhite;
+}
 
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:defined {
+    color: $colorWhite;
+    font-size: 1.4rem;
+}
 
+// ----------- input allergies ------------
 
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input:focus {
+    color: $colorWhite;
+}
 
-
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input:defined {
+    color: $colorWhite;
+    font-size: 1.4rem;
+}
 
 // ---------------------------- calendrier ----------------------------
 .react-calendar {
@@ -163,7 +236,6 @@
 }
 .react-calendar__month-view__weekdays__weekday abbr {
     text-decoration: none;
-   
 }
 .react-calendar__month-view__weekNumbers .react-calendar__tile {
     display: flex;
@@ -175,7 +247,6 @@
 .react-calendar__month-view__days__day--neighboringMonth {
     color: #b3b3b3;
 }
-
 
 .react-calendar__year-view .react-calendar__tile,
 .react-calendar__decade-view .react-calendar__tile,
