@@ -1,24 +1,25 @@
 import React from 'react';
+import { format, subHours } from 'date-fns';
+import { fr } from 'date-fns/locale';
 
 const Day = ({ openingHour }) => {
-    // formater la date
+    // formate date avec date-fns
     const formatDate = (date) => {
-        const hours = new Date(date).getHours() - 1;
-        const minute = new Date(date).getMinutes();
+        const hours = format(subHours(new Date(date), 1), 'HH', { locale: fr });
+        const minute = format(new Date(date), 'mm');
 
         return `${hours}:${minute}`;
     };
 
     return (
         <div key={openingHour.id} className="footer__horaire__block">
-            
             {/* ------------- jour ------------- */}
             <div className="footer__horaire__block--day">
                 <span className="footer__horaire__block--day-span">{openingHour.day}: </span>
             </div>
             {/* ------------- horaire midi ------------- */}
             <div className="footer__horaire__block--lunch">
-                {formatDate(openingHour.lunch_start_hour) == '0:0' ? (
+                {formatDate(openingHour.lunch_start_hour) == '00:00' ? (
                     <span className="footer__horaire__block--lunch-start-span">fermé </span>
                 ) : (
                     <span className="footer__horaire__block--lunch-start">
@@ -26,24 +27,24 @@ const Day = ({ openingHour }) => {
                     </span>
                 )}
 
-                {formatDate(openingHour.lunch_end_hour) == '0:0' ? (
+                {formatDate(openingHour.lunch_end_hour) == '00:00' ? (
                     ''
                 ) : (
-                    <span>{formatDate(openingHour.lunch_end_hour)}0</span>
+                    <span>{formatDate(openingHour.lunch_end_hour)}</span>
                 )}
             </div>
 
             {/* ------------- horaire soir ------------- */}
             <div className="footer__horaire__block--dinner">
-                {formatDate(openingHour.dinner_start_hour) == '0:0' ? (
+                {formatDate(openingHour.dinner_start_hour) == '00:00' ? (
                     'fermé'
                 ) : (
                     <span>{formatDate(openingHour.dinner_start_hour)} - </span>
                 )}
-                {formatDate(openingHour.dinner_end_hour) == '0:0' ? (
+                {formatDate(openingHour.dinner_end_hour) == '00:00' ? (
                     ''
                 ) : (
-                    <span>{formatDate(openingHour.dinner_end_hour)}0</span>
+                    <span>{formatDate(openingHour.dinner_end_hour)}</span>
                 )}
             </div>
         </div>

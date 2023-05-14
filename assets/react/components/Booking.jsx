@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import ReactCalendar from 'react-calendar';
 import axios from 'axios';
+import { add, format } from 'date-fns';
+import { fr } from 'date-fns/locale';
 
 const style = {
     position: 'absolute',
@@ -76,18 +78,11 @@ export default function Booking() {
         getCapacity();
     }, [justDate]);
 
-    console.log(justDate);
-    console.log(bookingLunchList);
-    console.log(bookingDinnerList);
-    console.log('capacité', capacity);
-
     // calcul du nombre de convives pour midi a la date selectionnée
     const nbLunchConvivesAtDate = bookingLunchList.reduce(
         (total, bookingLunch) => total + bookingLunch.nb_convives,
         0
     );
-
-    console.log('midi', nbLunchConvivesAtDate);
 
     // calcul du nombre de convives pour le soir a la date selectionnée
     const nbDinnerConvivesAtDate = bookingDinnerList.reduce(
@@ -95,8 +90,54 @@ export default function Booking() {
         0
     );
 
+    console.log(justDate);
+    /*  console.log(bookingLunchList);
+    console.log(bookingDinnerList);
+    console.log('capacité', capacity);
     console.log('midi', nbLunchConvivesAtDate);
-    console.log('soir', nbDinnerConvivesAtDate);
+    console.log('soir', nbDinnerConvivesAtDate); */
+
+    // ------------------ créneaux horaires -------------------
+
+    // horaires du midi revoie un tableau d'horaires de midi
+    const getTimesLunch = () => {
+        if (!justDate) return;
+
+        const beginningLunch = add(new Date(justDate.format()), { hours: 11, minutes: 30 });
+
+        console.log('beginningLunch', beginningLunch);
+        const endLunch = add(new Date(justDate), { hours: 15, minutes: 0 });
+        const intervalLunch = 30;
+
+        const timesLunch = [];
+        for (let i = beginningLunch; i <= endLunch; i = add(i, { minutes: intervalLunch })) {
+            timesLunch.push(i);
+        }
+
+        return timesLunch;
+    };
+
+    // horaires du soir renvoi un tableau d'horaires du soir
+    const getTimesDinner = () => {
+        if (!justDate) return;
+
+        const beginningDinner = add(new Date(justDate), { hours: 18, minutes: 30 });
+        const endDinner = add(new Date(justDate), { hours: 21, minutes: 0 });
+        const intervalDinner = 30;
+
+        const timesDinner = [];
+        for (let i = beginningDinner; i <= endDinner; i = add(i, { minutes: intervalDinner })) {
+            timesDinner.push(i);
+        }
+
+        return timesDinner;
+    };
+
+    const timesLunch = getTimesLunch();
+    const timesDinner = getTimesDinner();
+
+    console.log('timesLunch', timesLunch);
+    console.log('timesDinner', timesDinner);
 
     return (
         <div>
@@ -187,9 +228,43 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
 
                     {justDate ? (
                         <>
+                            <h3>Choisissez votre horaire pour le {justDate}</h3>
+                            {/*horaires du midi  */}
+                            <div className="hours__block">
+                                {/*  {timesLunch?.map((time) => (
+                                    <div key={`time-${i}`} className="hours__block__hour">
+                                        <button
+                                            type="button"
+                                            onClick={() =>
+                                                setDate((prev) => ({ ...prev, justTime: time }))
+                                            }
+                                        >
+                                            {format(time, 'kk:mm')}
+                                        </button>
+                                    </div>
+                                ))} */}
+                            </div>
+
                             <div>
                                 Il reste {capacity - nbLunchConvivesAtDate} places pour le midi
                             </div>
+
+                            {/*horaires du soir */}
+                            <div className="hours__block">
+                                {/*  {timesDinner?.map((time) => (
+                                    <div key={`time-${i}`} className="hours__block__hour">
+                                        <button
+                                            type="button"
+                                            onClick={() =>
+                                                setDate((prev) => ({ ...prev, justTime: time }))
+                                            }
+                                        >
+                                            {format(time, 'kk:mm')}
+                                        </button>
+                                    </div>
+                                ))} */}
+                            </div>
+
                             <div>
                                 Il reste {capacity - nbDinnerConvivesAtDate} places pour le soir
                             </div>
