@@ -4,11 +4,16 @@ import Modal from '@mui/material/Modal';
 import ReactCalendar from 'react-calendar';
 import axios from 'axios';
 import { add, format, subHours } from 'date-fns';
-import { fr } from 'date-fns/locale';
+import { fr, nb } from 'date-fns/locale';
 import Button from '@mui/material/Button';
-import SelectNumber from './SelectNumber';
 import TextField from '@mui/material/TextField';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import { toast } from 'react-toastify';
 
+// style de la modale de réservation
 const style = {
     position: 'absolute',
     top: '50%',
@@ -16,7 +21,7 @@ const style = {
     transform: 'translate(-50%, -50%)',
     width: '80vw',
     maxWidth: 800,
-    height: '80vh',
+    minHeight: '80vh',
     bgcolor: '#523c48',
     boxShadow: 24,
     p: 4,
@@ -31,15 +36,14 @@ export default function Booking() {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
     const [date, setDate] = useState({
         justDate: null,
         justTime: null,
     });
-
     const { justDate, justTime } = date;
 
-    // requête axios pour récupérer les réservations du midi par date
+    // requête réservations du midi par date
+    const [errorLunch, setErrorLunch] = useState(false);
     const [bookingLunchList, setBookingLunchList] = useState([]);
     const getbookingLunchList = async () => {
         try {
@@ -48,11 +52,14 @@ export default function Booking() {
             );
             setBookingLunchList(response.data);
         } catch (error) {
-            console.error('pas de réservations de midi pour cette date');
+            setErrorLunch(
+                'une erreur est survenue lors de la récupération des réservations. Veuillez réeessayer ultérieurement'
+            );
         }
     };
 
-    // requête axios pour récupérer les réservations du soir par date
+    // requête réservations du soir par date
+    const [errorDinner, setErrorDinner] = useState(false);
     const [bookingDinnerList, setBookingDinnerList] = useState([]);
     const getbookingDinnerList = async () => {
         try {
@@ -61,25 +68,32 @@ export default function Booking() {
             );
             setBookingDinnerList(response.data);
         } catch (error) {
-            console.error('pas de réservations du soir pour cette date');
+            setErrorDinner(
+                'une erreur est survenue lors de la récupération des réservations. Veuillez réeessayer ultérieurement'
+            );
         }
     };
 
-    // requête axios pour récupérer la capacité du restaurant
+    // requête capacité du restaurant
     const [capacity, setCapacity] = useState(null);
+    const [errorCapacity, setErrorCapacity] = useState(false);
+
     const getCapacity = async () => {
         try {
             const response = await axios.get(`https://127.0.0.1:8000/api/capacity`);
             setCapacity(response.data[0].service_capacity);
         } catch (error) {
-            console.error('la requete a échouée');
+            setErrorCapacity(
+                'une erreur est survenue lors de la récupération de la capacité du restaurant. Veuillez réeessayer ultérieurement'
+            );
         }
     };
 
     useEffect(() => {
-        getbookingLunchList();
-        getbookingDinnerList();
-        getCapacity();
+        justDate && getbookingLunchList();
+        justDate && getbookingDinnerList();
+        justDate && getCapacity();
+        justTime && SelectNumber({ capacity });
     }, [justDate]);
 
     // calcul du nombre de convives pour midi a la date selectionnée
@@ -87,32 +101,20 @@ export default function Booking() {
         (total, bookingLunch) => total + bookingLunch.nb_convives,
         0
     );
-
     // calcul du nombre de convives pour le soir a la date selectionnée
     const nbDinnerConvivesAtDate = bookingDinnerList.reduce(
         (total, bookingDinner) => total + bookingDinner.nb_convives,
         0
     );
 
-    console.log(justDate);
-    console.log(bookingLunchList);
-    console.log(bookingDinnerList);
-    console.log('capacité', capacity);
-    console.log('midi', nbLunchConvivesAtDate);
-    console.log('soir', nbDinnerConvivesAtDate);
-
-    // ------------------ créneaux horaires -------------------
+    // --------------------------- créneaux horaires ----------------------------------------
 
     // horaires du midi revoie un tableau d'horaires de midi
     const getTimesLunch = () => {
         if (!justDate) return;
-
         const beginningLunch = add(new Date(justDate), { hours: 11, minutes: 30 });
-
-        console.log('beginningLunch', beginningLunch);
         const endLunch = add(new Date(justDate), { hours: 14, minutes: 30 });
         const intervalLunch = 15;
-
         const timesLunch = [];
         for (
             let i = beginningLunch;
@@ -128,11 +130,9 @@ export default function Booking() {
     // horaires du soir renvoi un tableau d'horaires du soir
     const getTimesDinner = () => {
         if (!justDate) return;
-
         const beginningDinner = add(new Date(justDate), { hours: 18, minutes: 30 });
         const endDinner = add(new Date(justDate), { hours: 21, minutes: 0 });
         const intervalDinner = 15;
-
         const timesDinner = [];
         for (
             let i = beginningDinner;
@@ -147,11 +147,110 @@ export default function Booking() {
 
     const timesLunch = getTimesLunch();
     const timesDinner = getTimesDinner();
+    
+    // --------------------------- nombre de convives --------------------------------------
+    const [nbConvives, setNbConvives] = useState('');
+    const SelectNumber = ({ capacity }) => {
+        const handleChange = (event) => {
+            setNbConvives(event.target.value);
+        };
+        const arrayNumbers = [];
+        for (let i = 1; i <= capacity; i++) {
+            arrayNumbers.push({ i });
+        }
 
-    console.log('timesLunch', timesLunch);
-    console.log('timesDinner', timesDinner);
+        return (
+            <Box sx={{ minWidth: 120 }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Nb personnes</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={nbConvives}
+                        label="nbConvives"
+                        onChange={handleChange}
+                    >
+                        return (
+                        {arrayNumbers.map((number) => (
+                            <MenuItem key={number.i} value={number.i}>
+                                {number.i}
+                            </MenuItem>
+                        ))}
+                        );
+                    </Select>
+                </FormControl>
+            </Box>
+        );
+    };
 
-    console.log('justTime', justTime);
+    //  ---------------------validation email et allergies -------------------------------
+
+    const [email, setEmail] = useState('');
+    const [errorEmail, setErrorEmail] = useState(false);
+    const [validation, setValidation] = useState(false);
+    const validateEmail = () => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        {
+            email && setErrorEmail(!emailRegex.test(email));
+        }
+
+        {
+            email && !errorEmail && setValidation(true);
+        }
+    };
+
+    const [allergy, setAllergy] = useState('');
+    const [errorAllergy, setErrorAllergy] = useState(false);
+    const validateAllergy = () => {
+        const allergyRegex = /^[a-zA-Z0-9\s\.,!?']+$/g;
+
+        {
+            allergy && setErrorAllergy(!allergyRegex.test(allergy));
+        }
+    };
+
+    //---------------------  soummission de la reservation --------------------------------
+
+    const addBooking = async () => {
+        const reservationData = {
+            date: format(justDate, 'yyyy-MM-dd'),
+            hour: format(justTime, 'kk:mm'),
+            email: email,
+            nb_convives: nbConvives,
+            allergy: allergy,
+        };
+
+        try {
+            const response = await axios.post(
+                'https://127.0.0.1:8000/api/booking',
+                reservationData
+            );
+            if (response.status === 200) {
+                handleClose();
+                toast.success(
+                    `Votre réservation du ${format(justDate, 'dd-MM')} à ${format(
+                        justTime,
+                        'kk:mm'
+                    )}  a bien été prise en compte`
+                );
+                setNbConvives('');
+                setEmail('');
+                setAllergy('');
+                setDate({ justDate: null, justTime: null });
+                setValidation(false);
+            }
+        } catch (error) {
+            toast.error(
+                'Un probleme est survenu lors de la réservation. Veuillez réessayer plus tard'
+            );
+        }
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        addBooking();
+    };
 
     return (
         <div>
@@ -239,35 +338,75 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                         </svg>
                     </div>
                     {/* si une date a été sélectionnée, on affiche le choix de l'heure */}
-
                     {justDate ? (
                         justTime ? (
                             // ------------------------- block valider -----------------------------
                             <div className="booking__hours">
+                                {/*  {error && <p className="error-message">{error}</p>} */}
                                 <h3>
                                     {format(justDate, 'EEEE d MMMM yyyy', { locale: fr })} à{' '}
                                     {format(justTime, 'kk:mm', { locale: fr })}
                                 </h3>
-                                <div className="booking__hours__block">
-                                    <h5>Nombre de personnes</h5>
+                                <div className="booking__hours__block valid-block">
                                     <div className="booking__hours__block__demi">
                                         <SelectNumber capacity={capacity} />
                                     </div>
                                 </div>
-                                <div className="booking__hours__block">
-                                    <h5>EMail</h5>
+                                <div className="booking__hours__block valid-block">
                                     <div className="booking__hours__block__demi">
-                                        <div>input</div>
+                                        {nbConvives && (
+                                            <TextField
+                                                id="email"
+                                                label="Email"
+                                                variant="outlined"
+                                                value={email}
+                                                onBlur={validateEmail}
+                                                onChange={(e) => setEmail(e.target.value)}
+                                                error={errorEmail}
+                                                helperText={errorEmail ? 'Email invalide' : ''}
+                                            />
+                                        )}
                                     </div>
                                 </div>
 
-                                <div className="booking__hours__block">
-                                    <h5>Allergies</h5>
+                                <div className="booking__hours__block valid-block">
                                     <div className="booking__hours__block__demi">
-                                    <TextField id="outlined-basic" label="Allergies" variant="outlined" />
+                                        {nbConvives && (
+                                            <TextField
+                                                id="allergy"
+                                                label="Préciser si des personnes ont des allergies"
+                                                variant="outlined"
+                                                value={allergy}
+                                                error={errorAllergy}
+                                                onBlur={validateAllergy}
+                                                onChange={(e) => setAllergy(e.target.value)}
+                                                helperText={
+                                                    errorAllergy
+                                                        ? 'Attention charactères non autorisés ou trop long'
+                                                        : ''
+                                                }
+                                            />
+                                        )}
                                     </div>
                                 </div>
-                                <Button variant="contained">Réserver</Button>
+                                {validation && !errorEmail /*  && !errorAllergy */ ? (
+                                    <Button
+                                        type="submit"
+                                        className="btn-valid_booking"
+                                        variant="contained"
+                                        onClick={handleSubmit}
+                                    >
+                                        Réserver
+                                    </Button>
+                                ) : (
+                                    <Button
+                                        className="btn-valid_booking"
+                                        variant="contained"
+                                        disabled
+                                    >
+                                        Réserver
+                                    </Button>
+                                )}
                             </div>
                         ) : (
                             // ------------------------- block horaires -----------------------------
@@ -276,6 +415,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                 {/*horaires du midi  */}
                                 <div className="booking__hours__block">
                                     <h5>Repas du midi</h5>
+                                    {errorLunch && <p className="error-message">{errorLunch}</p>}
                                     <div className="booking__hours__block__demi">
                                         {timesLunch?.map((time, i) => (
                                             <div
@@ -296,14 +436,16 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                             </div>
                                         ))}
                                     </div>
-
-                                    <div className="places">
-                                        Il reste {capacity - nbLunchConvivesAtDate} places
-                                    </div>
+                                    {!errorLunch && (
+                                        <div className="places">
+                                            Il reste {capacity - nbLunchConvivesAtDate} places
+                                        </div>
+                                    )}
                                 </div>
                                 {/*horaires du soir */}
                                 <div className="booking__hours__block">
                                     <h5>Repas du soir</h5>
+                                    {errorDinner && <p className="error-message">{errorDinner}</p>}
                                     <div className="booking__hours__block__demi">
                                         {timesDinner?.map((time, i) => (
                                             <div
@@ -324,23 +466,27 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                             </div>
                                         ))}
                                     </div>
-                                    <div className="places">
-                                        Il reste {capacity - nbDinnerConvivesAtDate} places
-                                    </div>
+                                    {!errorDinner && (
+                                        <div className="places">
+                                            Il reste {capacity - nbDinnerConvivesAtDate} places
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         )
                     ) : (
                         // ------------------------- block calendrier-----------------------------
-                        <ReactCalendar
-                            minDate={new Date()}
-                            view="month"
-                            onClickDay={(date) =>
-                                setDate(() => ({
-                                    justDate: date,
-                                }))
-                            }
-                        />
+                        <>
+                            <ReactCalendar
+                                minDate={new Date()}
+                                view="month"
+                                onClickDay={(date) =>
+                                    setDate(() => ({
+                                        justDate: date,
+                                    }))
+                                }
+                            />
+                        </>
                     )}
                 </Box>
             </Modal>

@@ -6,6 +6,7 @@ import '../../scss/styles.scss';
 import LogoutIcon from '@mui/icons-material/Logout';
 import EngineeringIcon from '@mui/icons-material/Engineering';
 import Booking from './Booking';
+import { ToastContainer } from 'react-toastify';
 
 const Header = () => {
     // ouverture et fermeture de la modale
@@ -75,6 +76,8 @@ const Header = () => {
         >
             {/*  bouton hamburger ouvrir menu ----------------------- */}
             <div className="icon-title">
+                <ToastContainer />
+
                 <MenuOpenIcon
                     className="hamburger-open"
                     onClick={toggleModal}
@@ -623,7 +626,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                 {currentUser ? (
                     <div className="welcome">
                         <p className="welcome__title">
-                            Bienvenu <span>{currentUser.name}</span>{' '}
+                            Bienvenue <span>{currentUser.name}</span>{' '}
                         </p>
                         <a href="logout">
                             <LogoutIcon className="welcome__icon--logout" />

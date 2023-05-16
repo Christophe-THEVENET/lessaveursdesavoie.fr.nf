@@ -3,12 +3,15 @@
 namespace App\Controller;
 
 use DateTime;
+use App\Entity\Booking;
 use App\Repository\DishRepository;
 use App\Repository\MealRepository;
 use App\Repository\BookingRepository;
 use App\Repository\RestaurantRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ClosingDateRepository;
 use App\Repository\OpeningHoursRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -17,6 +20,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ApiController extends AbstractController
 {
+
+
+
 
     // ------------------- API GET ALL OPENING HOURS ------------------- //
     #[Route('/api/opening-hours', name: 'api_opening_hours')]
@@ -99,10 +105,15 @@ class ApiController extends AbstractController
     public function getApiBookingsLunchByDate(BookingRepository $bookingRepository, SerializerInterface $serializer, DateTime $date): JsonResponse
     {
         $bookingsByDateList = $bookingRepository->findByLunchDate($date);
-
-        if (!$bookingsByDateList) {
+        // si retourne null 404 sinon si tableau vide 200 []
+        if ($bookingsByDateList === null) {
             return new JsonResponse(null, Response::HTTP_NOT_FOUND);
+        } else if (count($bookingsByDateList) === 0) {
+            return new JsonResponse([], Response::HTTP_OK);
         }
+
+
+
         $bookingsByDateListSerialized = $serializer->serialize($bookingsByDateList, 'json', ['groups' => 'bookings']);
 
         return new JsonResponse($bookingsByDateListSerialized, Response::HTTP_OK, [], true);
@@ -111,15 +122,18 @@ class ApiController extends AbstractController
     // ------------------- API GET BOOKINGS BY DATE AND DINNER------------------- //
     #[Route('/api/bookings/dinner/{date}', name: 'api_bookings_dinner_by_date')]
     // !!!!!!!!!!!!!!!!! peut être plus stricte avec le format de la date !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
     /* #[ParamConverter(options: ['format' => 'dd-mm-yyyy'])] */
     public function getApiBookingsDinnerByDate(BookingRepository $bookingRepository, SerializerInterface $serializer, DateTime $date): JsonResponse
     {
         $bookingsByDateList = $bookingRepository->findByDinnerDate($date);
-
-        if (!$bookingsByDateList) {
+        // si retourne null 404 sinon si tableau vide 200 []
+        if ($bookingsByDateList === null) {
             return new JsonResponse(null, Response::HTTP_NOT_FOUND);
+        } else if (count($bookingsByDateList) === 0) {
+            return new JsonResponse([], Response::HTTP_OK);
         }
+
+
         $bookingsByDateListSerialized = $serializer->serialize($bookingsByDateList, 'json', ['groups' => 'bookings']);
 
         return new JsonResponse($bookingsByDateListSerialized, Response::HTTP_OK, [], true);
@@ -134,8 +148,42 @@ class ApiController extends AbstractController
         if (!$capacity) {
             return new JsonResponse(null, Response::HTTP_NOT_FOUND);
         }
-         $capacitySerialized = $serializer->serialize($capacity, 'json', ['groups' => 'capacity']); 
+        $capacitySerialized = $serializer->serialize($capacity, 'json', ['groups' => 'capacity']);
 
         return new JsonResponse($capacitySerialized, Response::HTTP_OK, [], true);
+    }
+
+
+    // ------------------- API POST BOOKING ------------------- //
+    #[Route('/api/booking', name: 'api_post_booking', methods: ['POST'])]
+    public function addBooking(Request $request, RestaurantRepository $restaurantRepository, EntityManagerInterface $entityManager): JsonResponse
+    {
+        $data = json_decode($request->getContent(), true);
+
+        // Récupérer les données de la requête
+        $date = $data['date'] ?? null;
+        $hour = $data['hour'] ?? null;
+        $nbConvives = $data['nb_convives'] ?? null;
+        $allergy = $data['allergy'] ?? null;
+        $email = $data['email'];
+        $restaurant = $restaurantRepository->findOneBy(['id' => 1]);
+
+        // Vérifier les données requises
+        if (!$date || !$hour || !$nbConvives) {
+            return new JsonResponse(['error' => 'Veuillez fournir une date, une heure et le nombre de personnes.'],  Response::HTTP_NOT_FOUND);
+        }
+
+        $booking = new Booking();
+        $booking->setDate(new \Datetime($date));
+        $booking->setHour(new \Datetime($hour));
+        $booking->setNbConvives($nbConvives);
+        $booking->setAllergy($allergy);
+        $booking->setEmail($email);
+        $booking->setRestaurant($restaurant);
+
+        $entityManager->persist($booking);
+        $entityManager->flush();
+
+        return new JsonResponse(['status' => 'Félicitation votre réservation est validée'], Response::HTTP_OK, []);
     }
 }
