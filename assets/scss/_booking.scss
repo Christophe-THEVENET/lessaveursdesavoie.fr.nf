@@ -115,8 +115,7 @@
 }
 
 .css-1ka5eyc-MuiPaper-root-MuiMenu-paper-MuiPopover-paper {
-    top: 25% !important;
-    height: 50rem;
+    height: auto;
 }
 
 .css-6hp17o-MuiList-root-MuiMenu-list {
@@ -142,7 +141,7 @@
 
 // ----------- input allergies ------------
 
-#allergy-label   {
+#allergy-label {
     color: rgba(218, 206, 206, 0.514);
 }
 

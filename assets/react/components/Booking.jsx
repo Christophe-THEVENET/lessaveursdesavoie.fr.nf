@@ -12,6 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { toast } from 'react-toastify';
+import { parse, isWithinInterval } from 'date-fns';
 
 // style de la modale de réservation
 const style = {
@@ -77,7 +78,6 @@ export default function Booking() {
     // requête capacité du restaurant
     const [capacity, setCapacity] = useState(null);
     const [errorCapacity, setErrorCapacity] = useState(false);
-
     const getCapacity = async () => {
         try {
             const response = await axios.get(`https://127.0.0.1:8000/api/capacity`);
@@ -147,22 +147,46 @@ export default function Booking() {
 
     const timesLunch = getTimesLunch();
     const timesDinner = getTimesDinner();
-    
-    // --------------------------- nombre de convives --------------------------------------
+
+    const checkTimeWithinInterval = (time, start, end) => {
+        const formatedTime = format(time, 'HH:mm');
+        const timeToCheck = parse(formatedTime, 'HH:mm', new Date(), { locale: fr });
+        const interval = {
+            start: parse(start, 'HH:mm', new Date(), { locale: fr }),
+            end: parse(end, 'HH:mm', new Date(), { locale: fr }),
+        };
+
+        return isWithinInterval(timeToCheck, interval);
+    };
+
+    useEffect(() => {
+        {
+            justTime && console.log(checkTimeWithinInterval(justTime, '11:00', '16:00'));
+        }
+    }, [justTime]);
+
+    // -----------------------  select nombre de convives --------------------------------------
     const [nbConvives, setNbConvives] = useState('');
-    const SelectNumber = ({ capacity }) => {
+    const SelectNumber = () => {
         const handleChange = (event) => {
             setNbConvives(event.target.value);
         };
         const arrayNumbers = [];
-        for (let i = 1; i <= capacity; i++) {
+        for (
+            let i = 1;
+            i <=
+            (checkTimeWithinInterval(justTime, '11:00', '16:00')
+                ? capacity - nbLunchConvivesAtDate
+                : capacity - nbDinnerConvivesAtDate);
+            i++
+        ) {
             arrayNumbers.push({ i });
         }
 
         return (
             <Box sx={{ minWidth: 120 }}>
                 <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">Nb personnes</InputLabel>
+                    <InputLabel id="demo-simple-select-label">Nombre de personnes</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
