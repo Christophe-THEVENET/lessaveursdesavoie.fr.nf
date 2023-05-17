@@ -4,7 +4,7 @@ import Modal from '@mui/material/Modal';
 import ReactCalendar from 'react-calendar';
 import axios from 'axios';
 import { add, format, subHours } from 'date-fns';
-import { fr, nb } from 'date-fns/locale';
+import { fr } from 'date-fns/locale';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
@@ -13,6 +13,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { toast } from 'react-toastify';
 import { parse, isWithinInterval } from 'date-fns';
+import CircularProgress from '@mui/material/CircularProgress';
 
 // style de la modale de réservation
 const style = {
@@ -43,6 +44,8 @@ export default function Booking() {
     });
     const { justDate, justTime } = date;
 
+    const [isLoading, setIsLoading] = useState(true);
+
     // requête réservations du midi par date
     const [errorLunch, setErrorLunch] = useState(false);
     const [bookingLunchList, setBookingLunchList] = useState([]);
@@ -52,6 +55,7 @@ export default function Booking() {
                 `https://127.0.0.1:8000/api/bookings/lunch/${format(justDate, 'yyyy-MM-dd')}`
             );
             setBookingLunchList(response.data);
+            setIsLoading(false);
         } catch (error) {
             setErrorLunch(
                 'une erreur est survenue lors de la récupération des réservations. Veuillez réeessayer ultérieurement'
@@ -68,6 +72,7 @@ export default function Booking() {
                 `https://127.0.0.1:8000/api/bookings/dinner/${format(justDate, 'yyyy-MM-dd')}`
             );
             setBookingDinnerList(response.data);
+            setIsLoading(false);
         } catch (error) {
             setErrorDinner(
                 'une erreur est survenue lors de la récupération des réservations. Veuillez réeessayer ultérieurement'
@@ -89,11 +94,12 @@ export default function Booking() {
         }
     };
 
+    // lance les reqûetes quand la date est selectionnée ou l'heure
     useEffect(() => {
         justDate && getbookingLunchList();
         justDate && getbookingDinnerList();
         justDate && getCapacity();
-        justTime && SelectNumber({ capacity });
+        justTime && SelectNumber();
     }, [justDate]);
 
     // calcul du nombre de convives pour midi a la date selectionnée
@@ -109,7 +115,7 @@ export default function Booking() {
 
     // --------------------------- créneaux horaires ----------------------------------------
 
-    // horaires du midi revoie un tableau d'horaires de midi
+    // renvoi tableau d'horaires de midi
     const getTimesLunch = () => {
         if (!justDate) return;
         const beginningLunch = add(new Date(justDate), { hours: 11, minutes: 30 });
@@ -127,7 +133,7 @@ export default function Booking() {
         return timesLunch;
     };
 
-    // horaires du soir renvoi un tableau d'horaires du soir
+    // renvoi un tableau d'horaires du soir
     const getTimesDinner = () => {
         if (!justDate) return;
         const beginningDinner = add(new Date(justDate), { hours: 18, minutes: 30 });
@@ -145,9 +151,12 @@ export default function Booking() {
         return timesDinner;
     };
 
+    // tableau d'horaires de midi
     const timesLunch = getTimesLunch();
+    // tableau d'horaires du soir
     const timesDinner = getTimesDinner();
 
+    // vérifie si l'heure selectionnée est dans l'intervalle
     const checkTimeWithinInterval = (time, start, end) => {
         const formatedTime = format(time, 'HH:mm');
         const timeToCheck = parse(formatedTime, 'HH:mm', new Date(), { locale: fr });
@@ -159,22 +168,19 @@ export default function Booking() {
         return isWithinInterval(timeToCheck, interval);
     };
 
-    useEffect(() => {
-        {
-            justTime && console.log(checkTimeWithinInterval(justTime, '11:00', '16:00'));
-        }
-    }, [justTime]);
-
     // -----------------------  select nombre de convives --------------------------------------
     const [nbConvives, setNbConvives] = useState('');
+    // select nombre de convives
     const SelectNumber = () => {
         const handleChange = (event) => {
             setNbConvives(event.target.value);
         };
+        // nombre de personnes possible en fonction des places restantes
         const arrayNumbers = [];
         for (
             let i = 1;
             i <=
+        // si date sélect est dans l'interval alors nb dispo repas du midi sinon repas du soir
             (checkTimeWithinInterval(justTime, '11:00', '16:00')
                 ? capacity - nbLunchConvivesAtDate
                 : capacity - nbDinnerConvivesAtDate);
@@ -236,6 +242,7 @@ export default function Booking() {
 
     //---------------------  soummission de la reservation --------------------------------
 
+    // requête post pour ajouter une réservation
     const addBooking = async () => {
         const reservationData = {
             date: format(justDate, 'yyyy-MM-dd'),
@@ -258,6 +265,7 @@ export default function Booking() {
                         'kk:mm'
                     )}  a bien été prise en compte`
                 );
+                // reset de la réservation
                 setNbConvives('');
                 setEmail('');
                 setAllergy('');
@@ -271,16 +279,19 @@ export default function Booking() {
         }
     };
 
+    // déclenche la requête post réservation au click bouton
     const handleSubmit = (event) => {
         event.preventDefault();
         addBooking();
     };
 
     return (
+        // ---------------- bouton réserver -----------------
         <div>
             <button onClick={handleOpen} className="btn-booking">
                 Réserver
             </button>
+       {/* ---------------- modale réservation ----------------- */}
             <Modal open={open} onClose={handleClose}>
                 <Box sx={style}>
                     <div className="booking__title__block">
@@ -363,10 +374,10 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                     </div>
                     {/* si une date a été sélectionnée, on affiche le choix de l'heure */}
                     {justDate ? (
+                        // si une heure a été sélectionnée, on affiche la validation de la réservation
                         justTime ? (
-                            // ------------------------- block valider -----------------------------
+                            // ------------------------- block valider la réservation -----------------------------
                             <div className="booking__hours">
-                                {/*  {error && <p className="error-message">{error}</p>} */}
                                 <h3>
                                     {format(justDate, 'EEEE d MMMM yyyy', { locale: fr })} à{' '}
                                     {format(justTime, 'kk:mm', { locale: fr })}
@@ -413,7 +424,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                         )}
                                     </div>
                                 </div>
-                                {validation && !errorEmail /*  && !errorAllergy */ ? (
+                                {validation && !errorEmail ? (
                                     <Button
                                         type="submit"
                                         className="btn-valid_booking"
@@ -434,66 +445,122 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                             </div>
                         ) : (
                             // ------------------------- block horaires -----------------------------
+
                             <div className="booking__hours">
                                 <h3>{format(justDate, 'EEEE d MMMM yyyy', { locale: fr })}</h3>
-                                {/*horaires du midi  */}
+                                {/* ---------------horaires du midi ---------------  */}
                                 <div className="booking__hours__block">
                                     <h5>Repas du midi</h5>
-                                    {errorLunch && <p className="error-message">{errorLunch}</p>}
-                                    <div className="booking__hours__block__demi">
-                                        {timesLunch?.map((time, i) => (
-                                            <div
-                                                key={`time-${i}`}
-                                                className="booking__hours__block__demi__hour"
-                                            >
-                                                <button
-                                                    type="button"
-                                                    onClick={() =>
-                                                        setDate((prev) => ({
-                                                            ...prev,
-                                                            justTime: time,
-                                                        }))
+                                    {isLoading ? (
+                                        <CircularProgress />
+                                    ) : (
+                                        <>
+                                            {errorLunch && (
+                                                <p className="error-message">{errorLunch}</p>
+                                            )}
+
+                                            <div className="booking__hours__block__demi">
+                                                {timesLunch?.map((time, i) => (
+                                                    <div
+                                                        key={`time-${i}`}
+                                                        className="booking__hours__block__demi__hour"
+                                                    >
+                                                        <button
+                                                            type="button"
+                                                            // au click selectionne heure
+                                                            onClick={() =>
+                                                                setDate((prev) => ({
+                                                                    ...prev,
+                                                                    justTime: time,
+                                                                }))
+                                                            }
+                                                            // style des boutons horaires en fonction de la capacité
+                                                            style={{
+                                                                color:
+                                                                    capacity <=
+                                                                    nbLunchConvivesAtDate
+                                                                        ? '#3d1111da'
+                                                                        : '#fff',
+                                                            }}
+                                                            disabled={
+                                                                capacity <= nbLunchConvivesAtDate
+                                                                    ? true
+                                                                    : false
+                                                            }
+                                                        >
+                                                            {format(time, 'kk:mm')}
+                                                        </button>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            {!errorLunch && (
+                                                <div
+                                                    className={
+                                                        capacity <= nbLunchConvivesAtDate
+                                                            ? `complet`
+                                                            : `places`
                                                     }
                                                 >
-                                                    {format(time, 'kk:mm')}
-                                                </button>
-                                            </div>
-                                        ))}
-                                    </div>
-                                    {!errorLunch && (
-                                        <div className="places">
-                                            Il reste {capacity - nbLunchConvivesAtDate} places
-                                        </div>
+                                                    {capacity <= nbLunchConvivesAtDate
+                                                        ? `Complet`
+                                                        : `Il reste ${
+                                                              capacity - nbLunchConvivesAtDate
+                                                          } places`}
+                                                </div>
+                                            )}
+                                        </>
                                     )}
                                 </div>
-                                {/*horaires du soir */}
+                                {/* ------------------- horaires du soir ----------------- */}
                                 <div className="booking__hours__block">
                                     <h5>Repas du soir</h5>
-                                    {errorDinner && <p className="error-message">{errorDinner}</p>}
-                                    <div className="booking__hours__block__demi">
-                                        {timesDinner?.map((time, i) => (
-                                            <div
-                                                key={`time-${i}`}
-                                                className="booking__hours__block__demi__hour"
-                                            >
-                                                <button
-                                                    type="button"
-                                                    onClick={() =>
-                                                        setDate((prev) => ({
-                                                            ...prev,
-                                                            justTime: time,
-                                                        }))
-                                                    }
-                                                >
-                                                    {format(time, 'kk:mm')}
-                                                </button>
+                                    {isLoading ? (
+                                        <CircularProgress />
+                                    ) : (
+                                        <>
+                                            {errorDinner && (
+                                                <p className="error-message">{errorDinner}</p>
+                                            )}
+                                            <div className="booking__hours__block__demi">
+                                                {timesDinner?.map((time, i) => (
+                                                    <div
+                                                        key={`time-${i}`}
+                                                        className="booking__hours__block__demi__hour"
+                                                    >
+                                                        <button
+                                                            type="button"
+                                                            // au click selectionne heure
+                                                            onClick={() =>
+                                                                setDate((prev) => ({
+                                                                    ...prev,
+                                                                    justTime: time,
+                                                                }))
+                                                            }
+                                                            style={{
+                                                                color:
+                                                                    capacity <=
+                                                                    nbDinnerConvivesAtDate
+                                                                        ? '#3d1111da'
+                                                                        : '#fff',
+                                                            }}
+                                                            disabled={
+                                                                capacity <= nbDinnerConvivesAtDate
+                                                                    ? true
+                                                                    : false
+                                                            }
+                                                        >
+                                                            {format(time, 'kk:mm')}
+                                                        </button>
+                                                    </div>
+                                                ))}
                                             </div>
-                                        ))}
-                                    </div>
-                                    {!errorDinner && (
-                                        <div className="places">
-                                            Il reste {capacity - nbDinnerConvivesAtDate} places
-                                        </div>
+                                            {!errorDinner && (
+                                                <div className="places">
+                                                    Il reste {capacity - nbDinnerConvivesAtDate}{' '}
+                                                    places
+                                                </div>
+                                            )}
+                                        </>
                                     )}
                                 </div>
                             </div>

@@ -95,7 +95,13 @@
 .places {
     color: $colorSecondary;
     font-family: $textFont;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+}
+
+.complet {
+    color: #d32a2ada;
+    font-size: 1.3rem;
+    font-weight: bold;
 }
 
 // validation de la réservation block
