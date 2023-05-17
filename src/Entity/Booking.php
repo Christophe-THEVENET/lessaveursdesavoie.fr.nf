@@ -6,6 +6,7 @@ use App\Repository\BookingRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: BookingRepository::class)]
 class Booking
@@ -18,18 +19,25 @@ class Booking
 
     #[ORM\Column(length: 255)]
     #[Groups(['bookings'])]
+    #[Assert\Email(
+        message: 'L\'email {{ value }} n\est pas valide.',
+
+    )]
     private ?string $email = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     #[Groups(['bookings'])]
+    #[Assert\Date]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     #[Groups(['bookings'])]
+    #[Assert\Time]
     private ?\DateTimeInterface $hour = null;
 
     #[ORM\Column]
     #[Groups(['bookings'])]
+    #[Assert\Positive]
     private ?int $nb_convives = null;
 
     #[ORM\ManyToOne(inversedBy: 'bookings')]
@@ -41,6 +49,10 @@ class Booking
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(['bookings'])]
+    #[Assert\Length(
+        max: 100,
+        maxMessage: 'Le message {{ limit }} est trop long, il ne devrait pas dépasser {{ limit }} caractères.',
+    )]
     private ?string $allergy = null;
 
     public function __toString()
