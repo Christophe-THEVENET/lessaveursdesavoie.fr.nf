@@ -40,26 +40,65 @@ class BookingRepository extends ServiceEntityRepository
         }
     }
 
-   /**
-    * @return Booking[] Returns an array of Booking objects by date
-    */
-   public function findByDate(DateTime $date): array
-   {
-       return $this->createQueryBuilder('b')
-           ->andWhere('b.date = :val')
-           ->setParameter('val', $date)
-           ->getQuery()
-           ->getResult()
-       ;
-   }
+    /**
+     * @return Booking[] Returns an array of Booking objects by date
+     */
+    public function findByDate(DateTime $date): array
+    {
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.date = :val')
+            ->setParameter('val', $date)
+            ->getQuery()
+            ->getResult();
+    }
 
-//    public function findOneBySomeField($value): ?Booking
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+
+    /**
+     * @return Booking[] Returns an array of Booking objects by date
+     */
+    /* public function findByLunchDate(DateTime $date): array
+    {
+        return $this->createQuery(
+            'SELECT * FROM booking b
+            WHERE b.date = :val
+            AND TIME(b.hour) BETWEEN :startTime AND :endTime'
+        )->setParameter(':val', $date)
+            ->setParameter('startTime', '10:00:00')
+            ->setParameter('endTime', '14:59:59')
+            ->getResult();
+    } */
+
+    public function findByLunchDate(DateTime $date): array
+    {
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.date = :val')
+            ->setParameter('val', $date)
+            ->andWhere('b.hour BETWEEN :startTime AND :endTime')
+            ->setParameter('startTime', '10:00:00')
+            ->setParameter('endTime', '14:59:59')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByDinnerDate(DateTime $date): array
+    {
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.date = :val')
+            ->setParameter('val', $date)
+            ->andWhere('b.hour BETWEEN :startTime AND :endTime')
+            ->setParameter('startTime', '17:00:00')
+            ->setParameter('endTime', '23:59:59')
+            ->getQuery()
+            ->getResult();
+    }
+
+    //    public function findOneBySomeField($value): ?Booking
+    //    {
+    //        return $this->createQueryBuilder('b')
+    //            ->andWhere('b.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

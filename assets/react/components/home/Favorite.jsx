@@ -1,5 +1,6 @@
 import React from 'react';
 import CarouselComponent from './CarouselComponent';
+import Booking from '../Booking';
 
 const Favorite = () => {
     return (
@@ -108,9 +109,7 @@ c237 32 398 49 577 60 123 8 200 19 315 45 83 20 169 37 191 38 29 2 41 8 43
                 <CarouselComponent />
             </div>
             <div>
-                <a href="#">
-                    <button className="btn-booking-primary">Réserver</button>
-                </a>
+                <Booking />
             </div>
         </section>
     );

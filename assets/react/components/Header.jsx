@@ -5,6 +5,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import '../../scss/styles.scss';
 import LogoutIcon from '@mui/icons-material/Logout';
 import EngineeringIcon from '@mui/icons-material/Engineering';
+import Booking from './Booking';
+import { ToastContainer } from 'react-toastify';
 
 const Header = () => {
     // ouverture et fermeture de la modale
@@ -74,6 +76,8 @@ const Header = () => {
         >
             {/*  bouton hamburger ouvrir menu ----------------------- */}
             <div className="icon-title">
+                <ToastContainer />
+
                 <MenuOpenIcon
                     className="hamburger-open"
                     onClick={toggleModal}
@@ -102,7 +106,7 @@ const Header = () => {
                     <h1 className="header-title">Les Saveurs De Savoie</h1>
                 ) : null}
             </div>
-            {/*  ---------------------- modale----------------*/}
+            {/*  ---------------------- modale menu ---------------*/}
             {isOpen ? (
                 <div className="menu">
                     <div>
@@ -112,7 +116,7 @@ const Header = () => {
                             style={
                                 isHovered
                                     ? {
-                                          color: '#ff679a',
+                                          color: '#ffffff',
                                           position: 'absolute',
                                           top: '6px',
                                           left: '3px',
@@ -125,8 +129,7 @@ const Header = () => {
                                           position: 'absolute',
                                           top: '6px',
                                           left: '3px',
-                                          color: '#b1849d',
-
+                                          color: '#ff679a',
                                           fontSize: '4.9rem',
                                           cursor: 'pointer',
                                           margin: '20px',
@@ -140,11 +143,10 @@ const Header = () => {
                     <div className="menu__content">
                         <nav>
                             <ul>
-                                <div></div>
                                 <li onClick={toggleModal}>
                                     <a
                                         href="/"
-                                        class="animsition-link"
+                                        className="animsition-link"
                                         data-animsition-out-class="fade-out-right"
                                         data-animsition-out-duration="2000"
                                     >
@@ -231,7 +233,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                 <li onClick={toggleModal}>
                                     <a
                                         href="/menus"
-                                        class="animsition-link"
+                                        className="animsition-link"
                                         data-animsition-out-class="fade-out-right"
                                         data-animsition-out-duration="2000"
                                     >
@@ -318,7 +320,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                 <li onClick={toggleModal}>
                                     <a
                                         href="/carte"
-                                        class="animsition-link"
+                                        className="animsition-link"
                                         data-animsition-out-class="fade-out-right"
                                         data-animsition-out-duration="2000"
                                     >
@@ -619,12 +621,12 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                     />
                 </div>
             )}
-            <div className='welcome__button'>
+            <div className="welcome__button">
                 {/*  ---------------------- bienvenue user ----------------*/}
                 {currentUser ? (
                     <div className="welcome">
                         <p className="welcome__title">
-                            Bienvenu <span>{currentUser.name}</span>{' '}
+                            Bienvenue <span>{currentUser.name}</span>{' '}
                         </p>
                         <a href="logout">
                             <LogoutIcon className="welcome__icon--logout" />
@@ -640,11 +642,9 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                     </div>
                 ) : null}
 
-                {/*  ---------------------- bouton réserver ----------------*/}
+                {/*  ------------------- bouton réserver (modale) ----------------*/}
                 <div>
-                    <a href="#">
-                        <button className="btn-booking">Réserver</button>
-                    </a>
+                    <Booking />
                 </div>
             </div>
         </header>

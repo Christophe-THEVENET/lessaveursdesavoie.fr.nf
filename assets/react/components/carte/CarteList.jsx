@@ -5,6 +5,10 @@ import imgDishes from '../../../images/plat.jpg';
 import imgDessert from '../../../images/dessert.jpg';
 
 const CarteList = () => {
+    const [errorEntry, setErrorEntry] = useState(null);
+    const [errorDishes, setErrorDishes] = useState(null);
+    const [errorDessert, setErrorDessert] = useState(null);
+
     // requête axios pour récupérer les entrées
     const [entryList, setEntryList] = useState([]);
     const getEntryList = async () => {
@@ -12,7 +16,7 @@ const CarteList = () => {
             const response = await axios.get('https://127.0.0.1:8000/api/dishes/entree');
             setEntryList(response.data);
         } catch (error) {
-            console.error(error);
+            setErrorEntry('Une erreur est survenue lors de la récupération des entrées');
         }
     };
 
@@ -23,7 +27,7 @@ const CarteList = () => {
             const response = await axios.get('https://127.0.0.1:8000/api/dishes/plat');
             setDishList(response.data);
         } catch (error) {
-            console.error(error);
+            setErrorDishes('Une erreur est survenue lors de la récupération des plats');
         }
     };
 
@@ -34,7 +38,7 @@ const CarteList = () => {
             const response = await axios.get('https://127.0.0.1:8000/api/dishes/dessert');
             setDessertList(response.data);
         } catch (error) {
-            console.error(error);
+            setErrorDessert('Une erreur est survenue lors de la récupération des desserts');
         }
     };
 
@@ -49,6 +53,7 @@ const CarteList = () => {
             {/* ------------------------------ entrées ------------------------- */}
             <article className="entries carte__block">
                 <div className="entries__text carte__block__text">
+                    {errorEntry && <p className="error-message">{errorEntry}</p>}
                     <h2 data-aos="fade-up" data-aos-anchor-placement="center-bottom">
                         Entrées
                     </h2>
@@ -168,6 +173,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                     }}
                 ></div>
                 <div className="dishes__text carte__block__text">
+                    {errorDishes && <p className="error-message">{errorDishes}</p>}
                     <h2 data-aos="fade-up" data-aos-anchor-placement="center-bottom">
                         Plats
                     </h2>
@@ -264,7 +270,9 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
 
             {/* ------------------------------ desserts ------------------------- */}
             <article className="desserts carte__block">
+                {errorDessert && <p className="error-message">{errorDessert}</p>}
                 <div className="desserts__text carte__block__text">
+                    {errorDishes && <p className="error-message">{errorDishes}</p>}
                     <h2 data-aos="fade-up" data-aos-anchor-placement="center-bottom">
                         Desserts
                     </h2>
