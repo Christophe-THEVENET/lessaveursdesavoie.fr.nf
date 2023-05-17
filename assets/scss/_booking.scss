@@ -1,0 +1,368 @@
+// background autour de la modale quand elle est visible
+.css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop[aria-hidden='true'] {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.booking__title__block {
+    @extend %flex-centered;
+    flex-direction: column;
+    position: absolute;
+    top: 3rem;
+
+    &--title {
+        @include title($colorWhite, $colorPrimary);
+        margin-bottom: -2rem;
+    }
+}
+
+.booking__hours {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    /* height: 50%; */
+    width: 80%;
+
+    h3 {
+        font-family: $textFont;
+        color: $colorWhite;
+        margin-bottom: 3rem;
+    }
+
+    &__block {
+        @extend %flex-centered;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 4rem;
+
+        h5 {
+            font-family: $titleFont;
+            font-size: 2.8rem;
+        }
+
+        label {
+            font-family: $textFont;
+            font-size: 1.4rem;
+            color: $colorWhite;
+            margin-bottom: -1rem;
+        }
+
+        &__demi {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            padding: 2rem;
+            flex-wrap: wrap;
+
+            &__hour {
+                button {
+                    padding: 0.6rem 1rem;
+                    border: none;
+                    background-color: $colorFird;
+                    color: $colorWhite;
+                    transition: all 0.2s ease-in-out;
+                    border-radius: 5px;
+
+                    margin: 0.5rem;
+
+                    &:hover {
+                        background-color: $colorFlashy;
+                        transition: all 0.2s ease-in-out;
+                    }
+                }
+            }
+        }
+    }
+
+    .btn-valid_booking {
+        background-color: $colorSecondary;
+        border-radius: none;
+        padding: 1.2rem 0rem;
+        font-family: $textFont;
+        text-transform: capitalize;
+        font-size: 1.4rem;
+        margin-top: 4rem;
+        width: 65%;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            background-color: $colorFlashy !important;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+}
+
+.places {
+    color: $colorSecondary;
+    font-family: $textFont;
+    font-size: 1.3rem;
+}
+
+.complet {
+    color: #d32a2ada;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+// validation de la réservation block
+
+.valid-block {
+    margin-top: 0;
+}
+
+// ----------- input nombre de personnes ------------
+
+.booking__hours__block__demi .MuiFormControl-root label {
+    color: $colorWhite;
+}
+
+.booking__hours__block__demi .MuiSvgIcon-root path {
+    color: $colorSecondary;
+}
+
+.css-1ka5eyc-MuiPaper-root-MuiMenu-paper-MuiPopover-paper {
+    height: auto;
+}
+
+.css-6hp17o-MuiList-root-MuiMenu-list {
+    color: $colorWhite;
+    background-color: $colorSecondary;
+}
+
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:focus {
+    color: $colorWhite;
+}
+
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:defined {
+    color: $colorWhite;
+    font-size: 1.4rem;
+}
+
+// les inputs
+.MuiTextField-root,
+.MuiBox-root {
+    background-color: $colorFird;
+    width: 70%;
+}
+
+// ----------- input allergies ------------
+
+#allergy-label {
+    color: rgba(218, 206, 206, 0.514);
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input:focus {
+    color: $colorWhite;
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input:defined {
+    color: $colorWhite;
+    font-size: 1.4rem;
+}
+
+// ------------- RESPONSIVE TABLETTE --------------------------
+
+@media screen and (max-width: 868px) {
+    .booking__hours {
+        width: 100%;
+        height: 70vh;
+        justify-content: space-evenly;
+
+        &__block {
+            margin: 0;
+
+            h5 {
+                margin: 0;
+            }
+
+            &__demi {
+                padding: 0;
+            }
+        }
+
+        h3 {
+            margin-top: 8rem;
+        }
+    }
+}
+
+// ---------------------------- calendrier ----------------------------
+.react-calendar {
+    width: 100%;
+    max-width: 50rem;
+    background: white;
+    border-radius: 15px;
+    font-family: $textFont;
+    line-height: 1.125em;
+}
+.react-calendar--doubleView {
+    width: 700px;
+}
+.react-calendar--doubleView .react-calendar__viewContainer {
+    display: flex;
+    margin: -0.5em;
+}
+.react-calendar--doubleView .react-calendar__viewContainer > * {
+    width: 50%;
+    margin: 0.5em;
+}
+.react-calendar,
+.react-calendar *,
+.react-calendar *:before,
+.react-calendar *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* Custom Navigation Styles */
+@media screen and (max-width: 500px) {
+    .react-calendar__navigation__prev2-button,
+    .react-calendar__navigation__prev-button {
+        display: none;
+    }
+    .react-calendar__navigation__label {
+        padding-left: 1rem;
+        text-align: left;
+    }
+}
+
+.react-calendar button {
+    margin: 0;
+    border: 0;
+    outline: none;
+}
+.react-calendar button:enabled:hover {
+    cursor: pointer;
+}
+.react-calendar__navigation {
+    display: flex;
+    height: 44px;
+    margin-bottom: 1em;
+}
+.react-calendar__navigation button {
+    min-width: 44px;
+    background: none;
+}
+.react-calendar__navigation button:disabled {
+    visibility: hidden;
+    background-color: #f0f0f0;
+}
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+    background-color: #e6e6e6;
+}
+.react-calendar__month-view__weekdays {
+    color: $colorFird;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+/* Each day should be round when hovered */
+.react-calendar__month-view__days__day {
+    padding: 5px;
+    background-clip: content-box !important;
+    border-radius: 15px !important;
+}
+
+.react-calendar__navigation__label__labelText {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: $colorFird;
+}
+.react-calendar__navigation__label {
+    pointer-events: none;
+}
+
+.react-calendar__navigation__arrow {
+    background-color: #fff;
+    color: $colorFird;
+    padding: 7px;
+    background-clip: content-box !important;
+    border-radius: 50px;
+    font-size: 2em;
+}
+.react-calendar__navigation__arrow:hover {
+    background-color: rgb(111, 114, 119);
+}
+
+/* If you do not wish to show weekends */
+
+/* 
+  .react-calendar__month-view__days > .react-calendar__tile,
+  .react-calendar__month-view__weekdays__weekday {
+    flex-basis: 20% !important;
+    max-width: 20% !important;
+  } 
+  
+  .react-calendar__month-view__weekdays__weekday:nth-child(6),
+  .react-calendar__month-view__weekdays__weekday:nth-child(7) {
+    display: none !important;
+  } 
+  
+  .react-calendar__month-view__days__day--weekend {
+    display: none !important;
+  } 
+  */
+
+.react-calendar__month-view__weekdays__weekday {
+    padding: 0.75em;
+}
+.react-calendar__month-view__weekdays__weekday abbr {
+    text-decoration: none;
+}
+.react-calendar__month-view__weekNumbers .react-calendar__tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75em;
+    font-weight: bold;
+}
+.react-calendar__month-view__days__day--neighboringMonth {
+    color: #b3b3b3;
+}
+
+.react-calendar__year-view .react-calendar__tile,
+.react-calendar__decade-view .react-calendar__tile,
+.react-calendar__century-view .react-calendar__tile {
+    padding: 2em 0.5em;
+}
+.react-calendar__tile {
+    aspect-ratio: 1/1;
+    max-width: 100%;
+    background: none;
+    text-align: center;
+}
+.react-calendar__tile:disabled {
+    background-color: #f0f0f0;
+    color: rgb(107 114 128);
+}
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+    background-color: #79476221;
+}
+.react-calendar__tile--now {
+    border-radius: 15px;
+    border: 2px solid $colorFird !important;
+    color: $colorFird;
+}
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+    background-color: #79476221;
+}
+.react-calendar__tile--hasActive {
+    background: #79476221;
+}
+.react-calendar__tile--hasActive:enabled:hover,
+.react-calendar__tile--hasActive:enabled:focus {
+    background: #79476221;
+}
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+    background: $colorFird;
+    color: white;
+}
+.react-calendar--selectRange .react-calendar__tile--hover {
+    background-color: rgb(238 242 255);
+}

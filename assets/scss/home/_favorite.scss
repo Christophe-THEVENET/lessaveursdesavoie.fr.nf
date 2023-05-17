@@ -56,16 +56,13 @@
     }
 }
 
+
+
 // ================= MEDIA QUERY (MOBILE)    <= 500px =========================
 @media screen and (max-width: 500px) {
-
     .favorite {
         height: 50vh;
     }
-
-
-
-
 
     .dish-image {
         height: 20rem !important;

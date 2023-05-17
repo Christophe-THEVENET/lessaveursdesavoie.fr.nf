@@ -6,13 +6,14 @@ import Item from './Item';
 function CarouselComponent() {
     // requête axios pour récupérer les plats favoris
     const [favoriteDishes, setFavoriteDishes] = useState([]);
+    const [error, setError] = useState(null);
 
     const getFavoriteDishes = async () => {
         try {
             const response = await axios.get('https://127.0.0.1:8000/api/favorite/dishes');
             setFavoriteDishes(response.data);
         } catch (error) {
-            console.error(error);
+            setError('Une erreur est survenue lors de la récupération des plats favoris');
         }
     };
 
@@ -21,11 +22,14 @@ function CarouselComponent() {
     }, []);
 
     return (
-        <Carousel navButtonsAlwaysVisible={true}>
-            {favoriteDishes.map((dish) => (
-                <Item key={dish.id} dish={dish} />
-            ))}
-        </Carousel>
+        <>
+            {error && <p className='error-message'>{error}</p>}
+            <Carousel navButtonsAlwaysVisible={true}>
+                {favoriteDishes.map((dish) => (
+                    <Item key={dish.id} dish={dish} />
+                ))}
+            </Carousel>
+        </>
     );
 }
 
