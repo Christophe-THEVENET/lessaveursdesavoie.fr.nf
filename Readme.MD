@@ -60,3 +60,13 @@ si vous rencontrez une erreur mémoire lors du build :
 * npm run watch
 
 * http://localhost:8000/
+
+
+## Ajouter un administrateur
+
+
+* security.yaml désactiver access_control path admin
+
+* ajouter un administrateur via easyadmin
+
+* sécurité.yaml réactiver access_control path admin
