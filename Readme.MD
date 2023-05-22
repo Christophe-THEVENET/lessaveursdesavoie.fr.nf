@@ -1,4 +1,8 @@
-# Les Saveurs De Savoie
+# Les Saveurs De Savoie   
+
+## version en ligne
+
+https://lessaveursdesavoie.fr.nf/
 
 Application de gestion d'un restaurant qui permet de publier la carte, les menus, ainsi qu'un système de réservation en ligne par méthode asynchrone. L'administration du site est gérée par un back-office.
 
