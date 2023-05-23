@@ -39,13 +39,9 @@ Le site est développé avec la stack ReactJS, Symfony 5, et MySQL. ReactJS est 
 * php bin/console doctrine:migrations:migrate
 
 
-!!! Attention !!!
 
-si vous rencontrez une erreur mémoire lors du build : 
+!!!Attention si vous rencontrez une erreur mémoire lors du build :  npm uninstall webpack et ensuite npm install webpack@5.60 - --fund=false --audit=false
 
-- npm uninstall webpack
-
-- npm install webpack@5.60 - --fund=false --audit=false
 
 
 ## Utilisation
@@ -65,8 +61,8 @@ si vous rencontrez une erreur mémoire lors du build :
 ## Ajouter un administrateur
 
 
-* security.yaml désactiver access_control path admin
+* désactiver la protection 
 
-* ajouter un administrateur via easyadmin
+* ajouter un utilisateur avec role admin via easyadmin
 
-* sécurité.yaml réactiver access_control path admin
+* réactiver la protection
