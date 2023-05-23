@@ -14,7 +14,7 @@ final class Version20230502122835 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'add nullable to opening hours';
     }
 
     public function up(Schema $schema): void

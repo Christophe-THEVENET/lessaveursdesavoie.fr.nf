@@ -1,4 +1,8 @@
-# Les Saveurs De Savoie
+# Les Saveurs De Savoie   
+
+## version en ligne
+
+https://lessaveursdesavoie.fr.nf/
 
 Application de gestion d'un restaurant qui permet de publier la carte, les menus, ainsi qu'un système de réservation en ligne par méthode asynchrone. L'administration du site est gérée par un back-office.
 
@@ -35,13 +39,9 @@ Le site est développé avec la stack ReactJS, Symfony 5, et MySQL. ReactJS est 
 * php bin/console doctrine:migrations:migrate
 
 
-!!! Attention !!!
 
-si vous rencontrez une erreur mémoire lors du build : 
+!!!Attention si vous rencontrez une erreur mémoire lors du build :  npm uninstall webpack et ensuite npm install webpack@5.60 - --fund=false --audit=false
 
-- npm uninstall webpack
-
-- npm install webpack@5.60 - --fund=false --audit=false
 
 
 ## Utilisation
@@ -56,3 +56,13 @@ si vous rencontrez une erreur mémoire lors du build :
 * npm run watch
 
 * http://localhost:8000/
+
+
+## Ajouter un administrateur
+
+
+* désactiver la protection 
+
+* ajouter un utilisateur avec role admin via easyadmin
+
+* réactiver la protection

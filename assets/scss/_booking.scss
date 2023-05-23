@@ -145,6 +145,13 @@
     width: 70%;
 }
 
+div#demo-simple-select, input#email, input#allergy {
+    color: $colorWhite;
+    font-size: 1.4rem;
+}
+
+
+
 // ----------- input allergies ------------
 
 #allergy-label {

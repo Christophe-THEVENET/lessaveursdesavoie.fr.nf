@@ -22,7 +22,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class DashboardController extends AbstractDashboardController
 {
     #[Route('/admin', name: 'admin')]
-    #[IsGranted('ROLE_ADMIN', message: 'Impossible d\'accéder aux utilisateurs.')]
+    #[IsGranted('ROLE_ADMIN', message: 'Pas d\'authorisation d\'accés a l\'administration.')]
     public function index(): Response
     {
         // return parent::index();
