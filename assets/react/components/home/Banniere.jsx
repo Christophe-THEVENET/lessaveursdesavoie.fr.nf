@@ -12,7 +12,7 @@ const Banniere = ({ url }) => {
                 muted={true}
                 className="banniere__video"
             />
-            <img src={logo} alt="logo les saveurs de savoie restaurant" />
+            <img src={logo} alt="logo les saveurs de savoie restaurant" className='logo'/>
             <h4 className="banniere__jingle">Cuisine traditionnelle des montagnes</h4>
         </section>
     );
