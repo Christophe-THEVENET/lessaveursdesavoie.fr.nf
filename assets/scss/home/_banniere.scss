@@ -16,7 +16,7 @@
     }
 
     &__jingle {
-        margin-top: 8rem;
+       /*  margin-top: 0rem; */
         font-size: 2rem;
         text-align: center;
         font-family: $textFont;
@@ -33,6 +33,10 @@ video {
     left: 0;
     z-index: -1;
 }
+
+ .logo {
+    margin-top: -8rem;
+} 
 
 @media (min-aspect-ratio: 16/9) {
     .banniere__video {
@@ -56,7 +60,7 @@ video {
     }
 
     .banniere__jingle {
-        font-size: 1.6rem;
+        font-size: 1rem;
     }
 }
 
