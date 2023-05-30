@@ -3,6 +3,7 @@ header {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    
 }
 
 .icon-title {
@@ -50,6 +51,12 @@ header {
             transition: all 0.2s ease-in-out;
         }
     }
+}
+
+.logo {
+    width: 15rem;
+    padding: 0;
+    margin: 0;
 }
 
 // bouton reservation

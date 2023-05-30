@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
+import logo from '../../../images/logo_new.png'
 
 const Banniere = ({ url }) => {
     return (
@@ -11,8 +12,7 @@ const Banniere = ({ url }) => {
                 muted={true}
                 className="banniere__video"
             />
-            <h1 className="banniere__title">Les Saveurs De Savoie</h1>
-            <h4 className="banniere__jingle">Cuisine traditionnelle des montagnes</h4>
+            <img src={logo} alt="logo les saveurs de savoie restaurant" />
         </section>
     );
 };
