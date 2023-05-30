@@ -39,9 +39,7 @@ Le site est développé avec la stack ReactJS, Symfony 5, et MySQL. ReactJS est 
 * php bin/console doctrine:migrations:migrate
 
 
-
-!!!Attention si vous rencontrez une erreur mémoire lors du build :  npm uninstall webpack et ensuite npm install webpack@5.60 - --fund=false --audit=false
-
+!!!Attention il faut metttre à jour les url de reqûetes du front sur l'url locale
 
 
 ## Utilisation
@@ -61,8 +59,12 @@ Le site est développé avec la stack ReactJS, Symfony 5, et MySQL. ReactJS est 
 ## Ajouter un administrateur
 
 
-* désactiver la protection 
+* créer un utilisateur
 
-* ajouter un utilisateur avec role admin via easyadmin
+* désactiver les protections admin front-end et back-end
 
-* réactiver la protection
+* nettoyer le cache navigateur et php (php bin/console c:c)
+
+* ajouter le rôle ADMIN à l'utilisateur crée via easyadmin (accée dans le menu icone chantier)
+
+* réactiver les protections

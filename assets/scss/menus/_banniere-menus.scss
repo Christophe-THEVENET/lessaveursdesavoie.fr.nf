@@ -13,17 +13,18 @@
         &--title {
             @include title($colorFlashy, $colorSecondary);
             font-size: 10rem;
-
             margin-right: 2rem;
         }
     }
 
     &__jingle {
+        margin-top: 4rem;
         font-family: $textFont;
         font-size: 1.4rem;
         color: $colorLightGrey;
         text-align: justify;
         width: 50%;
+        max-width: 40rem;
     }
 }
 
