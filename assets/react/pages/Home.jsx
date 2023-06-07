@@ -9,6 +9,7 @@ import Maps from '../components/home/Maps';
 import Footer from '../components/Footer';
 
 const Home = () => {
+
     return (
         <main>
             <Banniere url="../assets/video/banniere.mp4" />
