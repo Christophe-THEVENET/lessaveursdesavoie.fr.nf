@@ -10,10 +10,12 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\Regex;
+
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+#[UniqueEntity(fields: ['email'], message: 'Il y a déjà un utilisateur avec cet email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
 
@@ -38,6 +40,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(nullable: true)]
+
     #[Groups(['bookings'])]
     private ?int $nb_convives = null;
 
@@ -48,7 +51,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(['bookings'])]
     private ?string $allergy = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Booking::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Booking::class, cascade:['remove'])]
     private Collection $bookings;
 
     #[ORM\Column(length: 255)]
