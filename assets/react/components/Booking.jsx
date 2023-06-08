@@ -254,7 +254,7 @@ export default function Booking() {
 
         try {
             const response = await axios.post(
-                'https://lessaveursdesavoie.fr.nf/api/booking',
+                'https://127.0.0.1:8000/api/booking',
                 reservationData
             );
             if (response.status === 200) {

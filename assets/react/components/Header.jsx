@@ -71,7 +71,7 @@ const Header = () => {
             /*   background du header en fonction de la page */
             style={{
                 backgroundColor:
-                    currentUrl == 'https://lessaveursdesavoie.fr.nf/' ? 'transparent' : '#0e0008',
+                    currentUrl == 'https://127.0.0.1:8000/' ? 'transparent' : '#0e0008',
             }}
         >
             {/*  bouton hamburger ouvrir menu ----------------------- */}
@@ -102,7 +102,7 @@ const Header = () => {
                     onMouseLeave={handleMouseLeave}
                 />
                 {/*  titre dans header en fonction de la page  */}
-                {currentUrl != 'https://lessaveursdesavoie.fr.nf/' ? (
+                {currentUrl != 'https://127.0.0.1:8000/' ? (
                     <h1 className="header-title">Les Saveurs De Savoie</h1>
                 ) : null}
             </div>
