@@ -27,12 +27,10 @@ class Booking
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     #[Groups(['bookings'])]
-    #[Assert\Date]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     #[Groups(['bookings'])]
-    #[Assert\Time]
     private ?\DateTimeInterface $hour = null;
 
     #[ORM\Column]
