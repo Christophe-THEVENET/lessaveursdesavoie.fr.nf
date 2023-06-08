@@ -13,7 +13,7 @@ const CarteList = () => {
     const [entryList, setEntryList] = useState([]);
     const getEntryList = async () => {
         try {
-            const response = await axios.get('https://lessaveursdesavoie.fr.nf/api/dishes/entree');
+            const response = await axios.get('https://127.0.0.1:8000/api/dishes/entree');
             setEntryList(response.data);
         } catch (error) {
             setErrorEntry('Une erreur est survenue lors de la récupération des entrées');
@@ -24,7 +24,7 @@ const CarteList = () => {
     const [dishList, setDishList] = useState([]);
     const getDishList = async () => {
         try {
-            const response = await axios.get('https://lessaveursdesavoie.fr.nf/api/dishes/plat');
+            const response = await axios.get('https://127.0.0.1:8000/api/dishes/plat');
             setDishList(response.data);
         } catch (error) {
             setErrorDishes('Une erreur est survenue lors de la récupération des plats');
@@ -35,7 +35,7 @@ const CarteList = () => {
     const [dessertList, setDessertList] = useState([]);
     const getDessertList = async () => {
         try {
-            const response = await axios.get('https://lessaveursdesavoie.fr.nf/api/dishes/dessert');
+            const response = await axios.get('https://127.0.0.1:8000/api/dishes/dessert');
             setDessertList(response.data);
         } catch (error) {
             setErrorDessert('Une erreur est survenue lors de la récupération des desserts');
