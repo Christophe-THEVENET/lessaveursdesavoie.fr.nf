@@ -52,7 +52,7 @@ export default function Booking() {
     const getbookingLunchList = async () => {
         try {
             const response = await axios.get(
-                `https://lessaveursdesavoie.fr.nf/api/bookings/lunch/${format(justDate, 'yyyy-MM-dd')}`
+                `https://127.0.0.1:8000/api/bookings/lunch/${format(justDate, 'yyyy-MM-dd')}`
             );
             setBookingLunchList(response.data);
             setIsLoading(false);
@@ -69,7 +69,7 @@ export default function Booking() {
     const getbookingDinnerList = async () => {
         try {
             const response = await axios.get(
-                `https://lessaveursdesavoie.fr.nf/api/bookings/dinner/${format(justDate, 'yyyy-MM-dd')}`
+                `https://127.0.0.1:8000/api/bookings/dinner/${format(justDate, 'yyyy-MM-dd')}`
             );
             setBookingDinnerList(response.data);
             setIsLoading(false);
@@ -85,7 +85,7 @@ export default function Booking() {
     const [errorCapacity, setErrorCapacity] = useState(false);
     const getCapacity = async () => {
         try {
-            const response = await axios.get(`https://lessaveursdesavoie.fr.nf/api/capacity`);
+            const response = await axios.get(`https://127.0.0.1:8000/api/capacity`);
             setCapacity(response.data[0].service_capacity);
         } catch (error) {
             setErrorCapacity(
@@ -217,7 +217,7 @@ export default function Booking() {
 
     const [email, setEmail] = useState('');
     const [errorEmail, setErrorEmail] = useState(false);
-    const [validation, setValidation] = useState(false);
+    const [validationEmail, setValidationEmail] = useState(false);
     const validateEmail = () => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -226,12 +226,13 @@ export default function Booking() {
         }
 
         {
-            email && !errorEmail && setValidation(true);
+            email && !errorEmail && setValidationEmail(true);
         }
     };
 
     const [allergy, setAllergy] = useState('');
     const [errorAllergy, setErrorAllergy] = useState(false);
+
     const validateAllergy = () => {
         const allergyRegex = /^[a-zA-Z0-9\s\.,!?']+$/g;
 
@@ -270,7 +271,7 @@ export default function Booking() {
                 setEmail('');
                 setAllergy('');
                 setDate({ justDate: null, justTime: null });
-                setValidation(false);
+                setValidationEmail(false);
             }
         } catch (error) {
             toast.error(
@@ -374,7 +375,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                     </div>
                     {/* si une date a été sélectionnée, on affiche le choix de l'heure */}
                     {justDate ? (
-                        // si une heure a été sélectionnée, on affiche la validation de la réservation
+                        // si une heure a été sélectionnée, on affiche la validationEmail de la réservation
                         justTime ? (
                             // ------------------------- block valider la réservation -----------------------------
                             <div className="booking__hours">
@@ -424,7 +425,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                         )}
                                     </div>
                                 </div>
-                                {validation && !errorEmail ? (
+                                {validationEmail && !errorEmail  && !errorAllergy ? (
                                     <Button
                                         type="submit"
                                         className="btn-valid_booking"

@@ -15,6 +15,7 @@ const Header = () => {
         setIsOpen(!isOpen);
         setIsHovered(!isHovered);
     };
+    const [currentUrl, setCurrentUrl] = useState(null);
     // hover sur le hamburger
     const [isHovered, setIsHovered] = useState(false);
     function handleMouseEnter() {
@@ -41,23 +42,20 @@ const Header = () => {
 
     // élément twig qui passe les infos du user par data-attribute
     const userRating = document.querySelector('.js-user-rating');
-    // élément twig qui passe les infos des roles du user par data-attribute
-    const userAdmin = document.querySelector('.js-user-admin');
-
     // récupère l'utilisateur connecté
     const [currentUser, setCurrentUser] = useState({});
     const getCurrentUser = () => {
         setCurrentUser(JSON.parse(userRating.dataset.user));
     };
 
+    // élément twig qui passe les infos des roles du user par data-attribute
+    const userAdmin = document.querySelector('.js-user-admin');
     // vérifie si l'utilisateur est admin
     const [admin, setAdmin] = useState([]);
     const checkAdmin = () => {
         let adminUser = JSON.parse(userAdmin.dataset.userAdmin);
         return adminUser ? setAdmin(adminUser) : setAdmin([]);
     };
-
-    const [currentUrl, setCurrentUrl] = useState(null);
 
     useEffect(() => {
         getCurrentUser();
