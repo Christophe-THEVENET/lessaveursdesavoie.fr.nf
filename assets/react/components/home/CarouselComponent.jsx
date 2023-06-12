@@ -20,6 +20,7 @@ function CarouselComponent() {
     useEffect(() => {
         getFavoriteDishes();
     }, []);
+    
 
     return (
         <>

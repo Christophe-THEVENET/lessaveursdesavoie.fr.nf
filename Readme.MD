@@ -39,7 +39,7 @@ Le site est développé avec la stack ReactJS, Symfony 5, et MySQL. ReactJS est 
 * php bin/console doctrine:migrations:migrate
 
 
-!!!Attention il faut metttre à jour les url de reqûetes du front sur l'url locale
+!!!Attention il faut metttre à jour les url de reqûetes du front sur l'url locale ou créer un virtualhost
 
 
 ## Utilisation
