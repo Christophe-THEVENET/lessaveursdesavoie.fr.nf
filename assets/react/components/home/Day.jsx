@@ -5,7 +5,7 @@ import { fr } from 'date-fns/locale';
 const Day = ({ openingHour }) => {
     // formate date avec date-fns
     const formatDate = (date) => {
-        const hours = format(subHours(new Date(date), 1), 'HH', { locale: fr });
+        const hours = format(new Date(date), 'HH', { locale: fr });
         const minute = format(new Date(date), 'mm');
 
         return `${hours}:${minute}`;
