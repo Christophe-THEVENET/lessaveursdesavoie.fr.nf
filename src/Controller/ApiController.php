@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use DateTime;
 use App\Entity\Booking;
+use App\Entity\User;
 use App\Repository\DishRepository;
 use App\Repository\MealRepository;
 use App\Repository\BookingRepository;
@@ -17,6 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Security;
 
 class ApiController extends AbstractController
 {
@@ -156,7 +158,7 @@ class ApiController extends AbstractController
 
     // ------------------- API POST BOOKING ------------------- //
     #[Route('/api/booking', name: 'api_post_booking', methods: ['POST'])]
-    public function addBooking(Request $request, RestaurantRepository $restaurantRepository, EntityManagerInterface $entityManager): JsonResponse
+    public function addBooking(Request $request, RestaurantRepository $restaurantRepository, EntityManagerInterface $entityManager, Security $security): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
 
@@ -168,8 +170,10 @@ class ApiController extends AbstractController
         $email = $data['email'];
         $restaurant = $restaurantRepository->findOneBy(['id' => 1]);
 
+        $user = $security->getUser();
 
-        
+
+
 
         // Vérifier les données requises
         if (!$date || !$hour || !$nbConvives) {
@@ -184,6 +188,11 @@ class ApiController extends AbstractController
         $booking->setEmail($email);
         $booking->setRestaurant($restaurant);
 
+        // Vérifiez si un utilisateur est connecté
+        if ($user instanceof User) {
+            // Ajoutez l'utilisateur connecté à la réservation
+            $booking->setUser($user);
+        }
         $entityManager->persist($booking);
         $entityManager->flush();
 
