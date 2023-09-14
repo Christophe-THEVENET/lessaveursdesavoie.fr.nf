@@ -10,7 +10,7 @@ const MenusList = () => {
 
     const getMealsList = async () => {
         try {
-            const response = await axios.get('https://127.0.0.1:8000/api/meals');
+            const response = await axios.get('https://lessaveursdesavoie.fr.nf/api/meals');
             setMealsList(response.data);
         } catch (error) {
             setError('Une erreur est survenue lors de la récupération des menus');

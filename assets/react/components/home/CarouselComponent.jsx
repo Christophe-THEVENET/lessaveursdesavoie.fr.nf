@@ -10,7 +10,7 @@ function CarouselComponent() {
 
     const getFavoriteDishes = async () => {
         try {
-            const response = await axios.get('https://127.0.0.1:8000/api/favorite/dishes');
+            const response = await axios.get('https://lessaveursdesavoie.fr.nf/api/favorite/dishes');
             setFavoriteDishes(response.data);
         } catch (error) {
             setError('Une erreur est survenue lors de la récupération des plats favoris');
