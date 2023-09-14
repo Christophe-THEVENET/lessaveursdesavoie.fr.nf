@@ -52,7 +52,7 @@ export default function Booking() {
     const getbookingLunchList = async () => {
         try {
             const response = await axios.get(
-                `https://lessaveursdesavoie.fr.nf/api/bookings/lunch/${format(justDate, 'yyyy-MM-dd')}`
+                `https://127.0.0.1:8000/api/bookings/lunch/${format(justDate, 'yyyy-MM-dd')}`
             );
             setBookingLunchList(response.data);
             setIsLoading(false);
@@ -69,7 +69,7 @@ export default function Booking() {
     const getbookingDinnerList = async () => {
         try {
             const response = await axios.get(
-                `https://lessaveursdesavoie.fr.nf/api/bookings/dinner/${format(justDate, 'yyyy-MM-dd')}`
+                `https://127.0.0.1:8000/api/bookings/dinner/${format(justDate, 'yyyy-MM-dd')}`
             );
             setBookingDinnerList(response.data);
             setIsLoading(false);
@@ -85,7 +85,7 @@ export default function Booking() {
     const [errorCapacity, setErrorCapacity] = useState(false);
     const getCapacity = async () => {
         try {
-            const response = await axios.get(`https://lessaveursdesavoie.fr.nf/api/capacity`);
+            const response = await axios.get(`https://127.0.0.1:8000/api/capacity`);
             setCapacity(response.data[0].service_capacity);
         } catch (error) {
             setErrorCapacity(
@@ -255,7 +255,7 @@ export default function Booking() {
 
         try {
             const response = await axios.post(
-                'https://lessaveursdesavoie.fr.nf/api/booking',
+                'https://127.0.0.1:8000/api/booking',
                 reservationData
             );
             if (response.status === 200) {
