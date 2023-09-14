@@ -168,6 +168,9 @@ class ApiController extends AbstractController
         $email = $data['email'];
         $restaurant = $restaurantRepository->findOneBy(['id' => 1]);
 
+
+        
+
         // Vérifier les données requises
         if (!$date || !$hour || !$nbConvives) {
             return new JsonResponse(['error' => 'Veuillez fournir une date, une heure et le nombre de personnes.'],  Response::HTTP_NOT_FOUND);

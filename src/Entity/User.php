@@ -51,7 +51,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(['bookings'])]
     private ?string $allergy = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Booking::class, cascade:['remove'])]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Booking::class, cascade: ['remove'])]
     private Collection $bookings;
 
     #[ORM\Column(length: 255)]
@@ -61,6 +61,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->bookings = new ArrayCollection();
+        $this->created_at = new \DateTimeImmutable();
     }
 
 
