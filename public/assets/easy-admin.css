@@ -106,3 +106,16 @@ a.btn.btn-primary:hover {
     text-align: center;
     margin: 3rem;
 }
+
+.datagrid thead .sorted a, .datagrid thead .sorted span {
+    color: #b1849d;
+}
+
+.datagrid thead .sorted i {
+    color: #b1849d;
+
+}
+
+.datagrid thead .sorted {
+    box-shadow: inset 0 -2px 0 #b1849d;
+}
