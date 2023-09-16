@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato&display=swap');
+
+h1 {
+    font-family: 'Great Vibes', cursive;
+    color: #ff679a;
+}
+
+.main-content {
+    background-color: #0e0008;
+}
+
+.sidebar {
+    background-color: #0e0008;
+}
+
+h2 {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.6rem;
+    color: #b1849d;
+}
+
+a.btn.btn-primary {
+    background-color: #b1849d;
+    transition: all 0.2s ease-in-out;
+}
+
+a.btn.btn-primary:hover {
+    background-color: #ff679a !important;
+}
+
+.main-header #header-logo .logo-custom {
+    color: #ff679a;
+}
+
+#main-menu .menu .menu-item-contents .menu-item-label {
+    color: #b1849d;
+}
+
+#main-menu .menu .menu-icon {
+    color: #ff679a;
+}
+
+#main-menu .menu .menu-item.active {
+    background-color: #523c48;
+}
+
+#main-menu .menu .menu-item.active:not(.expanded) .menu-icon,
+#main-menu .menu .menu-item.active:not(.expanded) a {
+    color: #b1849d;
+}
+
+#main-menu .menu .menu-item.active:not(.expanded) .menu-icon,
+#main-menu .menu .menu-item.active:not(.expanded) a .menu-item-label {
+    color: #ff679a;
+}
+
+.datagrid thead a,
+.datagrid thead span {
+    color: #ff679a;
+}
+
+.fa-sort:before,
+.fa-unsorted:before {
+    color: #523c48;
+}
+
+.user-menu-wrapper .user-details .user-name {
+    color: #b1849d;
+}
+
+.fa-cog:before,
+.fa-gear:before {
+    color: #b1849d;
+}
+
+.user-menu-wrapper span.user-avatar .user-avatar-icon-foreground {
+    color: #b1849d;
+}
+
+.datagrid thead + tbody tr td a {
+    color: #b1849d;
+}
+
+.page-item.active .page-link,
+.page-item.active .page-link:hover {
+    background-color: #b1849d;
+    border: 1px solid #b1849d;
+}
+
+.content-header .page-actions .btn + .btn {
+    background-color: #b1849d;
+    transition: all 0.2s ease-in-out;
+}
+
+.content-header .page-actions .btn + .btn:hover {
+    background-color: #ff679a !important;
+}
+
+.ea-dark-scheme .form-switch .form-check-input:checked, .form-switch .form-check-input:checked {
+    background-color: #ff679a;
+    border: 1px solid #ff679a;
+}
+
+.dashboard-title {
+    text-align: center;
+    margin: 3rem;
+}
