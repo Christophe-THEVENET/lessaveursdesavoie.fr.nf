@@ -18,6 +18,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -63,5 +64,10 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Horaires d\'ouverture', 'fa-solid fa-clock', OpeningHours::class);
         yield MenuItem::linkToCrud('Abonnés', 'fa-solid fa-user', User::class);
         yield MenuItem::linkToCrud('Restaurant', 'fa-solid fa-shop', Restaurant::class);
+    }
+
+    public function configureAssets(): Assets
+    {
+        return Assets::new()->addCssFile('assets/easy-admin.css');
     }
 }
