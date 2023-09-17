@@ -7,19 +7,22 @@ import Chef from '../components/home/Chef';
 import Producter from '../components/home/Producter';
 import Maps from '../components/home/Maps';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 const Home = () => {
-
     return (
-        <main>
-            <Banniere url="../assets/video/banniere.mp4" />
-            <Restaurant />
-            <Favorite />
-            <Chef />
-            <Producter />
-            <Maps />
+        <>
+            <Header />
+            <main>
+                <Banniere url="../assets/video/banniere.mp4" />
+                <Restaurant />
+                <Favorite />
+                <Chef />
+                <Producter />
+                <Maps />
+            </main>
             <Footer />
-        </main>
+        </>
     );
 };
 
