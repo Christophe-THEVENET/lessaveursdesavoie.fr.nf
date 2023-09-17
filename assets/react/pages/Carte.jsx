@@ -1,19 +1,20 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-
-
-import BanniereMenus from '../components/menus/BanniereMenus';
 import Footer from '../components/Footer';
 import BanniereCarte from '../components/carte/BanniereCarte';
 import CarteList from '../components/carte/CarteList';
+import Header from '../components/Header';
 
 const Carte = () => {
     return (
-        <main>
-            <BanniereCarte/>
-            <CarteList/>
-            <Footer/>
-        </main>
+        <>
+            <Header />
+            <main>
+                <BanniereCarte />
+                <CarteList />
+            </main>
+            <Footer />
+        </>
     );
 };
 

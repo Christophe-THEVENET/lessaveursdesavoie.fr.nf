@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { createRoot } from 'react-dom/client';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import CloseIcon from '@mui/icons-material/Close';
 import '../../scss/styles.scss';
@@ -29,10 +28,13 @@ const Header = () => {
     let menuRef = useRef();
     useEffect(() => {
         let handler = (event) => {
+            // si le click est en dehors du header
             if (!menuRef.current.contains(event.target)) {
+                // ferme le header
                 setIsOpen(false);
             }
         };
+        // click n'importe ou
         document.addEventListener('mousedown', handler);
 
         return () => {
@@ -50,16 +52,16 @@ const Header = () => {
 
     // élément twig qui passe les infos des roles du user par data-attribute
     const userAdmin = document.querySelector('.js-user-admin');
-    // vérifie si l'utilisateur est admin
-    const [admin, setAdmin] = useState([]);
-    const checkAdmin = () => {
-        let adminUser = JSON.parse(userAdmin.dataset.userAdmin);
-        return adminUser ? setAdmin(adminUser) : setAdmin([]);
+    // récupère les roles de l'utilisateur connecté
+    const [userRoles, setUserRoles] = useState([]);
+    const getCurrentUserRoles = () => {
+        let userRolesArray = JSON.parse(userAdmin.dataset.userAdmin);
+        return userRolesArray ? setUserRoles(userRolesArray) : setUserRoles([]);
     };
 
     useEffect(() => {
         getCurrentUser();
-        checkAdmin();
+        getCurrentUserRoles();
         setCurrentUrl(window.location.href);
     }, []);
 
@@ -75,7 +77,6 @@ const Header = () => {
             {/*  bouton hamburger ouvrir menu ----------------------- */}
             <div className="icon-title">
                 <ToastContainer />
-
                 <MenuOpenIcon
                     className="hamburger-open"
                     onClick={toggleModal}
@@ -100,7 +101,7 @@ const Header = () => {
                     onMouseLeave={handleMouseLeave}
                 />
                 {/*  titre dans header en fonction de la page  */}
-                {currentUrl != 'https://lessaveursdesavoie.fr.nf/' ? (
+                {currentUrl != 'https://127.0.0.1:8000/' ? (
                     <h1 className="header-title">Les Saveurs De Savoie</h1>
                 ) : null}
             </div>
@@ -494,7 +495,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                     </li>
                                 )}
 
-                                {admin.includes('ROLE_ADMIN') ? (
+                                {userRoles.includes('ROLE_ADMIN') ? (
                                     <>
                                         <svg
                                             className="separation"
@@ -629,8 +630,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                         <a href="logout">
                             <LogoutIcon className="welcome__icon--logout" />
                         </a>
-
-                        {admin.includes('ROLE_ADMIN') ? (
+                        {userRoles.includes('ROLE_ADMIN') ? (
                             <>
                                 <a href="/admin">
                                     <EngineeringIcon className="welcome__icon--logout" />
@@ -649,10 +649,5 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
     );
 };
 
-class HeaderElement extends HTMLElement {
-    connectedCallback() {
-        const root = createRoot(this);
-        root.render(<Header />);
-    }
-}
-customElements.define('header-component', HeaderElement);
+export default Header;
+
