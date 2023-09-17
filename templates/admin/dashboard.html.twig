@@ -13,7 +13,7 @@
     {# ********************** bookings at day **************************** #}
     <div class="bookings-item">
         <h5>Réservations aujourd'hui</h3>
-            {% if bookingsAtDay is defined %}
+            {% if bookingsAtDay != [] %}
             {% for bookingAtDay in bookingsAtDay %}
             <div class="booking-item">
                 <div class="booking-item-date-nb">
@@ -35,7 +35,7 @@
     {# ******************** bookings at day + 1 ************************** #}
     <div class="bookings-item">
         <h5>Réservations demain</h3>
-            {% if bookingsTomorrow is defined %}
+            {% if bookingsTomorrow != [] %}
             {% for bookingTomorrow in bookingsTomorrow %}
             <div class="booking-item">
                 <div class="booking-item-date-nb">
@@ -57,7 +57,7 @@
     {# ********************** bookings at day + 2 ************************* #}
     <div class="bookings-item">
         <h5>Réservations après demain</h3>
-            {% if bookingsAfterTomorrow is defined %}
+            {% if bookingsAfterTomorrow != [] %}
             {% for bookingAfterTomorrow in bookingsAfterTomorrow %}
             <div class="booking-item">
                 <div class="booking-item-date-nb">
@@ -73,7 +73,7 @@
             </div>
             {% endfor %}
             {% else %}
-            <p>Pas de réservations</p>
+            <p class="booking-item-no-booking">Pas de réservations</p>
             {% endif %}
     </div>
 
