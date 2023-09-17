@@ -124,10 +124,11 @@
     height: auto;
 }
 
- .css-6hp17o-MuiList-root-MuiMenu-list {
+.css-6hp17o-MuiList-root-MuiMenu-list,
+.MuiList-padding .MuiMenu-list .css-r8u8y9 {
     color: $colorWhite !important;
     background-color: $colorSecondary !important;
-} 
+}
 
 .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:focus {
     color: $colorWhite;
@@ -145,7 +146,7 @@
     .MuiPaper-elevation8
     .MuiPopover-paper
     .css-1ka5eyc-MuiPaper-root-MuiMenu-paper-MuiPopover-paper {
-   top: 120px;
+    top: 120px;
 }
 
 // les inputs
