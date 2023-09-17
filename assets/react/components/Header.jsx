@@ -101,7 +101,7 @@ const Header = () => {
                     onMouseLeave={handleMouseLeave}
                 />
                 {/*  titre dans header en fonction de la page  */}
-                {currentUrl != 'https://127.0.0.1:8000/' ? (
+                {currentUrl != 'https://lessaveursdesavoie.fr.nf/' ? (
                     <h1 className="header-title">Les Saveurs De Savoie</h1>
                 ) : null}
             </div>

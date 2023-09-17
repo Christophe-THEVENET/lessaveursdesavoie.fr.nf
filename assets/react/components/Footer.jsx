@@ -94,7 +94,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="mentions">
-                <a href="https://127.0.0.1:8000/mentions">mentions légales</a>
+                <a href="https://lessaveursdesavoie.fr.nf/mentions">mentions légales</a>
             </div>
         </footer>
     );
