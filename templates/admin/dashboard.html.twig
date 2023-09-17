@@ -8,4 +8,74 @@
 
 {% block main %}
 <h2 class="dashboard-title">Bienvenue sur l'administration des Saveurs De Savoie</h2>
+<p class="dashboard-users">Vous avez {{ users|length }} clients abonnés</p>
+<div class="bookings-block">
+    {# ********************** bookings at day **************************** #}
+    <div class="bookings-item">
+        <h5>Réservations aujourd'hui</h3>
+            {% if bookingsAtDay is defined %}
+            {% for bookingAtDay in bookingsAtDay %}
+            <div class="booking-item">
+                <div class="booking-item-date-nb">
+                    <h4>{{ bookingAtDay.hour|format_datetime('none', 'short', locale='fr')}}</h4>
+                    <h5 class="booking-nb-personnes">{{ bookingAtDay.getNbConvives() }} personnes</h5>
+                </div>
+                <p class="booking-item-email">{{ bookingAtDay.email }}</p>
+                {% if bookingAtDay.allergy == "" %}
+                <p></p>
+                {% else %}
+                <p class="booking-item-allergy">Allergies: {{ bookingAtDay.allergy }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>Pas de réservations</p>
+            {% endif %}
+    </div>
+    {# ******************** bookings at day + 1 ************************** #}
+    <div class="bookings-item">
+        <h5>Réservations demain</h3>
+            {% if bookingsTomorrow is defined %}
+            {% for bookingTomorrow in bookingsTomorrow %}
+            <div class="booking-item">
+                <div class="booking-item-date-nb">
+                    <h4>{{ bookingTomorrow.hour|format_datetime('none', 'short', locale='fr')}}</h4>
+                    <h5 class="booking-nb-personnes">{{ bookingTomorrow.getNbConvives() }} personnes</h5>
+                </div>
+                <p class="booking-item-email">{{ bookingTomorrow.email }}</p>
+                {% if bookingTomorrow.allergy == "" %}
+                <p></p>
+                {% else %}
+                <p class="booking-item-allergy">Allergies: {{ bookingTomorrow.allergy }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>Pas de réservations</p>
+            {% endif %}
+    </div>
+    {# ********************** bookings at day + 2 ************************* #}
+    <div class="bookings-item">
+        <h5>Réservations après demain</h3>
+            {% if bookingsAfterTomorrow is defined %}
+            {% for bookingAfterTomorrow in bookingsAfterTomorrow %}
+            <div class="booking-item">
+                <div class="booking-item-date-nb">
+                    <h4>{{ bookingAfterTomorrow.hour|format_datetime('none', 'short', locale='fr')}}</h4>
+                    <h5 class="booking-nb-personnes">{{ bookingAfterTomorrow.getNbConvives() }} personnes</h5>
+                </div>
+                <p class="booking-item-email">{{ bookingAfterTomorrow.email }}</p>
+                {% if bookingAfterTomorrow.allergy == "" %}
+                <p></p>
+                {% else %}
+                <p class="booking-item-allergy">Allergies: {{ bookingAfterTomorrow.allergy }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>Pas de réservations</p>
+            {% endif %}
+    </div>
+
+</div>
 {% endblock %}
