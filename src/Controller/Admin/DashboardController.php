@@ -12,6 +12,9 @@ use App\Entity\MetCategory;
 use App\Entity\OpeningHours;
 use App\Entity\Restaurant;
 use App\Entity\User;
+use App\Repository\BookingRepository;
+use App\Repository\UserRepository;
+use DateTime;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -22,6 +25,11 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 
 class DashboardController extends AbstractDashboardController
 {
+
+    public function __construct(private UserRepository $userRepository, private BookingRepository $bookingRepository)
+    {
+    }
+
     #[Route('/admin', name: 'admin')]
     #[IsGranted('ROLE_ADMIN', message: 'Pas d\'authorisation d\'accés a l\'administration.')]
     public function index(): Response
@@ -42,13 +50,34 @@ class DashboardController extends AbstractDashboardController
         // Option 3. You can render some custom template to display a proper dashboard with widgets, etc.
         // (tip: it's easier if your template extends from @EasyAdmin/page/content.html.twig)
         //
-        return $this->render('admin/dashboard.html.twig');
+
+        $users = $this->userRepository->findAll();
+
+        $date = new DateTime();
+        $tomorrow = new DateTime('+1 day');
+        $afterTomorrow = new DateTime('+2 day');
+
+
+        $bookingsAtDay = $this->bookingRepository->findByDate($date->setTime(0, 0, 0));
+        $bookingsTomorrow = $this->bookingRepository->findByDate($tomorrow->setTime(0, 0, 0));
+        $bookingsAfterTomorrow = $this->bookingRepository->findByDate($afterTomorrow->setTime(0, 0, 0));
+
+
+
+
+
+        return $this->render('admin/dashboard.html.twig', [
+            'users' => $users,
+            'bookingsAtDay' => $bookingsAtDay,
+            'bookingsTomorrow' => $bookingsTomorrow,
+            'bookingsAfterTomorrow' => $bookingsAfterTomorrow,
+        ]);
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Lessaveursdesavoie');
+            ->setTitle('Les Saveurs De Savoie');
     }
 
     public function configureMenuItems(): iterable

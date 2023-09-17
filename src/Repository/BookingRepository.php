@@ -48,6 +48,7 @@ class BookingRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('b')
             ->andWhere('b.date = :val')
             ->setParameter('val', $date)
+            ->orderBy('b.hour', 'ASC')
             ->getQuery()
             ->getResult();
     }
