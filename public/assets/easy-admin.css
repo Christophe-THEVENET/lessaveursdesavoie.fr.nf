@@ -143,7 +143,7 @@ a.btn.btn-primary:hover {
     background-color: #523c48;
     padding: 1rem;
     border-radius: 10px;
-    margin: 3rem;
+    margin: 1rem;
 }
 
 .booking-nb-personnes {
@@ -162,6 +162,15 @@ a.btn.btn-primary:hover {
     margin: 1em;
 }
 
+.booking-item h4 {
+    font-weight: 700;
+}
+
+.booking-item h5 {
+    font-weight: 500;
+
+}
+
 .booking-item-date-nb {
     display: flex;
     align-items: center;
@@ -174,8 +183,12 @@ a.btn.btn-primary:hover {
 
 .booking-item-email {
     color: #0e0008;
+    font-weight: 500;
 }
 
 .booking-item-allergy {
-    color: #babcc9;
+    color: #794762;
+    font-size: 0.8rem;
+    font-style: italic;
+
 }
