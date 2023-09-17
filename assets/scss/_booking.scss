@@ -124,29 +124,21 @@
     height: auto;
 }
 
- .css-6hp17o-MuiList-root-MuiMenu-list {
-    color: $colorWhite !important;
-    background-color: $colorSecondary !important;
-} 
 
 .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:focus {
-    color: $colorWhite;
+    color: $colorFlashy;
 }
 
 .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:defined {
-    color: $colorWhite;
+    color: $colorFlashy;
     font-size: 1.4rem;
 }
 
-.MuiPaper-root
-    .MuiMenu-paper
-    .MuiPaper-elevation
-    .MuiPaper-rounded
-    .MuiPaper-elevation8
-    .MuiPopover-paper
-    .css-1ka5eyc-MuiPaper-root-MuiMenu-paper-MuiPopover-paper {
-   top: 120px;
+.select-nb-convives:hover {
+    background-color: #ff679a;
 }
+
+
 
 // les inputs
 .MuiTextField-root,

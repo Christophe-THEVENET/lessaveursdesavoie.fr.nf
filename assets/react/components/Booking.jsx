@@ -180,7 +180,7 @@ export default function Booking() {
         for (
             let i = 1;
             i <=
-        // si date sélect est dans l'interval alors nb dispo repas du midi sinon repas du soir
+            // si date sélect est dans l'interval alors nb dispo repas du midi sinon repas du soir
             (checkTimeWithinInterval(justTime, '11:00', '16:00')
                 ? capacity - nbLunchConvivesAtDate
                 : capacity - nbDinnerConvivesAtDate);
@@ -194,6 +194,8 @@ export default function Booking() {
                 <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Nombre de personnes</InputLabel>
                     <Select
+                        sx={{ backgroundColor: '#b1849d', transition: 'all 0.3s ease-in-out' }}
+                        className='select-nb-convives'
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         value={nbConvives}
@@ -202,7 +204,11 @@ export default function Booking() {
                     >
                         return (
                         {arrayNumbers.map((number) => (
-                            <MenuItem key={number.i} value={number.i}>
+                            <MenuItem
+                                key={number.i}
+                                value={number.i}
+                                sx={{ backgroundColor: '#b1849d' }}
+                            >
                                 {number.i}
                             </MenuItem>
                         ))}
@@ -292,7 +298,7 @@ export default function Booking() {
             <button onClick={handleOpen} className="btn-booking">
                 Réserver
             </button>
-       {/* ---------------- modale réservation ----------------- */}
+            {/* ---------------- modale réservation ----------------- */}
             <Modal open={open} onClose={handleClose}>
                 <Box sx={style}>
                     <div className="booking__title__block">
@@ -425,7 +431,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                         )}
                                     </div>
                                 </div>
-                                {validationEmail && !errorEmail  && !errorAllergy ? (
+                                {validationEmail && !errorEmail && !errorAllergy ? (
                                     <Button
                                         type="submit"
                                         className="btn-valid_booking"
