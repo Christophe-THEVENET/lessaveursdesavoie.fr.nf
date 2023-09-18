@@ -124,9 +124,16 @@
     height: auto;
 }
 
+.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation.MuiPaper-rounded{
+    padding: 2rem;
+    background-color: #b1849d;
+    max-height: 50vh;
+    margin-top: -10%;
+}
 
 .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:focus {
     color: $colorFlashy;
+    
 }
 
 .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:defined {
@@ -135,9 +142,31 @@
 }
 
 .select-nb-convives:hover {
-    background-color: #ff679a;
+    background-color: $colorFlashy;
 }
 
+// ************* style barre de défilement *****************
+
+/* Pour les navigateurs WebKit (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
+    width: 10px; /* Largeur de la barre de défilement */
+  }
+  
+  /* Optionnel : changer la couleur de fond de la barre de défilement */
+  ::-webkit-scrollbar-track {
+    background: #794762;
+  }
+  
+/* Pour les navigateurs WebKit (Chrome, Safari, etc.) */
+::-webkit-scrollbar-thumb {
+    background: #523c48; /* Couleur de la poignée de la barre de défilement */
+  }
+  
+  /* Optionnel : Ajouter une ombre à la poignée de la barre de défilement */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #644857;
+  }
+  
 
 
 // les inputs
