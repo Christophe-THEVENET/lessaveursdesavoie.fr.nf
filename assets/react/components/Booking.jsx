@@ -118,18 +118,22 @@ export default function Booking() {
     // renvoi tableau d'horaires de midi
     const getTimesLunch = () => {
         if (!justDate) return;
+        // fixe 11:30 a la date donnée
         const beginningLunch = add(new Date(justDate), { hours: 11, minutes: 30 });
+        // fixe 14:30 a la date donnée
         const endLunch = add(new Date(justDate), { hours: 14, minutes: 30 });
         const intervalLunch = 15;
         const timesLunch = [];
         for (
             let i = beginningLunch;
+            //  fin du service 1 heure avant
             i <= subHours(endLunch, 1);
             i = add(i, { minutes: intervalLunch })
         ) {
             timesLunch.push(i);
         }
 
+        // retourne tableau de date de 11h30 a 13h30 toutes les 15min
         return timesLunch;
     };
 
@@ -147,7 +151,6 @@ export default function Booking() {
         ) {
             timesDinner.push(i);
         }
-
         return timesDinner;
     };
 
@@ -160,6 +163,7 @@ export default function Booking() {
     const checkTimeWithinInterval = (time, start, end) => {
         const formatedTime = format(time, 'HH:mm');
         const timeToCheck = parse(formatedTime, 'HH:mm', new Date(), { locale: fr });
+
         const interval = {
             start: parse(start, 'HH:mm', new Date(), { locale: fr }),
             end: parse(end, 'HH:mm', new Date(), { locale: fr }),
@@ -168,7 +172,7 @@ export default function Booking() {
         return isWithinInterval(timeToCheck, interval);
     };
 
-    // -----------------------  select nombre de convives --------------------------------------
+    // ----------------------- composant select nombre de convives --------------------------------------
     const [nbConvives, setNbConvives] = useState('');
     // select nombre de convives
     const SelectNumber = () => {
@@ -190,29 +194,38 @@ export default function Booking() {
         }
 
         return (
-            <Box sx={{ minWidth: 120 }}>
-                <FormControl fullWidth>
+            <Box sx={{ minWidth: 120, backgroundColor: '#b1849d' }}>
+                <FormControl fullWidth sx={{ backgroundColor: '#b1849d' }}>
                     <InputLabel id="demo-simple-select-label">Nombre de personnes</InputLabel>
                     <Select
-                        sx={{ backgroundColor: '#b1849d', transition: 'all 0.3s ease-in-out' }}
-                        className='select-nb-convives'
+                        sx={{ backgroundColor: '#b1849d', transition: 'all 0.2s ease-in-out' }}
+                        className="select-nb-convives"
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         value={nbConvives}
                         label="nbConvives"
                         onChange={handleChange}
                     >
-                        return (
                         {arrayNumbers.map((number) => (
                             <MenuItem
                                 key={number.i}
                                 value={number.i}
-                                sx={{ backgroundColor: '#b1849d' }}
+                                sx={{
+                                    backgroundColor: '#b1849d',
+                                    color: '#0e0008',
+                                    fontSize: '1.2rem',
+                                    padding: '0.4rem',
+                                    transition: '0.4s ease-in-out',
+                                    '&:hover': {
+                                        backgroundColor: '#ff679a',
+                                        color: '#ffffff',
+                                        transform: 'translateX(10px)',
+                                    },
+                                }}
                             >
-                                {number.i}
+                                {number.i} personne{number.i < 2 ? null : 's'}
                             </MenuItem>
                         ))}
-                        );
                     </Select>
                 </FormControl>
             </Box>
@@ -225,7 +238,7 @@ export default function Booking() {
     const [errorEmail, setErrorEmail] = useState(false);
     const [validationEmail, setValidationEmail] = useState(false);
     const validateEmail = () => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$/;
 
         {
             email && setErrorEmail(!emailRegex.test(email));
@@ -483,6 +496,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                                             }
                                                             // style des boutons horaires en fonction de la capacité
                                                             style={{
+                                                                fontSize: '1.2rem',
                                                                 color:
                                                                     capacity <=
                                                                     nbLunchConvivesAtDate
@@ -544,6 +558,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                                                 }))
                                                             }
                                                             style={{
+                                                                fontSize: '1.2rem',
                                                                 color:
                                                                     capacity <=
                                                                     nbDinnerConvivesAtDate
