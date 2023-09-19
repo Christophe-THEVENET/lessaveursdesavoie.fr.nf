@@ -12,6 +12,7 @@ use App\Repository\RestaurantRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ClosingDateRepository;
 use App\Repository\OpeningHoursRepository;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -154,6 +155,20 @@ class ApiController extends AbstractController
 
         return new JsonResponse($capacitySerialized, Response::HTTP_OK, [], true);
     }
+
+     // ------------------- API GET USER ------------------- //
+     #[Route('/api/user', name: 'api_user')]
+     public function getCurrentUser(Security $security, SerializerInterface $serializer): JsonResponse
+     {
+         $curentUser = $security->getUser();
+ 
+        /*  if (!$curentUser) {
+             return new JsonResponse(null, Response::HTTP_NOT_FOUND);
+         } */
+         $userSerialized = $serializer->serialize($curentUser, 'json', ['groups' => 'getUser']);
+ 
+         return new JsonResponse($userSerialized, Response::HTTP_OK, [], true);
+     }
 
 
     // ------------------- API POST BOOKING ------------------- //
