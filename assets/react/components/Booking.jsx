@@ -94,13 +94,34 @@ export default function Booking() {
         }
     };
 
+    // requête user connecté
+    const [user, setUser] = useState({});
+    const [errorUser, setErrorUser] = useState(false);
+    const getUser = async () => {
+        try {
+            const response = await axios.get(`https://127.0.0.1:8000/api/user`);
+            setUser(response.data);
+        } catch (error) {
+            setErrorUser(
+                "une erreur est survenue lors de la récupération de l'utilisatteur. Veuillez réeessayer ultérieurement"
+            );
+        }
+    };
+
     // lance les reqûetes quand la date est selectionnée ou l'heure
     useEffect(() => {
         justDate && getbookingLunchList();
         justDate && getbookingDinnerList();
         justDate && getCapacity();
-        justTime && SelectNumber();
+        justDate && getUser();
     }, [justDate]);
+
+    // met a jour le state email la validation est faite dans le selecteur de nombre de personnes
+    useEffect(() => {
+        justTime && SelectNumber();
+        user && setEmail(user.email);
+    }, [justTime]);
+
 
     // calcul du nombre de convives pour midi a la date selectionnée
     const nbLunchConvivesAtDate = bookingLunchList.reduce(
@@ -178,6 +199,8 @@ export default function Booking() {
     const SelectNumber = () => {
         const handleChange = (event) => {
             setNbConvives(event.target.value);
+            /* valider email si utilisateur connecté */
+            user && validateEmail();
         };
         // nombre de personnes possible en fonction des places restantes
         const arrayNumbers = [];
@@ -238,7 +261,7 @@ export default function Booking() {
     const [errorEmail, setErrorEmail] = useState(false);
     const [validationEmail, setValidationEmail] = useState(false);
     const validateEmail = () => {
-        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$/;
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,63}$/;
 
         {
             email && setErrorEmail(!emailRegex.test(email));
@@ -488,12 +511,12 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                                         <button
                                                             type="button"
                                                             // au click selectionne heure
-                                                            onClick={() =>
+                                                            onClick={() => {
                                                                 setDate((prev) => ({
                                                                     ...prev,
                                                                     justTime: time,
-                                                                }))
-                                                            }
+                                                                }));
+                                                            }}
                                                             // style des boutons horaires en fonction de la capacité
                                                             style={{
                                                                 fontSize: '1.2rem',
