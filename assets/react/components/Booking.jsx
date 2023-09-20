@@ -101,6 +101,9 @@ export default function Booking() {
         try {
             const response = await axios.get(`https://127.0.0.1:8000/api/user`);
             setUser(response.data);
+            setEmail(response.data.email);
+            setNbConvives(response.data.nb_convives);
+            response.data.allergy && setAllergy(response.data.allergy);
         } catch (error) {
             setErrorUser(
                 "une erreur est survenue lors de la récupération de l'utilisatteur. Veuillez réeessayer ultérieurement"
@@ -108,7 +111,7 @@ export default function Booking() {
         }
     };
 
-    // lance les reqûetes quand la date est selectionnée ou l'heure
+    // lance les reqûetes quand la date est selectionnée
     useEffect(() => {
         justDate && getbookingLunchList();
         justDate && getbookingDinnerList();
@@ -116,12 +119,10 @@ export default function Booking() {
         justDate && getUser();
     }, [justDate]);
 
-    // met a jour le state email la validation est faite dans le selecteur de nombre de personnes
+    // si il y a un user il faut le valider son email
     useEffect(() => {
-        justTime && SelectNumber();
-        user && setEmail(user.email);
+        email && validateEmail();
     }, [justTime]);
-
 
     // calcul du nombre de convives pour midi a la date selectionnée
     const nbLunchConvivesAtDate = bookingLunchList.reduce(
@@ -199,8 +200,6 @@ export default function Booking() {
     const SelectNumber = () => {
         const handleChange = (event) => {
             setNbConvives(event.target.value);
-            /* valider email si utilisateur connecté */
-            user && validateEmail();
         };
         // nombre de personnes possible en fonction des places restantes
         const arrayNumbers = [];
@@ -261,7 +260,7 @@ export default function Booking() {
     const [errorEmail, setErrorEmail] = useState(false);
     const [validationEmail, setValidationEmail] = useState(false);
     const validateEmail = () => {
-        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,63}$/;
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{1,63}$/;
 
         {
             email && setErrorEmail(!emailRegex.test(email));
@@ -438,7 +437,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                                 label="Email"
                                                 variant="outlined"
                                                 value={email}
-                                                onBlur={validateEmail}
+                                                onKeyUp={validateEmail}
                                                 onChange={(e) => setEmail(e.target.value)}
                                                 error={errorEmail}
                                                 helperText={errorEmail ? 'Email invalide' : ''}
@@ -456,7 +455,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                                 variant="outlined"
                                                 value={allergy}
                                                 error={errorAllergy}
-                                                onBlur={validateAllergy}
+                                                onKeyUp={validateAllergy}
                                                 onChange={(e) => setAllergy(e.target.value)}
                                                 helperText={
                                                     errorAllergy
@@ -467,7 +466,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                         )}
                                     </div>
                                 </div>
-                                {validationEmail && !errorEmail && !errorAllergy ? (
+                                {validationEmail && !errorEmail && !errorAllergy && email ? (
                                     <Button
                                         type="submit"
                                         className="btn-valid_booking"
@@ -600,9 +599,18 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                                 ))}
                                             </div>
                                             {!errorDinner && (
-                                                <div className="places">
-                                                    Il reste {capacity - nbDinnerConvivesAtDate}{' '}
-                                                    places
+                                                <div
+                                                    className={
+                                                        capacity <= nbDinnerConvivesAtDate
+                                                            ? `complet`
+                                                            : `places`
+                                                    }
+                                                >
+                                                    {capacity <= nbDinnerConvivesAtDate
+                                                        ? `Complet`
+                                                        : `Il reste ${
+                                                              capacity - nbDinnerConvivesAtDate
+                                                          } places`}
                                                 </div>
                                             )}
                                         </>

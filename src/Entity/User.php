@@ -41,14 +41,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(nullable: true)]
 
-    #[Groups(['bookings'])]
+    #[Groups(['getUser', 'bookings'])]
     private ?int $nb_convives = null;
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $created_at = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(['bookings'])]
+    #[Groups(['getUser', 'bookings'])]
     private ?string $allergy = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Booking::class, cascade: ['remove'])]
