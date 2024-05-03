@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import imgEntry from '../../../images/entree.jpg';
-import imgDishes from '../../../images/plat.jpg';
-import imgDessert from '../../../images/dessert.jpg';
+import imgEntry from '../../../images/chevre.jpeg';
+import imgDishes from '../../../images/tartiflette_2.jpeg';
+import imgDessert from '../../../images/tarte.webp';
 
 const CarteList = () => {
     const [errorEntry, setErrorEntry] = useState(null);
