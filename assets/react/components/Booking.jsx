@@ -52,7 +52,7 @@ export default function Booking() {
     const getbookingLunchList = async () => {
         try {
             const response = await axios.get(
-                `https://127.0.0.1:8000/api/bookings/lunch/${format(justDate, 'yyyy-MM-dd')}`
+                `http://127.0.0.1:8000/api/bookings/lunch/${format(justDate, 'yyyy-MM-dd')}`
             );
             setBookingLunchList(response.data);
             setIsLoading(false);
@@ -69,7 +69,7 @@ export default function Booking() {
     const getbookingDinnerList = async () => {
         try {
             const response = await axios.get(
-                `https://127.0.0.1:8000/api/bookings/dinner/${format(justDate, 'yyyy-MM-dd')}`
+                `http://127.0.0.1:8000/api/bookings/dinner/${format(justDate, 'yyyy-MM-dd')}`
             );
             setBookingDinnerList(response.data);
             setIsLoading(false);
@@ -85,7 +85,7 @@ export default function Booking() {
     const [errorCapacity, setErrorCapacity] = useState(false);
     const getCapacity = async () => {
         try {
-            const response = await axios.get(`https://127.0.0.1:8000/api/capacity`);
+            const response = await axios.get(`http://127.0.0.1:8000/api/capacity`);
             setCapacity(response.data[0].service_capacity);
         } catch (error) {
             setErrorCapacity(
@@ -99,7 +99,7 @@ export default function Booking() {
     const [errorUser, setErrorUser] = useState(false);
     const getUser = async () => {
         try {
-            const response = await axios.get(`https://127.0.0.1:8000/api/user`);
+            const response = await axios.get(`http://127.0.0.1:8000/api/user`);
             setUser(response.data);
             setEmail(response.data.email);
             setNbConvives(response.data.nb_convives);
@@ -295,10 +295,7 @@ export default function Booking() {
         };
 
         try {
-            const response = await axios.post(
-                'https://127.0.0.1:8000/api/booking',
-                reservationData
-            );
+            const response = await axios.post('http://127.0.0.1:8000/api/booking', reservationData);
             if (response.status === 200) {
                 handleClose();
                 toast.success(

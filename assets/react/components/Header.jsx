@@ -70,8 +70,7 @@ const Header = () => {
             ref={menuRef}
             /*   background du header en fonction de la page */
             style={{
-                backgroundColor:
-                    currentUrl == 'https://127.0.0.1:8000/' ? 'transparent' : '#0e0008',
+                backgroundColor: currentUrl == 'http://127.0.0.1:8000/' ? 'transparent' : '#0e0008',
             }}
         >
             {/*  bouton hamburger ouvrir menu ----------------------- */}
@@ -101,7 +100,7 @@ const Header = () => {
                     onMouseLeave={handleMouseLeave}
                 />
                 {/*  titre dans header en fonction de la page  */}
-                {currentUrl != 'https://127.0.0.1:8000/' ? (
+                {currentUrl != 'http://127.0.0.1:8000/' ? (
                     <h1 className="header-title">Les Saveurs De Savoie</h1>
                 ) : null}
             </div>
@@ -650,4 +649,3 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
 };
 
 export default Header;
-

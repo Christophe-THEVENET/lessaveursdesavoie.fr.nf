@@ -15,10 +15,10 @@ const Footer = () => {
 
     const getOpeningHours = async () => {
         try {
-            const response = await axios.get('https://127.0.0.1:8000/api/opening-hours');
+            const response = await axios.get('http://127.0.0.1:8000/api/opening-hours');
             setOpeningHoursList(response.data);
         } catch (error) {
-            setError('Une erreur est survenue lors de la récupération des horaires d\'ouverture')
+            setError("Une erreur est survenue lors de la récupération des horaires d'ouverture");
         }
     };
     useEffect(() => {
@@ -28,7 +28,7 @@ const Footer = () => {
     return (
         <footer>
             <div className="footer">
-            {error && <p className='error-message'>{error}</p>}
+                {error && <p className="error-message">{error}</p>}
                 <div className="footer__horaire">
                     <h2>Horaires</h2>
                     {openingHoursList.map((openingHour) => {
@@ -94,7 +94,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="mentions">
-                <a href="https://127.0.0.1:8000/mentions">mentions légales</a>
+                <a href="http://127.0.0.1:8000/mentions">mentions légales</a>
             </div>
         </footer>
     );

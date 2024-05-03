@@ -156,19 +156,19 @@ class ApiController extends AbstractController
         return new JsonResponse($capacitySerialized, Response::HTTP_OK, [], true);
     }
 
-     // ------------------- API GET USER ------------------- //
-     #[Route('/api/user', name: 'api_user')]
-     public function getCurrentUser(Security $security, SerializerInterface $serializer): JsonResponse
-     {
-         $curentUser = $security->getUser();
- 
+    // ------------------- API GET USER ------------------- //
+    #[Route('/api/user', name: 'api_user')]
+    public function getCurrentUser(Security $security, SerializerInterface $serializer): JsonResponse
+    {
+        $curentUser = $security->getUser();
+
         /*  if (!$curentUser) {
              return new JsonResponse(null, Response::HTTP_NOT_FOUND);
          } */
-         $userSerialized = $serializer->serialize($curentUser, 'json', ['groups' => 'getUser']);
- 
-         return new JsonResponse($userSerialized, Response::HTTP_OK, [], true);
-     }
+        $userSerialized = $serializer->serialize($curentUser, 'json', ['groups' => 'getUser']);
+
+        return new JsonResponse($userSerialized, Response::HTTP_OK, [], true);
+    }
 
 
     // ------------------- API POST BOOKING ------------------- //
@@ -176,7 +176,6 @@ class ApiController extends AbstractController
     public function addBooking(Request $request, RestaurantRepository $restaurantRepository, EntityManagerInterface $entityManager, Security $security): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
-
         // Récupérer les données de la requête
         $date = $data['date'] ?? null;
         $hour = $data['hour'] ?? null;
@@ -184,17 +183,11 @@ class ApiController extends AbstractController
         $allergy = $data['allergy'] ?? null;
         $email = $data['email'];
         $restaurant = $restaurantRepository->findOneBy(['id' => 1]);
-
         $user = $security->getUser();
-
-
-
-
         // Vérifier les données requises
         if (!$date || !$hour || !$nbConvives) {
             return new JsonResponse(['error' => 'Veuillez fournir une date, une heure et le nombre de personnes.'],  Response::HTTP_NOT_FOUND);
         }
-
         $booking = new Booking();
         $booking->setDate(new \Datetime($date));
         $booking->setHour(new \Datetime($hour));
@@ -202,7 +195,6 @@ class ApiController extends AbstractController
         $booking->setAllergy($allergy);
         $booking->setEmail($email);
         $booking->setRestaurant($restaurant);
-
         // Vérifiez si un utilisateur est connecté
         if ($user instanceof User) {
             // Ajoutez l'utilisateur connecté à la réservation
