@@ -34,3 +34,5 @@ function CarouselComponent() {
 }
 
 export default CarouselComponent;
+
+/* SHA256:EyMAVy476cIU/v5wk5WhA8xyZ+g4Og6bEed5+O246gk  */
