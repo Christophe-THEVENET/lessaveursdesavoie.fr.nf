@@ -18,7 +18,7 @@ const Footer = () => {
             const response = await axios.get('https://lessaveursdesavoie.fr.nf/api/opening-hours');
             setOpeningHoursList(response.data);
         } catch (error) {
-            setError('Une erreur est survenue lors de la récupération des horaires d\'ouverture')
+            setError("Une erreur est survenue lors de la récupération des horaires d'ouverture");
         }
     };
     useEffect(() => {
@@ -28,7 +28,7 @@ const Footer = () => {
     return (
         <footer>
             <div className="footer">
-            {error && <p className='error-message'>{error}</p>}
+                {error && <p className="error-message">{error}</p>}
                 <div className="footer__horaire">
                     <h2>Horaires</h2>
                     {openingHoursList.map((openingHour) => {

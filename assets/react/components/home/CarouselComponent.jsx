@@ -20,11 +20,10 @@ function CarouselComponent() {
     useEffect(() => {
         getFavoriteDishes();
     }, []);
-    
 
     return (
         <>
-            {error && <p className='error-message'>{error}</p>}
+            {error && <p className="error-message">{error}</p>}
             <Carousel navButtonsAlwaysVisible={true}>
                 {favoriteDishes.map((dish) => (
                     <Item key={dish.id} dish={dish} />
@@ -35,3 +34,5 @@ function CarouselComponent() {
 }
 
 export default CarouselComponent;
+
+

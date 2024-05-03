@@ -87,14 +87,14 @@ const Header = () => {
                                   fontSize: '4.7rem',
                                   cursor: 'pointer',
                                   marginLeft: '2rem',
-                                  transition: 'all 0.3s ease-in-out',
+                                transition: 'all 0.3s ease-in-out'
                               }
                             : {
                                   color: 'white',
                                   fontSize: '4.7rem',
                                   cursor: 'pointer',
                                   marginLeft: '2rem',
-                                  transition: 'all 0.3s ease-in-out',
+                                transition: 'all 0.3s ease-in-out'
                               }
                     }
                     onMouseEnter={handleMouseEnter}
@@ -122,7 +122,7 @@ const Header = () => {
                                           fontSize: '4.9rem',
                                           cursor: 'pointer',
                                           margin: '20px',
-                                          transition: 'all 0.2s ease-in-out',
+                                        transition: 'all 0.2s ease-in-out'
                                       }
                                     : {
                                           position: 'absolute',
@@ -132,7 +132,7 @@ const Header = () => {
                                           fontSize: '4.9rem',
                                           cursor: 'pointer',
                                           margin: '20px',
-                                          transition: 'all 0.2s ease-in-out',
+                                        transition: 'all 0.2s ease-in-out'
                                       }
                             }
                             onMouseEnter={handleMouseEnter}
@@ -602,7 +602,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                       cursor: 'pointer',
                                       margin: '20px',
                                       transform: 'scale(1.2)',
-                                      transition: 'all 0.3s ease-in-out',
+                                    transition: 'all 0.3s ease-in-out'
                                   }
                                 : {
                                       position: 'absolute',
@@ -612,7 +612,7 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
                                       fontSize: '2rem',
                                       cursor: 'pointer',
                                       margin: '20px',
-                                      transition: 'all 0.3s ease-in-out',
+                                    transition: 'all 0.3s ease-in-out'
                                   }
                         }
                         onMouseEnter={handleMouseEnter}
@@ -650,4 +650,3 @@ m1207 -147 c23 -21 23 -40 -2 -53 -24 -13 -70 -3 -70 16 0 14 34 54 47 54 3 0
 };
 
 export default Header;
-
