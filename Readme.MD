@@ -4,6 +4,10 @@
 
 https://lessaveursdesavoie.fr.nf/
 
+## Dossier projet de l'application
+
+https://drive.google.com/file/d/1s4RAbAv_TTM4cB7CSWnBWciVAvxjxdN2/view
+
 Application de gestion d'un restaurant qui permet de publier la carte, les menus, ainsi qu'un système de réservation en ligne par méthode asynchrone. L'administration du site est gérée par un back-office.
 
 Le site est développé avec la stack ReactJS, Symfony 5, et MySQL. ReactJS est intégré à Symfony via Webpack Encore et les web-components dans les pages twig. Les reqûetes front-end sont effectuées par méthodes asynchrones via Axios. Les réponses back-end sont retournées par les controleurs symfony en mode API. Le système d'authentification est géré par symfony.
